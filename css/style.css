@@ -1,0 +1,37 @@
+body{
+    background-image: url(../src/Img/Fondo.png);
+}
+.formulario{
+    background-color: rgba(255, 255, 255,.4);
+    border-radius: 15px;
+}
+.form-control{
+    background-color: rgb(36, 22, 2);
+    border-radius: 10px;
+    color: white;
+}
+.form-control:focus{
+    background: none;
+    color:black;
+}
+.btn{
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+}
+.btn:hover{
+    background-color: gray;
+}
+.btn:visited{
+    background-color: gray;
+}
+.btn:focus{
+    background-color: gray;
+}
+.navbar{
+border-radius: 10px;
+}
+.col-6{
+    border: 3px solid #69b820;
+    border-radius: 5px;
+}
