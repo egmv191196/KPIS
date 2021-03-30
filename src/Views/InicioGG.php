@@ -11,6 +11,18 @@
     </head>
 
     <body >
+        <?php
+            session_start();
+            $car=$_SESSION['cargo'];
+            if(!isset($_SESSION['k_user'])){	
+                header("Location:../../index.php");
+            }
+            if($car=="GG" || $car=="Admin" ){ 
+            }elseif ($car!="GG" || $car!="Admin" ) {
+                header("Location:../../index.php");
+                echo "No es admin";
+            }
+        ?>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +52,7 @@
                     </ul>
                 </div>            
             </div>
-            <a class="navbar-brand" href="../../index.html">Cerrar Sesion</a>
+            <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
             <h1 class="text-center">Semana 1</h1>
             <div class="row">

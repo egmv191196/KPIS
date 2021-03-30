@@ -11,6 +11,14 @@
     </head>
 
     <body >
+        <?php
+            session_start();
+            if(!isset($_SESSION['k_user'])){	
+                header("Location:../../index.php");
+            }else if($_SESSION['cargo']!="GC"){ 
+                header("Location:../../index.php");
+            }
+        ?>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +34,7 @@
                     </li>
                     </ul>
                 </div>
-                  <a class="navbar-brand" href="#">Cerrar Sesion</a>
+                  <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
 
         </div>
