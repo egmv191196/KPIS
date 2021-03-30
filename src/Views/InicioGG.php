@@ -44,6 +44,9 @@
                         <a class="nav-link" href="GTIndicador.php">Gerencia Tecnica</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="Proyectos.php">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="Clientes.php">Clientes</a>
                     </li>
                     <li class="nav-item">
@@ -56,7 +59,7 @@
             </nav>
             <h1 class="text-center">Semana 1</h1>
             <div class="row">
-                <div class="col-6 text-center">
+                <div class="col-6 text-center p-5">
                     <h1>Otras areas</h1>
                     <?php
                         echo "<h3> El día de hoy es el ". date_default_timezone_get ()."</h3> <hr/>";

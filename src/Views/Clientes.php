@@ -32,6 +32,9 @@
                         <a class="nav-link" href="GTIndicador.php">Gerencia Tecnica</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="Proyectos.php">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="Clientes.php">Clientes</a>
                     </li>
                     <li class="nav-item">
@@ -40,7 +43,7 @@
                     </ul>
                 </div>
             </div>
-            <a class="navbar-brand" href="../../index.html">Cerrar Sesion</a>    
+            <a class="navbar-brand" href="../../index.php">Cerrar Sesion</a>    
             </nav>
             <h1 class="text-center">Semana 1</h1>
             <div class="row">

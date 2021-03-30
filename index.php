@@ -14,7 +14,7 @@
             <div class="row justify-content-center pt-5 mt-5 ">
                 <div class="col-md-4 formulario ">
                     <form action="./src/Script/login.php" method="POST">  
-                        <div class="form-group">
+                        <div class="form-group text-center">
                             <img src="./src/Img/logo.png" class="img-fluid mt-3" alt="Responsive image">
                             <h1 class="text-center" >Iniciar Sesion</h1>
                             <label for="exampleInputEmail1">Ingresar tu usuario</label>

@@ -32,6 +32,9 @@
                         <a class="nav-link" href="GTIndicador.php">Gerencia Tecnica</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="Proyectos.php">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="Clientes.php">Clientes</a>
                     </li>
                     <li class="nav-item">
