@@ -43,7 +43,7 @@
                     </ul>
                 </div>
             </div>
-            <a class="navbar-brand" href="../../index.html">Cerrar Sesion</a>  
+            <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>  
             </nav>
             <h1 class="text-center">Semana 1</h1>
             <div class="row">

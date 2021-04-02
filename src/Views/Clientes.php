@@ -43,34 +43,42 @@
                     </ul>
                 </div>
             </div>
-            <a class="navbar-brand" href="../../index.php">Cerrar Sesion</a>    
+            <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>    
             </nav>
-            <h1 class="text-center">Semana 1</h1>
-            <div class="row">
-                <div class="col-6 text-center">
-                    <h1>Otras areas</h1>
-                    <?php
-                        echo "<h3> El día de hoy es el ". date_default_timezone_get ()."</h3> <hr/>";
-                        echo "<h2 >Bienvenido a mi sitio PHP 5 </h2>";
-                    ?>
-                </div>
-                <div class="col-6 ">
-                    <h1>Lista de clientes</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <h1>Gerencia General</h1>
-                </div>
-                <div class="col-6 ">
-                    <h1>Gerencia Tecnica</h1>
-                    <?php
-                        echo "<h3> El día de hoy es el ". date('d / M / Y H:i:s')."</h3> <hr/>";
-                        echo "<h2 >Bienvenido a mi sitio PHP 5 </h2>";
-                    ?>
-                </div>
-            </div>
-
+            <h1 class="text-center">Lista de clientes</h1>
+            <table class="table dark-table">
+        <thead>
+            <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">RFC</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                $link=mysqli_connect("localhost","root",""); //hace la conexion con la base de datos
+                mysqli_select_db($link,"kpis");
+                $result= mysqli_query($link, "select * from cliente");
+                while ($row = mysqli_fetch_array($result)) {
+                    echo '<tr>';
+                    echo '<th scope="row">'.$row['id_Cliente'].'</th>';
+                    echo '<td>'.$row['Nombre'].'</td>';
+                    echo '<td>'.$row['RFC'].'</td>';
+                    echo '<td>'.$row['Correo'].'</td>';
+                    echo '<td>'.$row['Telefono'].'</td>';
+                    echo '<td><a title="Eliminar" href=""><img class="rounded-circle mr-2" src="../Img/edit.png" alt="Eliminar usuario" width="30" height="30"/></a>';
+                    echo '<a title="Eliminar" href=""><img class="rounded-circle ml-2" src="../Img/eliminar.png" alt="Eliminar usuario" width="30" height="30"/></a>';
+                    echo '</td>';
+                    echo '</tr>';
+                    //echo '<option value="'.$row[id_Concepto].'">'.$row[Nombre].'-'.$row[Telefono].'</option>';
+                }
+            ?>
+        </tbody>
+        </table>
+        <a class="btn btn-primary float-right"title="Eliminar" href="./addClientes.php">Agregar usuario<img class="rounded-circle ml-2" src="../Img/addClient.png" alt="Eliminar usuario" width="30" height="30"/></a>
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
