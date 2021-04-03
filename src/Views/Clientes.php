@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Iniciar GG</title>
+        <title>Lista de clientes</title>
         <link rel="stylesheet" href="../../css/bootstrap.css" >
         <link rel="stylesheet" href="../../css/style.css" >
     </head>
@@ -47,37 +47,35 @@
             </nav>
             <h1 class="text-center">Lista de clientes</h1>
             <table class="table dark-table">
-        <thead>
-            <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">RFC</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                $link=mysqli_connect("localhost","root",""); //hace la conexion con la base de datos
-                mysqli_select_db($link,"kpis");
-                $result= mysqli_query($link, "select * from cliente");
-                while ($row = mysqli_fetch_array($result)) {
-                    echo '<tr>';
-                    echo '<th scope="row">'.$row['id_Cliente'].'</th>';
-                    echo '<td>'.$row['Nombre'].'</td>';
-                    echo '<td>'.$row['RFC'].'</td>';
-                    echo '<td>'.$row['Correo'].'</td>';
-                    echo '<td>'.$row['Telefono'].'</td>';
-                    echo '<td><a title="Eliminar" href=""><img class="rounded-circle mr-2" src="../Img/edit.png" alt="Eliminar usuario" width="30" height="30"/></a>';
-                    echo '<a title="Eliminar" href=""><img class="rounded-circle ml-2" src="../Img/eliminar.png" alt="Eliminar usuario" width="30" height="30"/></a>';
-                    echo '</td>';
-                    echo '</tr>';
-                    //echo '<option value="'.$row[id_Concepto].'">'.$row[Nombre].'-'.$row[Telefono].'</option>';
-                }
-            ?>
-        </tbody>
-        </table>
+                <thead>
+                    <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">RFC</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        require_once('../Script/conexionBD.php'); 
+                        $result= mysqli_query($conexion, "select * from cliente");
+                        while ($row = mysqli_fetch_array($result)) {
+                            echo '<tr>';
+                            echo '<th scope="row">'.$row['id_Cliente'].'</th>';
+                            echo '<td>'.$row['Nombre'].'</td>';
+                            echo '<td>'.$row['RFC'].'</td>';
+                            echo '<td>'.$row['Correo'].'</td>';
+                            echo '<td>'.$row['Telefono'].'</td>';
+                            echo '<td><a title="Eliminar" href=""><img class="rounded-circle mr-2" src="../Img/edit.png" alt="Eliminar usuario" width="30" height="30"/></a>';
+                            echo '<a title="Eliminar" href=""><img class="rounded-circle ml-2" src="../Img/eliminar.png" alt="Eliminar usuario" width="30" height="30"/></a>';
+                            echo '</td>';
+                            echo '</tr>';
+                        }
+                    ?>
+                </tbody>
+            </table>
         <a class="btn btn-primary float-right"title="Eliminar" href="./addClientes.php">Agregar usuario<img class="rounded-circle ml-2" src="../Img/addClient.png" alt="Eliminar usuario" width="30" height="30"/></a>
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
