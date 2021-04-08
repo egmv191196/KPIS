@@ -57,7 +57,7 @@
                     <th scope="col">Opciones</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="datos">
                     <?php
                         require_once('../Script/conexionBD.php'); 
                         $result= mysqli_query($conexion, "select * from cliente");
