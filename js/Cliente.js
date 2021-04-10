@@ -35,9 +35,13 @@ function Insertar(){
         type: 'POST',
         dataType: 'json'
     }).done(function(response){
-        alert("Datos guardados con exito");
+        if(response == "OK"){
+            alert("Datos guardados con exito");
+        }else{
+            alert(response);
+        }
     }).fail(function(response){
-        alert("Error los Datos no fueron guardados con exito");
+        console.log(response);
     });
 }
 function Modificar(){

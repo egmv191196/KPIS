@@ -19,7 +19,7 @@
 
         public function Insertar($Nombre,$RFC,$Correo,$Telefono){
             $conexion = new  Conexion();
-            $stmt = $conexion->prepare("INSERT  INTO 'cliente'( `Nombre`,`RFC`,`Correo`,`Telefono`) VALUES (:Nombre,:RFC,:Correo,:Telefono)");
+            $stmt = $conexion->prepare("INSERT  INTO cliente('Nombre','RFC','Correo','Telefono') VALUES (:Nombre,:RFC,:Correo,:Telefono)");
             $stmt->bindValue(":Nombre",$Nombre,PDO::PARAM_STR);
             $stmt->bindValue(":RFC",$RFC,PDO::PARAM_STR);
             $stmt->bindValue(":Correo",$Correo,PDO::PARAM_STR);
@@ -57,9 +57,4 @@
             }
         }
     }
-    //Proveedor
-    class Proveedor{
-
-    }
-
 ?>
