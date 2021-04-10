@@ -39,7 +39,7 @@
                                 mysqli_select_db($link,"kpis");
                                 $result= mysqli_query($link, "select id_Cliente,Nombre,Telefono from cliente ");
                                 while ($row = mysqli_fetch_array($result)) {
-                                    echo '<option value="'.$row[id_Cliente].'">'.$row[Nombre].'-'.$row[Telefono].'</option>';
+                                    echo '<option value="'.$row['id_Cliente'].'">'.$row['Nombre'].'-'.$row['Telefono'].'</option>';
                                 }
                             ?>
                         </select>
@@ -48,23 +48,38 @@
                 <div class="row">
                     <div class="col-8 text-center">
                         <label for="name">Conceptos del proyecto</label>
-                        <select class="form-control">
+                        <select class="form-control" id="conceptos">
                             <option value="0">Seleccione:</option>
                             <?php
                                 $link=mysqli_connect("localhost","root",""); //hace la conexion con la base de datos
                                 mysqli_select_db($link,"kpis");
                                 $result= mysqli_query($link, "select id_Concepto,Nombre from catalogo_conceptos");
                                 while ($row = mysqli_fetch_array($result)) {
-                                    echo '<option value="'.$row[id_Concepto].'">'.$row[Nombre].'-'.$row[Telefono].'</option>';
+                                    echo '<option value="'.$row['id_Concepto'].'">'.$row['id_Concepto'].'-'.$row['Nombre'].'</option>';
                                 }
                             ?>
                         </select>
                     </div>
                     <div class="col-4 text-center">
                         <label for="name"></label>
-                        <button type="submit" class="btn btn-danger mt-3 center btn-lg">Agregar concepto</button>
+                        <button class="btn btn-danger mt-3 center btn-lg" id="addConcepto">Agregar concepto</button>
                     </div>
                 </div>
+                <div class="conceptos text-center">
+                    <h3>Lista de Conceptos</h3>
+                    <table class="table dark-table">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID del Concepto</th>
+                            <th scope="col">Nombre del concpeto</th>
+                            <th scope="col">Eliminar concepto</th>
+                            </tr>
+                        </thead>
+                        <tbody id="t_Cuerpo">
+                        </tbody>
+                    </table>
+                </div>
+                
                 
                 <button type="submit" class="btn btn-primary mt-3 center btn-lg">Agregar proyecto</button>
                 <a href="./Proyectos.php" class="btn btn-primary mt-3 center btn-lg">Cancelar</a>
@@ -73,6 +88,22 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   
 </body>
 </html>
+<script type="Text/Javascript">
+    $(document).ready(function(){
+        var tr ='';
+        $('#addConcepto').click(function(){
+                var concepto = document.getElementById("conceptos").value;
+                $("#t_Cuerpo").html("");
+                    tr += `<tr>
+                    <td>`+concepto+`</td>
+                    <td>Nombre del concepto</td>
+                    <td></td>
+                    </tr>`;
+                    $("#t_Cuerpo").append(tr)
+                    return false;
+        });
+        
+    });
+</script>

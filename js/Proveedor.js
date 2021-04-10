@@ -1,16 +1,16 @@
 $(document).ready(function(){
-    $('#AddCliente').click(function(){
-        var datos=$('#frmCliente').serialize();
+    $('#addPro').click(function(){
+        var datos=$('#frmProv').serialize();
         $.ajax({
             type: "POST",
-            url: "../Script/insertarClientes.php",
+            url: "../Script/addProveedor.php",
             data: datos,
         }).done(function(response){
         if(response == 1){
             alert("Usuario agregado correctamente");
-            window.location="./Clientes.php";
+            window.location="./Proveedor.php";
         }else{
-            console.log("no es 1"+response);
+            console.log("error al agregar "+ response);
         }
     }).fail(function(response){
         console.log("error"+response);

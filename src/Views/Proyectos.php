@@ -46,31 +46,29 @@
         <table class="table dark-table">
         <thead>
             <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Clave del proyecto</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Fecha de Inicio</th>
+            <th scope="col">Fecha de Finalizacion</th>
+            <th scope="col">Monto del contrato</th>
+            <th scope="col">cliente</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            </tr>
-            <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            </tr>
+        <?php
+                        require_once('../Script/conexionBD.php'); 
+                        $result= mysqli_query($conexion, "SELECT proyecto.*,cliente.Nombre from proyecto JOIN cliente GROUP BY clave_Proyecto");
+                        while ($row = mysqli_fetch_array($result)) {
+                            echo '<tr>';
+                            echo '<th scope="row">'.$row[0].'</th>';
+                            echo '<td>'.$row[1].'</td>';
+                            echo '<td>'.$row[2].'</td>';
+                            echo '<td>'.$row[3].'</td>';
+                            echo '<td>'.$row[4].'</td>';
+                            echo '<td>'.$row[6].'</td>';
+                            echo '</tr>';
+                        }
+                    ?>
         </tbody>
         </table>
         <h4 class="text-right"><a href="addProyecto.php">Agregar proyecto</a></h4>

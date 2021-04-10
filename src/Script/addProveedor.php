@@ -8,15 +8,6 @@
     $consulta = "INSERT INTO proveedor (Nombre,RFC,Correo,Telefono) VALUES (
         '{$Name}','{$RFC}','{$Email}',{$Phone})";
     // 6. Imprimimos la cadena para verificar que está bién
-    echo $consulta;
-    echo "<br />";
     // 7. Se verifica que se haya realizado la consulta correctamente
-    if($resultado = mysqli_query($conexion,$consulta))
-    {
-        header("Location:../Views/Proveedor.php");
-    }
-    else
-    {
-        header("Location:../Views/addProveedor.php");
-    }
+    echo mysqli_query($conexion,$consulta);  
     ?> 
