@@ -14,7 +14,7 @@
         <form action="">
             <div class="form-group ">
                 <label for="name">Nombre del proyecto</label>
-                <input type="password" name="nameProject" class="form-control " id="name" placeholder="Nombre del proyecto">
+                <input type="text" name="nameProject" class="form-control " id="name" placeholder="Nombre del proyecto">
                 <div class="row">
                     <div class="col-6 text-center">
                         <label for="name">Fecha de inicio</label>
@@ -30,7 +30,7 @@
                         <label for="name">Costo del proyecto</label>
                         <input type="number" name="costProject" class="form-control " id="Costo" placeholder="10000"> 
                     </div>
-                    <div class="col-6 ">
+                    <div class="col-4 ">
                         <label for="name">Nombre del cliente</label>
                         <select class="form-control">
                             <option value="0">Seleccione:</option>
@@ -43,6 +43,10 @@
                                 }
                             ?>
                         </select>
+                    </div>
+                    <div class="col-2 text-center">
+                        <label for="name">&nbsp;</label>
+                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Addcliente" id="addClienteP">Registrar cliente nuevo</button>
                     </div>
                 </div>
                 <div class="row">
@@ -61,7 +65,6 @@
                         </select>
                     </div>
                     <div class="col-4 text-center">
-                        <label for="name"></label>
                         <button class="btn btn-danger mt-3 center btn-lg" id="addConcepto">Agregar concepto</button>
                     </div>
                 </div>
@@ -93,6 +96,7 @@
 <script type="Text/Javascript">
     $(document).ready(function(){
         var tr ='';
+        //Agregar
         $('#addConcepto').click(function(){
                 var concepto = document.getElementById("conceptos").value;
                 $("#t_Cuerpo").html("");
@@ -104,6 +108,17 @@
                     $("#t_Cuerpo").append(tr)
                     return false;
         });
+        //
+        $('#addClienteP').click(function(){
+            $('#addCliente').on('shown.bs.modal', function () {
+                $('#Nombre').trigger('focus')
+            })
+            return false;
+        });
         
+
+
+
     });
 </script>
+

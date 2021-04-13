@@ -71,18 +71,32 @@
                             echo '<td>'.$row['RFC'].'</td>';
                             echo '<td>'.$row['Correo'].'</td>';
                             echo '<td>'.$row['Telefono'].'</td>';
-                            echo '<td><a title="Eliminar" href=""><img class="rounded-circle mr-2" src="../Img/edit.png" alt="Eliminar usuario" width="30" height="30"/></a>';
-                            echo '<a title="Eliminar" href=""><img class="rounded-circle ml-2" src="../Img/eliminar.png" alt="Editar" width="30" height="30"/></a>';
+                            echo '<td><button id="trash">Eliminar</button>';
+                            echo '<button id="Update">editar</button>';
                             echo '</td>';
                             echo '</tr>';
                         }
                     ?>
                 </tbody>
             </table>
-        <a class="btn btn-primary float-right"title="Eliminar" href="./addClientes.php">Agregar usuario<img class="rounded-circle ml-2" src="../Img/addClient.png" alt="Eliminar usuario" width="30" height="30"/></a>
+        <a class="btn btn-primary float-right"title="Eliminar"  href="./addClientes.php">Agregar usuario<img class="rounded-circle ml-2" src="../Img/addClient.png" alt="Eliminar usuario" width="30" height="30"/></a>
+                    
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 </html>
+<script type="Text/Javascript">
+    $(document).ready(function(){
+        $('#trash').click(function(){
+            var valores = $(this).parents("tr").find("th")[0].innerHTML;
+            console.log(valores);
+            alert(valores);
+        })
+
+        $('#Update').click(function(){
+            alert("Se va a modificar un elemnto");
+        })
+    })
+</script>
