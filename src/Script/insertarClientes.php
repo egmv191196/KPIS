@@ -3,9 +3,11 @@
     $RFC=$_POST['RFC'];
     $Email=$_POST['Email'];
     $Phone=$_POST['Phone'];
-	require_once('./conexionBD.php'); 
+    $Operacion=$_POST['Operacion'];
+	/*require_once('./conexionBD.php'); 
 
     $consulta = "INSERT INTO cliente (Nombre,RFC,Correo,Telefono) VALUES (
         '{$Name}','{$RFC}','{$Email}',{$Phone})";
-    echo mysqli_query($conexion,$consulta);
+    echo mysqli_query($conexion,$consulta);*/
+    echo "La operacion es $Operacion";
 ?> 

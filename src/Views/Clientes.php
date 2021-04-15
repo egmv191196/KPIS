@@ -71,8 +71,8 @@
                             echo '<td>'.$row['RFC'].'</td>';
                             echo '<td>'.$row['Correo'].'</td>';
                             echo '<td>'.$row['Telefono'].'</td>';
-                            echo '<td><button id="trash">Eliminar</button>';
-                            echo '<button id="Update">editar</button>';
+                            echo '<td><button id="trash" onclick="Eliminar(this)">Eliminar</button>';
+                            echo '<button id="Update" onclick="Modificar(this)">editar</button>';
                             echo '</td>';
                             echo '</tr>';
                         }
@@ -88,15 +88,36 @@
     </body>
 </html>
 <script type="Text/Javascript">
-    $(document).ready(function(){
-        $('#trash').click(function(){
-            var valores = $(this).parents("tr").find("th")[0].innerHTML;
-            console.log(valores);
-            alert(valores);
-        })
-
-        $('#Update').click(function(){
-            alert("Se va a modificar un elemnto");
-        })
-    })
+    function Modificar(id) {
+        var datos = {
+                "Operacion" : 'Modificar',
+                "Nombre" : $(id).parents("tr").find("td")[0].innerHTML,
+                "Telefono" : $(id).parents("tr").find("td")[3].innerHTML
+            };
+            $.ajax({
+                type: "POST",
+                url: "../Script/prueba.php",
+                data: datos,
+            }).done(function(response){      
+                alert(response);
+            }).fail(function(response){
+                alert("Hubo un error en el server, reintentelo de nuevo");
+            });
+    }
+    function Eliminar(id) {
+        var datos = {
+                "Operacion" : 'Eliminar',
+                "Nombre" : $(id).parents("tr").find("td")[0].innerHTML,
+                "Telefono" : $(id).parents("tr").find("td")[3].innerHTML
+            };
+            $.ajax({
+                type: "POST",
+                url: "../Script/prueba.php",
+                data: datos,
+            }).done(function(response){      
+                alert(response);
+            }).fail(function(response){
+                alert("Hubo un error en el server, reintentelo de nuevo");
+            });
+    }
 </script>
