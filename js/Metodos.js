@@ -29,62 +29,123 @@ $(document).ready(function(){
         var datos=$('#frmCliente').serialize();
         $.ajax({
             type: "POST",
-            url: "../Script/insertarClientes.php",
+            url: "../Script/Cliente.php",
             data: datos,
         }).done(function(response){
-            alert(response);
-            /*if(response == 1){
+            if(response == 1){
                 alert("Usuario agregado correctamente");
                 window.location="./Clientes.php";
             }else{
-                console.log("no es 1"+response);
-            }*/
+                alert("Usuario no agregado correctamente");
+            }
     }).fail(function(response){
         console.log("error"+response);
     });
         return false;
     });
-    //Eliminar clientes
-    $('#trash').click(function(){
+
+    //Update Cliente
+    $('#updateCliente').click(function(){
+        var datos=$('#upCliente').serialize();
         $.ajax({
             type: "POST",
-            url: "../Script/insertarClientes.php",
+            url: "../Script/Cliente.php",
             data: datos,
         }).done(function(response){
-        if(response == 1){
-            alert("Usuario agregado correctamente");
-            window.location="./Clientes.php";
-        }else{
-            console.log("no es 1"+response);
-        }
+            if(response == 1){
+                alert("Usuario modificado correctamente");
+                window.location="./Clientes.php";
+            }else{
+                alert(response);
+            }
     }).fail(function(response){
         console.log("error"+response);
     });
         return false;
     });
-
-
+    ////----Metodo Proveedor------
     //Agregar Proveedor
     $('#addPro').click(function(){
         var datos=$('#frmProv').serialize();
         $.ajax({
             type: "POST",
-            url: "../Script/addProveedor.php",
+            url: "../Script/Proveedor.php",
             data: datos,
         }).done(function(response){
-        if(response == 1){
-            alert("Usuario agregado correctamente");
-            window.location="./Proveedor.php";
-        }else{
-            console.log("error al agregar "+ response);
-        }
+            if(response == 1){
+                alert("Usuario agregado correctamente");
+                window.location="./Proveedor.php";
+            }else{
+                alert("Usuario no agregado correctamente");
+            }
     }).fail(function(response){
         console.log("error"+response);
     });
-        return false
+        return false;
     });
-
-
-
-
+    //Update Proveedor
+    $('#upPro').click(function(){
+        var datos=$('#upProv').serialize();
+        $.ajax({
+            type: "POST",
+            url: "../Script/Proveedor.php",
+            data: datos,
+        }).done(function(response){
+            if(response == 1){
+                alert("Usuario modificado correctamente");
+                window.location="./Proveedor.php";
+            }else{
+                alert(response);
+            }
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+        return false;
+    });
 });
+//Funciones Cliente
+function EliminarC(id){
+    var datos = {
+            "Operacion" : 'Eliminar',
+            "Name" : $(id).parents("tr").find("td")[0].innerHTML,
+            "Phone" : $(id).parents("tr").find("td")[3].innerHTML
+        };
+        $.ajax({
+            type: "POST",
+            url: "../Script/Cliente.php",
+            data: datos,
+        }).done(function(response){      
+            alert("El usuario fue eliminado correctamente");
+            location.reload();
+        }).fail(function(response){
+            alert("Hubo un error en el server, reintentelo de nuevo");
+        });
+}
+function ModificarC(id) {
+    Name=$(id).parents("tr").find("td")[0].innerHTML;
+    Phone=$(id).parents("tr").find("td")[3].innerHTML;
+    location.href ="upCliente.php?Name="+Name+"&Phone="+Phone;
+}
+//Funciones Proveedor
+function EliminarP(id){
+    var datos = {
+            "Operacion" : 'Eliminar',
+            "Name" : $(id).parents("tr").find("td")[0].innerHTML,
+            "Phone" : $(id).parents("tr").find("td")[3].innerHTML
+        };
+        $.ajax({
+            type: "POST",
+            url: "../Script/Proveedor.php",
+            data: datos,
+        }).done(function(response){      
+            alert("El usuario fue eliminado correctamente");
+            location.reload();
+        }).fail(function(response){
+            alert("Hubo un error en el server, reintentelo de nuevo");
+        });
+}
+function ModificarP(id) {
+    Name=$(id).parents("tr").find("td")[0].innerHTML;
+    Phone=$(id).parents("tr").find("td")[3].innerHTML;
+    location.href ="upProveedor.php?Name="+Name+"&Phone="+Phone;
+}

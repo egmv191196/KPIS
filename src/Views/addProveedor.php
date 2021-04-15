@@ -21,6 +21,7 @@
                 <input type="email" name="Email" class="form-control " id="Email" placeholder="Correo electronico">  
                 <label>Telefono de contacto</label>
                 <input type="number" name="Phone" class="form-control " id="Phone" placeholder="Telefono">
+                <input type="hidden" name="Operacion" id="Operacion" value="Insertar" />
                 <button class="btn btn-danger float-right m-3 center btn-lg" id="addPro">Registrar Proveedor</button>          
                 <a href="./Proveedor.php" class="btn btn-primary m-3 center btn-lg float-right">Cancelar</a>
             </div>

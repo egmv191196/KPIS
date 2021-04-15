@@ -11,9 +11,6 @@
     </head>
 
     <body >
-        <?php
-            require_once('./modal.php'); 
-        ?>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,17 +61,19 @@
                     <?php
                         require_once('../Script/conexionBD.php'); 
                         $result= mysqli_query($conexion, "select * from cliente");
+                        $i=1;
                         while ($row = mysqli_fetch_array($result)) {
                             echo '<tr>';
-                            echo '<th scope="row">'.$row['id_Cliente'].'</th>';
+                            echo '<th scope="row">'.$i.'</th>';
                             echo '<td>'.$row['Nombre'].'</td>';
                             echo '<td>'.$row['RFC'].'</td>';
                             echo '<td>'.$row['Correo'].'</td>';
                             echo '<td>'.$row['Telefono'].'</td>';
-                            echo '<td><button id="trash" onclick="Eliminar(this)">Eliminar</button>';
-                            echo '<button id="Update" onclick="Modificar(this)">editar</button>';
+                            echo '<td><button id="trash" onclick="EliminarC(this)">Eliminar</button>';
+                            echo '<button id="Update" onclick="ModificarC(this)">editar</button>';
                             echo '</td>';
                             echo '</tr>';
+                            $i++;
                         }
                     ?>
                 </tbody>
@@ -85,39 +84,6 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="../../js/Metodos.js"></script>
     </body>
 </html>
-<script type="Text/Javascript">
-    function Modificar(id) {
-        var datos = {
-                "Operacion" : 'Modificar',
-                "Nombre" : $(id).parents("tr").find("td")[0].innerHTML,
-                "Telefono" : $(id).parents("tr").find("td")[3].innerHTML
-            };
-            $.ajax({
-                type: "POST",
-                url: "../Script/prueba.php",
-                data: datos,
-            }).done(function(response){      
-                alert(response);
-            }).fail(function(response){
-                alert("Hubo un error en el server, reintentelo de nuevo");
-            });
-    }
-    function Eliminar(id) {
-        var datos = {
-                "Operacion" : 'Eliminar',
-                "Nombre" : $(id).parents("tr").find("td")[0].innerHTML,
-                "Telefono" : $(id).parents("tr").find("td")[3].innerHTML
-            };
-            $.ajax({
-                type: "POST",
-                url: "../Script/prueba.php",
-                data: datos,
-            }).done(function(response){      
-                alert(response);
-            }).fail(function(response){
-                alert("Hubo un error en el server, reintentelo de nuevo");
-            });
-    }
-</script>
