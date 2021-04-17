@@ -21,7 +21,9 @@
             }elseif ($car!="GG" || $car!="Admin" ) {
                 header("Location:../../index.php");
             }
+            require_once('../Script/conexionBD.php'); 
         ?>
+
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,33 +52,33 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Proveedor.php">Proveedores</a>
-                    </li>
+                    </li>    
                     <li class="nav-item">
                         <a class="nav-link" href="addDatosGG.php">Insertar Datos</a>
-                    </li>       
+                    </li>   
                     </ul>
                 </div>            
             </div>
             <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-            <h1 class="text-center">Semana </h1>
-            <div class="row text-center">
-                <div class="col-6 ">
-                    <h1>Gerencia General</h1>
-                </div>
-                <div class="col-6 ">
-                    <h1>Gerencia Comercial</h1>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-6">
-                    <h1>Gerencia Tecnica</h1>
-                </div>
-                <div class="col-6 ">
-                    <h1>Otras areas</h1>
-                </div>
-            </div>
-
+                <h2 class="text-center">Registrar datos Gerencia General</h2>
+                <form id="frmDatos" method="POST">
+                    <label for="name">Indicador</label>
+                        <select class="form-control" id="conceptos">
+                        <option value="0">Selecciona el indicador que registraras:</option>
+                        <?php
+                            $consulta="SELECT * FROM catalogo_indicadores WHERE Permiso='A' ORDER BY Nombre DESC";
+                            $result= mysqli_query($conexion,$consulta );
+                            while ($row = mysqli_fetch_array($result)) {
+                                echo '<option value="'.$row['id_Dat'].'">'.$row['Nombre'].'</option>';
+                            }
+                        ?>
+                    </select>
+                    <label>Valor</label>
+                    <input type="text" name="Name" class="form-control " id="Nombre" placeholder="Ingresa el valor del indicador">
+                    <input type="hidden" name="Operacion" id="Operacion" value="Insertar" />
+                    <button class="btn btn-danger float-right m-3 center btn-lg" id="AddCliente">Registrar cliente</button>      
+                </form>
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

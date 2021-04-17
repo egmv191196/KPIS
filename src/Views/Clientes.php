@@ -39,7 +39,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Proveedor.php">Proveedores</a>
-                    </li>       
+                    </li>  
+                    <li class="nav-item">
+                        <a class="nav-link" href="addDatosGG.php">Insertar Datos</a>
+                    </li>      
                     </ul>
                 </div>
             </div>

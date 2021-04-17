@@ -11,6 +11,7 @@
 <body>
     <div class="container">
         <h1>Agregar un proyecto</h1>
+        <div class="row  justify-content-center pt-5 mt-5"></div>
         <form action="">
             <div class="form-group ">
                 <label for="name">Nombre del proyecto</label>
@@ -44,9 +45,8 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-2 text-center">
-                        <label for="name">&nbsp;</label>
-                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Addcliente" id="addClienteP">Registrar cliente nuevo</button>
+                    <div class="col-2 text-center align-bottom ">
+                        <button class="btn btn-primary btn-lg" >Registrar cliente nuevo</button>
                     </div>
                 </div>
                 <div class="row">
@@ -88,7 +88,7 @@
                 <a href="./Proyectos.php" class="btn btn-primary mt-3 center btn-lg">Cancelar</a>
             </div>
         </form>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>

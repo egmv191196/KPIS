@@ -37,12 +37,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="Proveedor.php">Proveedores</a>
                 </li>
+                 <li class="nav-item">
+                        <a class="nav-link" href="addDatosGG.php">Insertar Datos</a>
+                    </li> 
                 </ul>
             </div>
             
                 <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
         </nav>
         <h1 class="text-center">Lista de proyectos</H1>
+        <h4 class="text-right"><a href="addProyecto.php">Agregar proyecto</a></h4>
         <table class="table dark-table">
         <thead>
             <tr>
@@ -71,7 +75,7 @@
                     ?>
         </tbody>
         </table>
-        <h4 class="text-right"><a href="addProyecto.php">Agregar proyecto</a></h4>
+        
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

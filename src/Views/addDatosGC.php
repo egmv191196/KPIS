@@ -18,6 +18,7 @@
             }else if($_SESSION['cargo']!="GC"){ 
                 header("Location:../../index.php");
             }
+            require_once('../Script/conexionBD.php'); 
         ?>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
@@ -30,13 +31,30 @@
                         <a class="nav-link" href="InicioGC.php">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="addDatosGC.php">Actualizar datos</a>
+                        <a class="nav-link" href="#">Actualizar datos</a>
                     </li>
                     </ul>
                 </div>
                   <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-
+            <h2 class="text-center">Registrar datos Gerencia Comercial</h2>
+                <form id="frmDatos" method="POST">
+                    <label for="name">Indicador</label>
+                        <select class="form-control" id="conceptos">
+                        <option value="0">Selecciona el indicador que registraras:</option>
+                        <?php
+                            $consulta="SELECT * FROM catalogo_indicadores WHERE Permiso='F' ORDER BY Nombre ASC";
+                            $result= mysqli_query($conexion,$consulta );
+                            while ($row = mysqli_fetch_array($result)) {
+                                echo '<option value="'.$row['id_Dat'].'">'.$row['Nombre'].'</option>';
+                            }
+                        ?>
+                    </select>
+                    <label>Valor</label>
+                    <input type="text" name="Name" class="form-control " id="Nombre" placeholder="Ingresa el valor del indicador">
+                    <input type="hidden" name="Operacion" id="Operacion" value="Insertar" />
+                    <button class="btn btn-danger float-right m-3 center btn-lg" id="AddCliente">Registrar cliente</button>      
+                </form>
         </div>
     </body>
 </html>
