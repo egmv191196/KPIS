@@ -21,7 +21,8 @@
                 <label>Telefono de contacto</label>
                 <input type="number" name="Phone" class="form-control " id="Telefono" placeholder="Telefono">
                 <input type="hidden" name="Operacion" id="Operacion" value="Insertar" />
-                <button class="btn btn-danger float-right m-3 center btn-lg" id="AddCliente">Registrar cliente</button>          
+                <button class="btn btn-danger float-right m-3 center btn-lg" id="AddCliente">Registrar cliente</button>
+                <a href="./Clientes.php" class="btn btn-primary m-3 center btn-lg float-right">Cancelar</a>          
         </form>
     </div>
 </body>
