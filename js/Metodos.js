@@ -149,3 +149,13 @@ function ModificarP(id) {
     Phone=$(id).parents("tr").find("td")[3].innerHTML;
     location.href ="upProveedor.php?Name="+Name+"&Phone="+Phone;
 }
+//
+function Seleccion(){
+    //valor=document.getElementById("conceptos").value;
+    //alert("Se selecion el siguiente valor "+valor);
+    combo = document.getElementById("conceptos");
+    selected = combo.options[combo.selectedIndex].text;
+    alert(selected);
+    document.getElementById("cliente").style.visibility="visible" //o "visible"
+
+}
