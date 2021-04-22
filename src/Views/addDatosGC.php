@@ -40,7 +40,7 @@
             <h2 class="text-center">Registrar datos Gerencia Comercial</h2>
                 <form id="frmDatos" method="POST">
                     <label for="name">Indicador</label>
-                        <select class="form-control" id="conceptos" onchange="Seleccion();">
+                        <select class="form-control" id="conceptos" onchange="SeleccionGC();">
                         <option value="0">Selecciona el indicador que registraras:</option>
                         <?php
                             $consulta="SELECT * FROM catalogo_indicadores WHERE Permiso='F' ORDER BY Nombre ASC";
@@ -50,12 +50,48 @@
                             }
                         ?>
                     </select>
+                    <div class="clientes" >
+                        <label for="name">Lista de clientes</label>
+                            <select class="form-control" id="list_Clientes" >
+                            <option value="0">Selecciona el nombre del cliente:</option>
+                            <?php
+                                $consulta="SELECT * FROM cliente ";
+                                $result= mysqli_query($conexion,$consulta );
+                                while ($row = mysqli_fetch_array($result)) {
+                                    echo '<option value="'.$row['id_Cliente'].'">'.$row['Nombre'].'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="proveedores" >
+                        <label for="name">Lista de proveedores</label>
+                            <select class="form-control" id="list_Proveedores" >
+                            <option value="0">Selecciona el nombre del proveedor:</option>
+                            <?php
+                                $consulta="SELECT * FROM proveedor";
+                                $result= mysqli_query($conexion,$consulta );
+                                while ($row = mysqli_fetch_array($result)) {
+                                    echo '<option value="'.$row['id_Proveedor'].'">'.$row['Nombre'].'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="proyectos" >
+                        <label for="name">Lista de proyectos</label>
+                            <select class="form-control" id="list_Proyectos" >
+                            <option value="0">Selecciona el el nombre del proyecto:</option>
+                            <?php
+                                $consulta="SELECT * FROM proyecto";
+                                $result= mysqli_query($conexion,$consulta );
+                                while ($row = mysqli_fetch_array($result)) {
+                                    echo '<option value="'.$row['clave_Proyecto'].'">'.$row['clave_Proyecto'].' - '.$row['Nombre'].'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
                     <label>Valor</label>
                     <input type="text" name="Name" class="form-control " id="Nombre" placeholder="Ingresa el valor del indicador">
-                    <div id="cliente" class="hide">
-                        <label>Valor</label>
-                        <input type="text" name="Name" class="form-control " id="Nombre" placeholder="Ingresa el valor del indicador">
-                    </div>
+                    
                     <input type="hidden" name="Operacion" id="Operacion" value="Insertar" />
                     <button class="btn btn-danger float-right m-3 center btn-lg" id="AddCliente">Registrar cliente</button>      
                 </form>

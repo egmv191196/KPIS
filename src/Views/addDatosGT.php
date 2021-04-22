@@ -50,6 +50,19 @@
                             }
                         ?>
                     </select>
+                    <div class="proyectos" >
+                        <label for="name">Lista de proyectos</label>
+                            <select class="form-control" id="list_Proyectos" >
+                            <option value="0">Selecciona el el nombre del proyecto:</option>
+                            <?php
+                                $consulta="SELECT * FROM proyecto";
+                                $result= mysqli_query($conexion,$consulta );
+                                while ($row = mysqli_fetch_array($result)) {
+                                    echo '<option value="'.$row['clave_Proyecto'].'">'.$row['clave_Proyecto'].' - '.$row['Nombre'].'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
                     <label>Valor</label>
                     <input type="text" name="Name" class="form-control " id="Nombre" placeholder="Ingresa el valor del indicador">
                     <input type="hidden" name="Operacion" id="Operacion" value="Insertar" />

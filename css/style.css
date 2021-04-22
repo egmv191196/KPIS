@@ -38,3 +38,7 @@ border-radius: 10px;
     padding-right: 5px;
     padding-left: 5px;
 }
+.form-control:disabled, .form-control[readonly] {
+    color: rgb(58, 57, 57);
+    opacity: .5;
+  }

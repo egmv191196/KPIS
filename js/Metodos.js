@@ -149,13 +149,54 @@ function ModificarP(id) {
     Phone=$(id).parents("tr").find("td")[3].innerHTML;
     location.href ="upProveedor.php?Name="+Name+"&Phone="+Phone;
 }
-//
-function Seleccion(){
-    //valor=document.getElementById("conceptos").value;
-    //alert("Se selecion el siguiente valor "+valor);
-    combo = document.getElementById("conceptos");
-    selected = combo.options[combo.selectedIndex].text;
-    alert(selected);
-    document.getElementById("cliente").style.visibility="visible" //o "visible"
-
+//------------------Insertar indicadores-------------------------
+//Funciones Gerente Comercial
+function SeleccionGC(){
+    valor = document.getElementById("conceptos").value;
+    if(valor=="R12A"){//Proveedor
+        $("#list_Proveedores").prop("disabled", false);
+        $("#list_Clientes").prop("disabled", true);
+        $("#list_Proyectos").prop("disabled", true);
+    }else if(valor=="R13A"){//Cliente
+        $("#list_Clientes").prop("disabled", false);
+        $("#list_Proveedores").prop("disabled", true);
+        $("#list_Proyectos").prop("disabled", true);
+    }else if(valor=="R14A"){ //Proyecto
+        $("#list_Proyectos").prop("disabled", false);
+        $("#list_Clientes").prop("disabled", true);
+        $("#list_Proveedores").prop("disabled", true);
+    }else{
+        $("#list_Clientes").prop("disabled", true);
+        $("#list_Proveedores").prop("disabled", true);
+        $("#list_Proyectos").prop("disabled", true);
+    }  
+}
+function insIndGC(){
+    
+}
+//Funciones Gerente general
+function SeleccionGG(){
+    valor = document.getElementById("conceptos").value;
+    
+    if(valor=="R2A"){
+        $("#list_Proyectos").prop("disabled", false);
+    }else {
+        $("#list_Proyectos").prop("disabled", true);
+    }   
+}
+function insIndGG(){
+    
+    
+}
+//Funciones Gerente tecnica
+function SeleccionGT(){
+    valor = document.getElementById("conceptos").value;
+    if(valor=="R2A"){
+        $("#list_Proyectos").prop("disabled", false);
+    }else {
+        $("#list_Proyectos").prop("disabled", true);
+    }   
+}
+function insIndGT(){
+    
 }
