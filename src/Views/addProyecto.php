@@ -45,8 +45,9 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-2 text-center align-bottom ">
-                        <button class="btn btn-primary btn-lg" >Registrar cliente nuevo</button>
+                    <div class="col-2 text-center">
+                    <label for="name"></label>
+                        <a class="btn btn-danger btn-lg " onclick="addClienteView();">Registrar cliente nuevo</a>
                     </div>
                 </div>
                 <div class="row">
@@ -64,11 +65,11 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-4 text-center">
+                    <div class="col-4 text-center" hidden>
                         <button class="btn btn-danger mt-3 center btn-lg" id="addConcepto">Agregar concepto</button>
                     </div>
                 </div>
-                <div class="conceptos text-center">
+                <div class="conceptos text-center" hidden>
                     <h3>Lista de Conceptos</h3>
                     <table class="table dark-table">
                         <thead>
@@ -88,37 +89,12 @@
                 <a href="./Proyectos.php" class="btn btn-primary mt-3 center btn-lg">Cancelar</a>
             </div>
         </form>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../../js/Metodos.js"></script>
 </body>
 </html>
-<script type="Text/Javascript">
-    $(document).ready(function(){
-        var tr ='';
-        //Agregar
-        $('#addConcepto').click(function(){
-                var concepto = document.getElementById("conceptos").value;
-                $("#t_Cuerpo").html("");
-                    tr += `<tr>
-                    <td>`+concepto+`</td>
-                    <td>Nombre del concepto</td>
-                    <td></td>
-                    </tr>`;
-                    $("#t_Cuerpo").append(tr)
-                    return false;
-        });
-        //
-        $('#addClienteP').click(function(){
-            $('#addCliente').on('shown.bs.modal', function () {
-                $('#Nombre').trigger('focus')
-            })
-            return false;
-        });
-        
 
-
-
-    });
-</script>
 

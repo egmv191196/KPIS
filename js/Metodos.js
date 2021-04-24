@@ -43,7 +43,7 @@ $(document).ready(function(){
     });
         return false;
     });
-
+    
     //Update Cliente
     $('#updateCliente').click(function(){
         var datos=$('#upCliente').serialize();
@@ -172,7 +172,17 @@ function SeleccionGC(){
     }  
 }
 function insIndGC(){
-    
+    var datos=$('#frmGC').serialize();
+    $.ajax({
+        type: "POST",
+        url: "../Script/indicadores.php",
+        data: datos,
+    }).done(function(response){      
+        alert("El usuario fue eliminado correctamente");
+        location.reload();
+    }).fail(function(response){
+        alert("Hubo un error en el server, reintentelo de nuevo");
+    });
 }
 //Funciones Gerente general
 function SeleccionGG(){
@@ -199,4 +209,8 @@ function SeleccionGT(){
 }
 function insIndGT(){
     
+}
+//Redireccion
+function addClienteView() {
+    location.href ="./addClientes.php";
 }
