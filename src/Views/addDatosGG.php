@@ -61,6 +61,67 @@
             </div>
             <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
+            <h1 class="align-center">Año 2021</h1>
+            <div class="datos mt-5">
+                <div class="row">
+                    <div class="col-sm text-center">
+                       <h4>Numero de vacantes cubiertas</h4>
+                       Numero de vacantes totales
+                       <input type="text"  name="vacantesTotales" class="form-control m-2 ml-5" style="width : 250px" id="Nombre" value="15" placeholder="No. de vacantes totales">
+
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Mes</th>
+                                <th scope="col">Vacantes ocupadas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td >10</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td >10</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td >10</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td contenteditable="true">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                       
+                    </div>
+                    <div class="col-sm text-center">
+                       <h4>Descriptivos de puestos</h4>
+                    </div>
+                    <div class="col-sm text-center">
+                       <h4>Certificacion de calidad</h4>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-sm text-center">
+                       <h4>Cursos otrogados</h4>
+                    </div>
+                    <div class="col-sm text-center">
+                       <h4>Bajas de personal</h4>
+                    </div>
+                    <div class="col-sm text-center">
+                       <h4>Reporte de impuestos</h4>
+                    </div>
+                </div>
+            
+            
+            
+            
+            
+            </div>
                 <h2 class="text-center">Registrar datos Gerencia General</h2>
                 <form id="frmDatos" method="POST">
                     <label for="name">Indicador</label>
