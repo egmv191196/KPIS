@@ -67,7 +67,7 @@
                     <div class="col-sm text-center">
                        <h4>Numero de vacantes cubiertas</h4>
                        Numero de vacantes totales
-                       <input type="text"  name="vacantesTotales" class="form-control m-2 ml-5" style="width : 250px" id="Nombre" value="15" placeholder="No. de vacantes totales">
+                       <input type="text"  name="vacantesTotales" class="form-control m-2 ml-5" style="width : 250px" id="Nombre" value="15" placeholder="No. de vacantes totales" required>
 
                        <table class="table">
                             <thead>
@@ -97,20 +97,129 @@
                         </table>
                        
                     </div>
-                    <div class="col-sm text-center">
+                    <div class="col-sm text-center" >
                        <h4>Descriptivos de puestos</h4>
+                        Numero de puestos totales
+                       <input type="text"  name="puestosTotales" class="form-control m-2 ml-5" style="width : 250px" id="puestos" value="15" placeholder="No. de puestos totales" required>
+
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Mes</th>
+                                <th scope="col">Descriptivos de puesto listos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td >7</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td >9</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td >15</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td contenteditable="true"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                     </div>
                     <div class="col-sm text-center">
-                       <h4>Certificacion de calidad</h4>
+                       <h4>Calificacion de encuesta por proyecto</h4>
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Proyecto</th>
+                                <th scope="col">Calificaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Tecamachalco</th>
+                                    <td >7</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td >9</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td >10</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td contenteditable="true"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <label for="promedio">Promedio de calificaciones </label>
                     </div>
                     
                 </div>
                 <div class="row">
                     <div class="col-sm text-center">
-                       <h4>Cursos otrogados</h4>
+                       <h4>Cursos otorgados</h4>
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Mes</th>
+                                <th scope="col">Cursos otorgados</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td >7</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td >9</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td >15</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td contenteditable="true"></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="col-sm text-center">
                        <h4>Bajas de personal</h4>
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Mes</th>
+                                <th scope="col">Bajas de personal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td >7</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td >9</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td >15</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td contenteditable="true"></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="col-sm text-center">
                        <h4>Reporte de impuestos</h4>
