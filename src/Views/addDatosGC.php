@@ -31,78 +31,41 @@
                         <a class="nav-link" href="InicioGC.php">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Actualizar datos</a>
+                        <a class="nav-link" href="#">Datos</a>
                     </li>
                     </ul>
                 </div>
                   <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-            <h2 class="text-center">Registrar datos Gerencia Comercial</h2>
+            <h2 class="text-center">Datos de  Gerencia Comercial</h2>
 
             <div class="datos mt-5">
                 <div class="row">
-                    <div class="col-sm text-center">
-                       <h4>Costo total del proyecto</h4>
-                       <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Proyecto</th>
-                                <th scope="col">Costo total $</th>
-                                <th scope="col">Saldo restante restante $</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td >10</td>
-                                    <td >10</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td >10</td>
-                                    <td >10</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td >10</td>
-                                    <td >10</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td >10</td>
-                                    <td >10</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                       
-                    </div>
+                    
                     <div class="col-sm text-center" >
-                       <h4>Descriptivos de puestos</h4>
-                        Numero de puestos totales
-                       <input type="text"  name="puestosTotales" class="form-control m-2 ml-5" style="width : 250px" id="puestos" value="15" placeholder="No. de puestos totales" required>
-
+                       <h4>Reporte de nomina</h4>
                        <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Mes</th>
-                                <th scope="col">Descriptivos de puesto listos</th>
+                                <th scope="col">Quincena</th>
+                                <th scope="col">Numero de reportes</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">12</th>
                                     <td >7</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2</th>
+                                    <th scope="row">13</th>
                                     <td >9</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">3</th>
+                                    <th scope="row">14</th>
                                     <td contenteditable="true">15</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">4</th>
+                                    <th scope="row">15</th>
                                     <td contenteditable="true"></td>
                                 </tr>
                             </tbody>
@@ -110,98 +73,171 @@
 
                     </div>
                     <div class="col-sm text-center">
-                       <h4>Calificacion de encuesta por proyecto</h4>
+                       <h4>Horas extras</h4>
                        <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Proyecto</th>
-                                <th scope="col">Calificaciones</th>
+                                <th scope="col">Quincena</th>
+                                <th scope="col">Horas extras</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">Tecamachalco</th>
+                                    <th scope="row">12</th>
                                     <td >7</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2</th>
+                                    <th scope="row">13</th>
                                     <td >9</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">3</th>
+                                    <th scope="row">14</th>
                                     <td >10</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">4</th>
+                                    <th scope="row">15</th>
                                     <td contenteditable="true"></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <label for="promedio">Promedio de calificaciones </label>
+                        <label for="promedio">Promedio de horas extras </label>
                     </div>
+                    <div class="col-sm text-center">
+                        <h4>Reportes entregados</h4>
+                        <div class="semanal">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Semana</th>
+                                    <th scope="col">Reporte CXP</th>
+                                    <th scope="col">Reporte CXC</th>
+                                    <th scope="col">Mes</th>
+                                    <th scope="col">Reporte facturacion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">11</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                        <th scope="row">1</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">12</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                        <th scope="row">2</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">13</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"disabled   ></td>
+                                        <th scope="row">3</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">14</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
+                                        <th scope="row">4</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>                     
+                        
+                    </div> 
                     
                 </div>
                 <div class="row">
                     <div class="col-sm text-center">
-                       <h4>Cursos otorgados</h4>
+                       <h4>Cuentas por pagar</h4>
                        <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Mes</th>
-                                <th scope="col">Cursos otorgados</th>
+                                    <th scope="col">Semana</th>
+                                    <th scope="col">Saldo</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td >7</td>
+                                    <th scope="row">S1</th>
+                                    <td> $ 933,596.87 </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2</th>
+                                    <th scope="row">S2</th>
                                     <td >9</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">3</th>
+                                    <th scope="row">S3</th>
                                     <td >15</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">4</th>
+                                    <th scope="row">S4</th>
                                     <td contenteditable="true"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="col-sm text-center">
-                       <h4>Bajas de personal</h4>
+                       <h4>Cuentas por cobrar</h4>
                        <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Mes</th>
-                                <th scope="col">Bajas de personal</th>
+                                    <th scope="col">Semana</th>
+                                    <th scope="col">Saldo</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td >7</td>
+                            <tr>
+                                    <th scope="row">S1</th>
+                                    <td> $ 933,596.87 </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2</th>
+                                    <th scope="row">S2</th>
                                     <td >9</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">3</th>
+                                    <th scope="row">S3</th>
                                     <td >15</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">4</th>
+                                    <th scope="row">S4</th>
                                     <td contenteditable="true"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="col-sm text-center">
-                       <h4>Reporte de impuestos</h4>
+                       <h4>Saldo en cuentas</h4>
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Semana</th>
+                                    <th scope="col">Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                    <th scope="row">S1</th>
+                                    <td> $ 933,596.87 </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">S2</th>
+                                    <td >9</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">S3</th>
+                                    <td >15</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">S4</th>
+                                    <td contenteditable="true"></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             
