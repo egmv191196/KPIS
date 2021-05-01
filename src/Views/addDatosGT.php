@@ -31,43 +31,189 @@
                         <a class="nav-link" href="InicioGT.php">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="insertarDatos.php">Actualizar datos</a>
+                        <a class="nav-link" href="insertarDatos.php">Datos</a>
                     </li>
                     </ul>
                 </div>
                 <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-            <h2 class="text-center">Registrar datos Gerencia Tecnica</h2>
-                <form id="frmDatos" method="POST">
-                    <label for="name">Indicador</label>
-                        <select class="form-control" id="conceptos">
-                        <option value="0">Selecciona el indicador que registraras:</option>
-                        <?php
-                            $consulta="SELECT * FROM catalogo_indicadores WHERE Permiso='T' ORDER BY Nombre DESC";
-                            $result= mysqli_query($conexion,$consulta );
-                            while ($row = mysqli_fetch_array($result)) {
-                                echo '<option value="'.$row['id_Dat'].'">'.$row['Nombre'].'</option>';
-                            }
-                        ?>
-                    </select>
-                    <div class="proyectos" >
-                        <label for="name">Lista de proyectos</label>
-                            <select class="form-control" id="list_Proyectos" >
-                            <option value="0">Selecciona el el nombre del proyecto:</option>
-                            <?php
-                                $consulta="SELECT * FROM proyecto";
-                                $result= mysqli_query($conexion,$consulta );
-                                while ($row = mysqli_fetch_array($result)) {
-                                    echo '<option value="'.$row['clave_Proyecto'].'">'.$row['clave_Proyecto'].' - '.$row['Nombre'].'</option>';
-                                }
-                            ?>
-                        </select>
+            <h2 class="text-center">Datos de  Gerencia Tecnica</h2>
+                <div class="datos mt-5">
+                    <h4 class="text-center">Reportes entregados</h4>
+                    <div class="row">
+                        <div class="col-sm text-center">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Semana</th>
+                                        <th scope="col">Proyectos vigentes y culminados</th>
+                                        <th scope="col">Retrabajos</th>
+                                        <th scope="col">Plazos de entrega cumplidos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">11</th>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">12</th>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">13</th>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"disabled   ></td>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">14</th>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
+                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>                       
+                        </div>
+                        <div class="col-sm text-center">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Quincena</th>
+                                    <th scope="col">KMS por concepto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">11</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">12</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">13</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">14</th>
+                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                        </div>
+
                     </div>
-                    <label>Valor</label>
-                    <input type="text" name="Name" class="form-control " id="Nombre" placeholder="Ingresa el valor del indicador">
-                    <input type="hidden" name="Operacion" id="Operacion" value="Insertar" />
-                    <button class="btn btn-danger float-right m-3 center btn-lg" id="AddCliente">Registrar cliente</button>      
-                </form>
+                    <div class="row">
+                    
+                        <div class="col-sm text-center" >
+                        <h4>Inconformidades por el cliente </h4>
+                        <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Proyecto</th>
+                                    <th scope="col">Semana 1</th>
+                                    <th scope="col">Semana 2</th>
+                                    <th scope="col">Semana 3</th>
+                                    <th scope="col">Semana 4</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Tecamachalco</th>
+                                        <td >7</td>
+                                        <td >7</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">13</th>
+                                        <td >9</td>
+                                        <td contenteditable="true">15</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">14</th>
+                                        <td >9</td>
+                                        <td contenteditable="true">15</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">15</th>
+                                        <td >9</td>
+                                        <td contenteditable="true">7</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    <div class="col-sm text-center">
+                       <h4>Horas extras</h4>
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Quincena</th>
+                                <th scope="col">Horas extras</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">12</th>
+                                    <td >7</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">13</th>
+                                    <td >9</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">14</th>
+                                    <td >10</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">15</th>
+                                    <td contenteditable="true"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <label for="promedio">Promedio de horas extras </label>
+                    </div>
+                    
+                
+                    <div class="col-sm text-center">
+                       <h4>Proyectos</h4>
+                       <table class="table" title="Proyectos">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Semana/proyectos</th>
+                                    <th scope="col">Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">S1</th>
+                                    <td> $ 933,596.87 </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">S2</th>
+                                    <td >9</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">S3</th>
+                                    <td >15</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">S4</th>
+                                    <td contenteditable="true"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                   
+                </div>
+                <button class="btn btn-danger float-right m-3 center btn-lg" >Guardar Datos</button> 
+            </div>
         </div>
     </body>
 </html>

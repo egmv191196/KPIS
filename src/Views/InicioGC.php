@@ -30,7 +30,7 @@
                         <a class="nav-link" href="InicioGC.php">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="addDatosGC.php">Actualizar datos</a>
+                        <a class="nav-link" href="addDatosGC.php">Datos</a>
                     </li>
                     </ul>
                 </div>
