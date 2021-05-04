@@ -149,6 +149,27 @@ function ModificarP(id) {
     Phone=$(id).parents("tr").find("td")[3].innerHTML;
     location.href ="upProveedor.php?Name="+Name+"&Phone="+Phone;
 }
+//------------------Agregar proyecto-------------------------
+function addProyecto(){
+var datos=$('#addProyecto').serialize();
+        $.ajax({
+            type: "POST",
+            url: "../Script/Proyecto.php",
+            data: datos,
+        }).done(function(response){
+            window.location="./Proyectos.php";
+            alert(response);
+            if(response == 1){
+                alert("Proyecto agregado correctamente");
+                
+            }else{
+                alert(response);
+            }
+    }).fail(function(response){
+        alert("error"+response);
+    });
+}
+
 //------------------Insertar indicadores-------------------------
 //Funciones Gerente Comercial
 function SeleccionGC(){

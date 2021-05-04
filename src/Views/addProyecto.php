@@ -12,29 +12,41 @@
     <div class="container">
         <h1>Agregar un proyecto</h1>
         <div class="row  justify-content-center pt-5 mt-5"></div>
-        <form action="">
-            <div class="form-group ">
-                <label for="name">Nombre del proyecto</label>
-                <input type="text" name="nameProject" class="form-control " id="name" placeholder="Nombre del proyecto">
+        <form id="addProyecto">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-6 text-center">
+                    <label for="name">Clave del proyecto</label>
+                        <input type="text" name="claveProyecto"  required class="form-control " id="name" placeholder="Clave del proyecto">
+                    </div>
+                    <div class="col-6 text-center">
+                        <label for="name">Nombre del proyecto</label>
+                        <input type="text" name="nombreProyecto"  required class="form-control " id="name" placeholder="Nombre del proyecto">
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-6 text-center">
                         <label for="name">Fecha de inicio</label>
-                        <input type="date" name="dateProject" class="form-control " id="dateInicio" placeholder="">
+                        <input type="date" name="fechaInicio"  required class="form-control " id="dateInicio" placeholder="">
                     </div>
                     <div class="col-6 ">
-                        <label for="name">Fecha de finalizacion</label>
-                        <input type="date" name="dateProject" class="form-control " id="dateFin" placeholder="">
+                        <label for="dateFin">Fecha de finalizacion</label>
+                        <input type="date" name="fechaFin"  required class="form-control " id="dateFin" placeholder="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-4 text-center">
                         <label for="name">Costo del proyecto</label>
-                        <input type="number" name="costProject" class="form-control " id="Costo" placeholder="10000"> 
+                        <input type="number" name="costoProyecto"  required class="form-control " id="Costo" placeholder="10000"> 
+                    </div>
+                    <div class="col-4 text-center">
+                        <label for="name">Codigo del presupuesto</label>
+                        <input type="text" name="id_Presupuesto"  required class="form-control " id="id_Presupuesto" placeholder="Codigo del presupuesto">
                     </div>
                     <div class="col-4 ">
                         <label for="name">Nombre del cliente</label>
-                        <select class="form-control">
-                            <option value="0">Seleccione:</option>
+                        <select class="form-control" name="id_Cliente" required >
+                            <option value="">Seleccione:</option>
                             <?php
                                 $link=mysqli_connect("localhost","root",""); //hace la conexion con la base de datos
                                 mysqli_select_db($link,"kpis");
@@ -45,16 +57,12 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-2 text-center">
-                    <label for="name"></label>
-                        <a class="btn btn-danger btn-lg " onclick="addClienteView();">Registrar cliente nuevo</a>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-8 text-center">
                         <label for="name">Conceptos del proyecto</label>
-                        <select class="form-control" id="conceptos">
-                            <option value="0">Seleccione:</option>
+                        <select class="form-control" id="conceptos" required >
+                            <option value="">Seleccione:</option>
                             <?php
                                 $link=mysqli_connect("localhost","root",""); //hace la conexion con la base de datos
                                 mysqli_select_db($link,"kpis");
@@ -80,13 +88,14 @@
                             </tr>
                         </thead>
                         <tbody id="t_Cuerpo">
-                        </tbody>
+                        </tbody> 
                     </table>
                 </div>
                 
                 
-                <button type="submit" class="btn btn-primary mt-3 center btn-lg">Agregar proyecto</button>
+                <button type="submit" class="btn btn-primary mt-3 center btn-lg" onclick="addProyecto();">Agregar proyecto</button>
                 <a href="./Proyectos.php" class="btn btn-primary mt-3 center btn-lg">Cancelar</a>
+                <a href="./Proyectos.php" class="btn btn-danger mt-3 center btn-lg float-right" onclick="addClienteView();">Registrar cliente nuevo</a>
             </div>
         </form>
     </div>
