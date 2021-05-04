@@ -131,7 +131,7 @@
 
                     </div>
                     <div class="col-sm text-center">
-                       <h4>Calificacion de encuesta por proyecto</h4>
+                       <h4>Satisfaccion del cliente</h4>
                        <table class="table">
                             <thead>
                                 <tr>
@@ -225,7 +225,11 @@
                        <h4>Reporte de impuestos</h4>
                     </div>
                 </div>
-            
+                <div class="row">
+                    <div class="col-sm text-center">
+                       <h4>Certificacion de calidad</h4>
+                    </div>
+                </div>
             
             
             

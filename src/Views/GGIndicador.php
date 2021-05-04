@@ -48,7 +48,7 @@
             <div class="Container text-center">
                 <h2>Gerencia General</h2>
                 <?php
-                        echo "<h3> El día de hoy es el ". date('d / M / Y H:i:s')."</h3> <hr/>";
+                        echo "<h3> El día de hoy es el ". date('W')."</h3> <hr/>";
                         echo "<h2 >Bienvenido a mi sitio PHP 5 </h2>";
                     ?>
                 

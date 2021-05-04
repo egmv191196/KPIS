@@ -41,4 +41,7 @@ border-radius: 10px;
 .form-control:disabled, .form-control[readonly] {
     color: rgb(58, 57, 57);
     opacity: .5;
-  }
+}
+.editable{
+    background-color: rgba(226, 80, 80, 0.418);
+}

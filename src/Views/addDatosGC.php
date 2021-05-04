@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Iniciar GG</title>
+        <title>Datos Gerencia Comercial</title>
         <link rel="stylesheet" href="../../css/bootstrap.css" >
         <link rel="stylesheet" href="../../css/style.css" >
     </head>
@@ -40,10 +40,9 @@
             <h2 class="text-center">Datos de  Gerencia Comercial</h2>
 
             <div class="datos mt-5">
-                <div class="row">
-                    
+                <div class="row">      
                     <div class="col-sm text-center" >
-                       <h4>Reporte de nomina</h4>
+                       <h4>Reportes de nomina</h4>
                        <table class="table">
                             <thead>
                                 <tr>
@@ -71,6 +70,74 @@
                             </tbody>
                         </table>
 
+                    </div>
+                    <div class="col-sm text-center">
+                        <h4>Reportes semanales</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Semana</th>
+                                <th scope="col">Reporte CXP</th>
+                                <th scope="col">Reporte CXC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">11</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">12</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">13</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"disabled   ></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">14</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm text-center ">
+                        <h4>Reportes mensuales</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Mes</th>
+                                <th scope="col">Reporte facturacion</th>
+                                <th scope="col">Reporte impuestos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="col-sm text-center">
                        <h4>Horas extras</h4>
@@ -102,54 +169,6 @@
                         </table>
                         <label for="promedio">Promedio de horas extras </label>
                     </div>
-                    <div class="col-sm text-center">
-                        <h4>Reportes entregados</h4>
-                        <div class="semanal">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Semana</th>
-                                    <th scope="col">Reporte CXP</th>
-                                    <th scope="col">Reporte CXC</th>
-                                    <th scope="col">Mes</th>
-                                    <th scope="col">Reporte facturacion</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">11</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                        <th scope="row">1</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">12</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                        <th scope="row">2</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">13</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"disabled   ></td>
-                                        <th scope="row">3</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox" disabled></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">14</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
-                                        <th scope="row">4</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>                     
-                        
-                    </div> 
-                    
                 </div>
                 <div class="row">
                     <div class="col-sm text-center">
@@ -176,7 +195,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">S4</th>
-                                    <td contenteditable="true"></td>
+                                    <td <?php echo "class='editable'" ?>  contenteditable="true"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -205,7 +224,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">S4</th>
-                                    <td contenteditable="true"></td>
+                                    <td <?php echo "class='editable'" ?> contenteditable="true"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -239,6 +258,82 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm text-center">
+                        <h4>Cartera vencida</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Cliente</th>
+                                    <th scope="col">Saldo vencido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Tecamachalco</th>
+                                    <td >$10000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tecamachalco</th>
+                                    <td >$250000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tecamachalco</th>
+                                    <td >$15000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tecamachalco</th>
+                                    <td >$1000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm text-center">
+                        <h4>Estimaciones pendientes por proyecto</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Proyecto</th>
+                                    <th scope="col">S1</th>
+                                    <th scope="col">S2</th>
+                                    <th scope="col">S3</th>
+                                    <th scope="col">S4</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Tecamachalco</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" ></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tecamachalco</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" ></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tecamachalco</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" ></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tecamachalco</th>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
+                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" ></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 </div>
                 <button class="btn btn-danger float-right m-3 center btn-lg" >Guardar Datos</button> 
             </div>

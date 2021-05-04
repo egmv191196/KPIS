@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Iniciar GG</title>
+        <title>Datos Gerencia Tecnica</title>
         <link rel="stylesheet" href="../../css/bootstrap.css" >
         <link rel="stylesheet" href="../../css/style.css" >
     </head>
@@ -110,6 +110,99 @@
 
                         </div>
 
+                    </div>
+                    <div class="row">
+                        <div class="col-sm text-center" >
+                            <h4>Avance por proyecto</h4>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Proyecto</th>
+                                    <th scope="col">Semana 1</th>
+                                    <th scope="col">Semana 2</th>
+                                    <th scope="col">Semana 3</th>
+                                    <th scope="col">Semana 4</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Tecamachalco</th>
+                                        <td >7</td>
+                                        <td >7</td>
+                                        <td >7</td>
+                                        <td contenteditable="true">7</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Tecamachalco</th>
+                                        <td >9</td>
+                                        <td >7</td>
+                                        <td >7</td>
+                                        <td contenteditable="true">15</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Tecamachalco</th>
+                                        <td >9</td>
+                                        <td >7</td>
+                                        <td >7</td>
+                                        <td contenteditable="true">15</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Tecamachalco</th>
+                                        <td >9</td>
+                                        <td >7</td>
+                                        <td >7</td>
+                                        <td contenteditable="true">7</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="col-sm text-center" >
+                            <h4>Plan de trabajo ejecutado</h4>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Proyecto</th>
+                                    <th scope="col">Semana 1</th>
+                                    <th scope="col">Semana 2</th>
+                                    <th scope="col">Semana 3</th>
+                                    <th scope="col">Semana 4</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Tecamachalco</th>
+                                        <td >7</td>
+                                        <td >7</td>
+                                        <td >7</td>
+                                        <td >7</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Tecamachalco</th>
+                                        <td >9</td>
+                                        <td >7</td>
+                                        <td >7</td>
+                                        <td contenteditable="true">15</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Tecamachalco</th>
+                                        <td >9</td>
+                                        <td >7</td>
+                                        <td >7</td>
+                                        <td contenteditable="true">15</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Tecamachalco</th>
+                                        <td >9</td>
+                                        <td >7</td>
+                                        <td >7</td>
+                                        <td contenteditable="true">7</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    
                     </div>
                     <div class="row">
                     
