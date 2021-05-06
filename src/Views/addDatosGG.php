@@ -64,7 +64,7 @@
             <h1 class="align-center">Año 2021</h1>
             <div class="datos mt-5">
                 <div class="row">
-                    <div class="col-sm text-center">
+                    <div class="col-sm text-center border">
                        <h4>Numero de vacantes cubiertas</h4>
                        Numero de vacantes totales
                        <input type="text"  name="vacantesTotales" class="form-control m-2 ml-5" style="width : 250px" id="Nombre" value="15" placeholder="No. de vacantes totales" required>

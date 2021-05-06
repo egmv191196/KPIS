@@ -12,10 +12,10 @@
     <div class="container">
         <h1>Agregar un proyecto</h1>
         <div class="row  justify-content-center pt-5 mt-5"></div>
-        <form id="addProyecto">
+        <form id="addProyecto" method="POST">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-6 text-center">
+                    <div class="col-6 text-center" >
                     <label for="name">Clave del proyecto</label>
                         <input type="text" name="claveProyecto"  required class="form-control " id="name" placeholder="Clave del proyecto">
                     </div>
@@ -68,40 +68,21 @@
                                 mysqli_select_db($link,"kpis");
                                 $result= mysqli_query($link, "select id_Concepto,Nombre from catalogo_conceptos");
                                 while ($row = mysqli_fetch_array($result)) {
-                                    echo '<option value="'.$row['id_Concepto'].'">'.$row['id_Concepto'].'-'.$row['Nombre'].'</option>';
+                                    echo '<option value="'.$row['id_Concepto'].'">'.$row['Nombre'].'</option>';
                                 }
                             ?>
                         </select>
                     </div>
-                    <div class="col-4 text-center" hidden>
-                        <button class="btn btn-danger mt-3 center btn-lg" id="addConcepto">Agregar concepto</button>
-                    </div>
                 </div>
-                <div class="conceptos text-center" hidden>
-                    <h3>Lista de Conceptos</h3>
-                    <table class="table dark-table">
-                        <thead>
-                            <tr>
-                            <th scope="col">ID del Concepto</th>
-                            <th scope="col">Nombre del concpeto</th>
-                            <th scope="col">Eliminar concepto</th>
-                            </tr>
-                        </thead>
-                        <tbody id="t_Cuerpo">
-                        </tbody> 
-                    </table>
-                </div>
-                
-                
-                <button type="submit" class="btn btn-primary mt-3 center btn-lg" onclick="addProyecto();">Agregar proyecto</button>
+                <button class="btn btn-primary mt-3 center btn-lg" id="addPro">Agregar proyecto</button>
                 <a href="./Proyectos.php" class="btn btn-primary mt-3 center btn-lg">Cancelar</a>
-                <a href="./Proyectos.php" class="btn btn-danger mt-3 center btn-lg float-right" onclick="addClienteView();">Registrar cliente nuevo</a>
+                <a href="./addClientes.php" class="btn btn-danger mt-3 center btn-lg float-right" >Registrar cliente nuevo</a>
             </div>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
     <script src="../../js/Metodos.js"></script>
 </body>
 </html>

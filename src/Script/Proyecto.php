@@ -11,4 +11,5 @@
         $consulta = "INSERT INTO proyecto (clave_Proyecto, Nombre, fecha_IniciO, fecha_Fin, monto_Contrato, id_Presupuesto, id_Cliente) VALUES 
         ('{$Clave}','{$Name}','{$date}','{$date}',{$costoProyecto},'{$id_Presupuesto}',{$id_Cliente})";
         echo mysqli_query($conexion,$consulta);
+        
 ?>

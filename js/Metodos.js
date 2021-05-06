@@ -23,6 +23,23 @@ $(document).ready(function(){
         });
         return false;
     });
+
+    //AgregarProyecto
+    $('#addPro').click(function(){
+        var datos=$('#addProyecto').serialize();
+        $.ajax({
+            type: "POST",
+            url: "../Script/Proyecto.php",
+            data: datos,
+        }).done(function(response){
+            alert(response);
+            location.href ="./Proyectos.php";
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+        return false
+    });
+
     //---------------Metodos Clientes-------------
     //Agregar Clientes
     $('#AddCliente').click(function(){
@@ -102,6 +119,10 @@ $(document).ready(function(){
     });
         return false;
     });
+    
+
+
+
 });
 //Funciones Cliente
 function EliminarC(id){
@@ -151,47 +172,23 @@ function ModificarP(id) {
 }
 //------------------Agregar proyecto-------------------------
 function addProyecto(){
-var datos=$('#addProyecto').serialize();
+var datos=$('#frmProv').serialize();
+alert(datos);
+location.href ="./addClientes.php";
+/*
         $.ajax({
             type: "POST",
             url: "../Script/Proyecto.php",
             data: datos,
         }).done(function(response){
-            window.location="./Proyectos.php";
-            alert(response);
-            if(response == 1){
-                alert("Proyecto agregado correctamente");
-                
-            }else{
-                alert(response);
-            }
+            //alert(response);
     }).fail(function(response){
         alert("error"+response);
-    });
+    });*/
 }
 
 //------------------Insertar indicadores-------------------------
-//Funciones Gerente Comercial
-function SeleccionGC(){
-    valor = document.getElementById("conceptos").value;
-    if(valor=="R12A"){//Proveedor
-        $("#list_Proveedores").prop("disabled", false);
-        $("#list_Clientes").prop("disabled", true);
-        $("#list_Proyectos").prop("disabled", true);
-    }else if(valor=="R13A"){//Cliente
-        $("#list_Clientes").prop("disabled", false);
-        $("#list_Proveedores").prop("disabled", true);
-        $("#list_Proyectos").prop("disabled", true);
-    }else if(valor=="R14A"){ //Proyecto
-        $("#list_Proyectos").prop("disabled", false);
-        $("#list_Clientes").prop("disabled", true);
-        $("#list_Proveedores").prop("disabled", true);
-    }else{
-        $("#list_Clientes").prop("disabled", true);
-        $("#list_Proveedores").prop("disabled", true);
-        $("#list_Proyectos").prop("disabled", true);
-    }  
-}
+
 function insIndGC(){
     var datos=$('#frmGC').serialize();
     $.ajax({
@@ -205,32 +202,7 @@ function insIndGC(){
         alert("Hubo un error en el server, reintentelo de nuevo");
     });
 }
-//Funciones Gerente general
-function SeleccionGG(){
-    valor = document.getElementById("conceptos").value;
-    
-    if(valor=="R2A"){
-        $("#list_Proyectos").prop("disabled", false);
-    }else {
-        $("#list_Proyectos").prop("disabled", true);
-    }   
-}
-function insIndGG(){
-    
-    
-}
-//Funciones Gerente tecnica
-function SeleccionGT(){
-    valor = document.getElementById("conceptos").value;
-    if(valor=="R2A"){
-        $("#list_Proyectos").prop("disabled", false);
-    }else {
-        $("#list_Proyectos").prop("disabled", true);
-    }   
-}
-function insIndGT(){
-    
-}
+
 //Redireccion
 function addClienteView() {
     location.href ="./addClientes.php";
