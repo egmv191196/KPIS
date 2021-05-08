@@ -1,7 +1,6 @@
-$(document).ready(function(){
-    //Login
-    $('#signIn').click(function(){
-        var datos=$('#formLogin').serialize();
+//--------Login---------
+function login(){
+    var datos=$('#formLogin').serialize();
         $.ajax({
             type: "POST",
             url: "./src/Script/login.php",
@@ -21,48 +20,30 @@ $(document).ready(function(){
         }).fail(function(response){
             alert("Hubo un error en el server, reintentelo de nuevo");
         });
-        return false;
-    });
-
-    //AgregarProyecto
-    $('#addPro').click(function(){
-        var datos=$('#addProyecto').serialize();
-        $.ajax({
-            type: "POST",
-            url: "../Script/Proyecto.php",
-            data: datos,
-        }).done(function(response){
-            alert(response);
-            location.href ="./Proyectos.php";
-    }).fail(function(response){
-        console.log("error"+response);
-    });
-        return false
-    });
-
-    //---------------Metodos Clientes-------------
-    //Agregar Clientes
-    $('#AddCliente').click(function(){
-        var datos=$('#frmCliente').serialize();
+}
+//------Clientes----------
+//Agregar Cliente
+function addClientes(){
+    alert("Boton presionados");
+    var datos=$('#frmCliente').serialize();
         $.ajax({
             type: "POST",
             url: "../Script/Cliente.php",
             data: datos,
         }).done(function(response){
+            alert(response);
             if(response == 1){
                 alert("Usuario agregado correctamente");
-                window.location="./Clientes.php";
+                location.href ="./Clientes.php";
             }else{
                 alert("Usuario no agregado correctamente");
             }
     }).fail(function(response){
         console.log("error"+response);
     });
-        return false;
-    });
-    
-    //Update Cliente
-    $('#updateCliente').click(function(){
+}
+//Update Cliente
+function updateCliente(){
         var datos=$('#upCliente').serialize();
         $.ajax({
             type: "POST",
@@ -79,52 +60,8 @@ $(document).ready(function(){
         console.log("error"+response);
     });
         return false;
-    });
-    ////----Metodo Proveedor------
-    //Agregar Proveedor
-    $('#addPro').click(function(){
-        var datos=$('#frmProv').serialize();
-        $.ajax({
-            type: "POST",
-            url: "../Script/Proveedor.php",
-            data: datos,
-        }).done(function(response){
-            if(response == 1){
-                alert("Usuario agregado correctamente");
-                window.location="./Proveedor.php";
-            }else{
-                alert("Usuario no agregado correctamente");
-            }
-    }).fail(function(response){
-        console.log("error"+response);
-    });
-        return false;
-    });
-    //Update Proveedor
-    $('#upPro').click(function(){
-        var datos=$('#upProv').serialize();
-        $.ajax({
-            type: "POST",
-            url: "../Script/Proveedor.php",
-            data: datos,
-        }).done(function(response){
-            if(response == 1){
-                alert("Usuario modificado correctamente");
-                window.location="./Proveedor.php";
-            }else{
-                alert(response);
-            }
-    }).fail(function(response){
-        console.log("error"+response);
-    });
-        return false;
-    });
-    
-
-
-
-});
-//Funciones Cliente
+}
+//Eliminar cliente
 function EliminarC(id){
     var datos = {
             "Operacion" : 'Eliminar',
@@ -142,10 +79,51 @@ function EliminarC(id){
             alert("Hubo un error en el server, reintentelo de nuevo");
         });
 }
+//----ModificarCliente
 function ModificarC(id) {
     Name=$(id).parents("tr").find("td")[0].innerHTML;
     Phone=$(id).parents("tr").find("td")[3].innerHTML;
     location.href ="upCliente.php?Name="+Name+"&Phone="+Phone;
+}
+//--------Proveedor--------------
+//---Agregar Proveedores
+function addProveedor(){
+        var datos=$('#frmProv').serialize();
+        $.ajax({
+            type: "POST",
+            url: "../Script/Proveedor.php",
+            data: datos,
+        }).done(function(response){
+            if(response == 1){
+                alert("Usuario agregado correctamente");
+                window.location="./Proveedor.php";
+            }else{
+                alert("Usuario no agregado correctamente");
+            }
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+        return false;
+
+}
+//------------Update Proveedor
+function upProveedor(){
+    var datos=$('#upProv').serialize();
+        $.ajax({
+            type: "POST",
+            url: "../Script/Proveedor.php",
+            data: datos,
+        }).done(function(response){
+            if(response == 1){
+                alert("Usuario modificado correctamente");
+                window.location="./Proveedor.php";
+            }else{
+                alert(response);
+            }
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+        return false;
 }
 //Funciones Proveedor
 function EliminarP(id){
@@ -170,8 +148,26 @@ function ModificarP(id) {
     Phone=$(id).parents("tr").find("td")[3].innerHTML;
     location.href ="upProveedor.php?Name="+Name+"&Phone="+Phone;
 }
-//------------------Agregar proyecto-------------------------
+//------------------------------Proyecto------------------------------
+//-------Agregar Proyecto------
 function addProyecto(){
+    $('#addPro').click(function(){
+        var datos=$('#addProyecto').serialize();
+        $.ajax({
+            type: "POST",
+            url: "../Script/Proyecto.php",
+            data: datos,
+        }).done(function(response){
+            alert(response);
+            location.href ="./Proyectos.php";
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+        return false
+    });
+}
+//------------------Agregar proyecto-------------------------
+/*function addProyecto(){
 var datos=$('#frmProv').serialize();
 alert(datos);
 location.href ="./addClientes.php";
@@ -184,11 +180,12 @@ location.href ="./addClientes.php";
             //alert(response);
     }).fail(function(response){
         alert("error"+response);
-    });*/
-}
+    });
+}*/
+
+//------------------------------Indicadores----------------------
 
 //------------------Insertar indicadores-------------------------
-
 function insIndGC(){
     var datos=$('#frmGC').serialize();
     $.ajax({

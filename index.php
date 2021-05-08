@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -13,7 +13,7 @@
         <div class="container ">
             <div class="row justify-content-center pt-5 mt-5 ">
                 <div class="col-md-4 formulario ">
-                    <form id="formLogin" method="POST">  
+                    <form id="formLogin" >  
                         <div class="form-group text-center">
                             <img src="./src/Img/logo.png" class="img-fluid mt-3" alt="Responsive image">
                             <h1 class="text-center" >Iniciar Sesion</h1>
@@ -22,8 +22,8 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Contraseña</label>
-                            <input type="password" name="passwd" class="form-control " id="passwd" placeholder="Contraseña">
-                            <button class="btn btn-primary mt-3 center" id="signIn">Iniciar Sesion</button>
+                            <input type="password" name="passwd" class="form-control " id="passwd" autocomplete="OFF" placeholder="Contraseña">
+                            <button class="btn btn-primary mt-3 center" onclick="login();" id="signIn">Iniciar Sesion</button>
                         </div>  
                     </form> 
                 </div>
