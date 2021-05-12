@@ -23,24 +23,23 @@ function login(){
 }
 //------Clientes----------
 //Agregar Cliente
-function addClientes(){
-    alert("Boton presionados");
+function addClientes(){ 
     var datos=$('#frmCliente').serialize();
         $.ajax({
             type: "POST",
             url: "../Script/Cliente.php",
             data: datos,
         }).done(function(response){
-            alert(response);
             if(response == 1){
                 alert("Usuario agregado correctamente");
-                location.href ="./Clientes.php";
+                window.location="./Clientes.php";
             }else{
                 alert("Usuario no agregado correctamente");
             }
     }).fail(function(response){
         console.log("error"+response);
     });
+    return false;
 }
 //Update Cliente
 function updateCliente(){
@@ -95,7 +94,7 @@ function addProveedor(){
             data: datos,
         }).done(function(response){
             if(response == 1){
-                alert("Usuario agregado correctamente");
+                alert("Proveedor agregado correctamente");
                 window.location="./Proveedor.php";
             }else{
                 alert("Usuario no agregado correctamente");
@@ -115,7 +114,7 @@ function upProveedor(){
             data: datos,
         }).done(function(response){
             if(response == 1){
-                alert("Usuario modificado correctamente");
+                alert("Proveedor modificado correctamente");
                 window.location="./Proveedor.php";
             }else{
                 alert(response);

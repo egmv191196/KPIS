@@ -36,7 +36,7 @@
                 <input type="number" name="Phone" class="form-control " id="Phone" placeholder="Telefono" value="<?php echo $Telefono;?>">
                 <input type="hidden" name="id_Proveedor" id="id_Proveedor" value="<?php echo $id_Proveedor;?>"/>
                 <input type="hidden" name="Operacion" id="Operacion" value="Modificar" />
-                <button class="btn btn-danger float-right m-3 center btn-lg" id="upPro">Guardar Cambios</button>          
+                <input type="button" class="btn btn-danger float-right m-3 center btn-lg" id="upPro" onclick="upProveedor();" value="Guardar cambios">        
                 <a href="./Proveedor.php" class="btn btn-primary m-3 center btn-lg float-right">Cancelar</a>
             </div>
         </form>
