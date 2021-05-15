@@ -35,7 +35,7 @@
                 <input type="number" name="Phone" class="form-control " id="Telefono" placeholder="Telefono" value="<?php echo $Telefono;?>">
                 <input type="hidden" name="id_Cliente" id="id_Cliente" value="<?php echo $id_Cliente;?>"/>
                 <input type="hidden" name="Operacion" id="Operacion" value="Modificar" />
-                <input type="button" class="btn btn-danger float-right m-3 center btn-lg" value="Guardar cambios de cliente" onclick="updateCliente();">
+                <input type="button" class="btn btn-danger float-right m-3 center btn-lg" value="Guardar modificaciones del cliente" onclick="updateCliente();">
                 <a href="./Clientes.php" class="btn btn-primary m-3 center btn-lg float-right">Cancelar</a>         
         </form>
     </div>

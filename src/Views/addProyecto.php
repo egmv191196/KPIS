@@ -74,7 +74,7 @@
                         </select>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3 center btn-lg" id="addPro">Agregar proyecto</button>
+                <input type="button" class="btn btn-primary mt-3 center btn-lg" onclick="addProyecto();" value="Agregar Proyecto">
                 <a href="./Proyectos.php" class="btn btn-primary mt-3 center btn-lg">Cancelar</a>
                 <a href="./addClientes.php" class="btn btn-danger mt-3 center btn-lg float-right" >Registrar cliente nuevo</a>
             </div>

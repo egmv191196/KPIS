@@ -52,7 +52,7 @@
                         <a class="nav-link" href="Proveedor.php">Proveedores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="addDatosGG.php">Insertar Datos</a>
+                        <a class="nav-link" href="addDatosGG.php">Datos</a>
                     </li>       
                     </ul>
                 </div>            

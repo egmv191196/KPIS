@@ -31,7 +31,7 @@ function addClientes(){
             data: datos,
         }).done(function(response){
             if(response == 1){
-                alert("Usuario agregado correctamente");
+                alert("Cliente agregado correctamente");
                 window.location="./Clientes.php";
             }else{
                 alert("Usuario no agregado correctamente");
@@ -150,7 +150,6 @@ function ModificarP(id) {
 //------------------------------Proyecto------------------------------
 //-------Agregar Proyecto------
 function addProyecto(){
-    $('#addPro').click(function(){
         var datos=$('#addProyecto').serialize();
         $.ajax({
             type: "POST",
@@ -163,7 +162,6 @@ function addProyecto(){
         console.log("error"+response);
     });
         return false
-    });
 }
 //------------------Agregar proyecto-------------------------
 /*function addProyecto(){

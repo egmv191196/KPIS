@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Lista de clientes</title>
+        <title>Cartera de clientes</title>
         <link rel="stylesheet" href="../../css/bootstrap.css" >
         <link rel="stylesheet" href="../../css/style.css" >
     </head>
@@ -48,9 +48,10 @@
             </div>
             <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>    
             </nav>
-            <div class="row">
-                <div class="col-8 text-center p-3">
-                <h1 class="text-center">Lista de clientes</h1>
+            <div class="row"><div class="col-4 text-center p-3">
+                </div>
+                <div class="col-4 text-center p-3">
+                <h1 class="text-center">Cartera de clientes</h1>
                 </div>
                 <div class="col-4 text-center p-3">
                 <a class="btn btn-primary float-right"title="Eliminar"  href="./addClientes.php">Agregar usuario<img class="rounded-circle ml-2" src="../Img/addClient.png" alt="Eliminar usuario" width="30" height="30"/></a>
