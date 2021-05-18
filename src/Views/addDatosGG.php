@@ -61,13 +61,25 @@
             </div>
             <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-            <h1 class="align-center">Año 2021</h1>
+            <?php
+                require_once('../Script/conexionBD.php'); 
+            ?>
+            <h1 class="text-center">Año 2021</h1>
             <div class="datos mt-5">
                 <div class="row">
                     <div class="col-sm text-center border">
                        <h4>Numero de vacantes cubiertas</h4>
-                       Numero de vacantes totales
-                       <input type="text"  name="vacantesTotales" class="form-control m-2 ml-5" style="width : 250px" id="Nombre" value="15" placeholder="No. de vacantes totales" required>
+                       <label>Numero de vacantes totales</label> 
+                       <input type="text"  name="vacantesTotales" class="form-control m-2 ml-5" style="width : 250px" id="Nombre" 
+                       <?php
+                            $consulta="SELECT Valor FROM registroIndicadores WHERE año=2021 ORDER by SQM DESC"; 
+                            $result= mysqli_query($conexion,$consulta);
+                            if($row=mysqli_fetch_array($result)){
+                                echo 'value="'.$row['Valor'].'"';
+                            }
+                        ?>
+                       
+                       placeholder="No. de vacantes totales" required>
 
                        <table class="table">
                             <thead>
@@ -235,8 +247,7 @@
             
             
             </div>
-            <button class="btn btn-danger float-right m-3 center btn-lg" id="AddCliente">Guardar datos</button>  
-                
+            <input type="button" class="btn btn-danger float-right m-3 center btn-lg" value="Guardar Cambios">
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

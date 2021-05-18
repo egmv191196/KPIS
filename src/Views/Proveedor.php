@@ -19,30 +19,30 @@
             <div class="collapse navbar-collapse" id="menu">
                 <div class="navbar-nav">
                     <ul class="navbar-nav mr-auto mt-1 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="InicioGG.php">Dashboard<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="GGIndicador.php">Gerencia General</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="GCIndicador.php">Gerencia Comercial</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="GTIndicador.php">Gerencia Tecnica</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Proyectos.php">Proyectos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Clientes.php">Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Proveedor.php">Proveedores</a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="addDatosGG.php">Insertar Datos</a>
-                    </li>       
+                        <li class="nav-item active">
+                            <a class="nav-link" href="InicioGG.php">Dashboard<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="GGIndicador.php">Gerencia General</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="GCIndicador.php">Gerencia Comercial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="GTIndicador.php">Gerencia Tecnica</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Proyectos.php">Proyectos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Clientes.php">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Proveedor.php">Proveedores</a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link" href="addDatosGG.php">Datos</a>
+                        </li>       
                     </ul>
                 </div>
             </div>
