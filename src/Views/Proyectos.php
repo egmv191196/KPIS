@@ -67,15 +67,15 @@
         <tbody>
         <?php
                         require_once('../Script/conexionBD.php'); 
-                        $result= mysqli_query($conexion, "SELECT proyecto.*,cliente.Nombre from proyecto JOIN cliente GROUP BY clave_Proyecto");
+                        $result= mysqli_query($conexion, "SELECT * from proyecto JOIN cliente WHERE proyecto.id_Cliente=cliente.id_Cliente");
                         while ($row = mysqli_fetch_array($result)) {
                             echo '<tr>';
                             echo '<th scope="row">'.$row[0].'</th>';
                             echo '<td>'.$row[1].'</td>';
                             echo '<td>'.$row[2].'</td>';
                             echo '<td>'.$row[3].'</td>';
-                            echo '<td>'.$row[4].'</td>';
-                            echo '<td>'.$row[6].'</td>';
+                            echo '<td>$'.$row[4].'</td>';
+                            echo '<td>'.$row[8].'</td>';
                             echo '</tr>';
                         }
                     ?>

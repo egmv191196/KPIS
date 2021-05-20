@@ -64,23 +64,26 @@
             <?php
                 require_once('../Script/conexionBD.php'); 
             ?>
-            <h1 class="text-center">Año 2021</h1>
+            <h1 class="text-center">
+                <?php
+                    echo date('o'); 
+                ?>
+            </h1>
             <div class="datos mt-5">
                 <div class="row">
-                    <div class="col-sm text-center border">
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Numero de vacantes cubiertas</h4>
                        <label>Numero de vacantes totales</label> 
                        <input type="text"  name="vacantesTotales" class="form-control m-2 ml-5" style="width : 250px" id="Nombre" 
                        <?php
-                            $consulta="SELECT Valor FROM registroIndicadores WHERE año=2021 ORDER by SQM DESC"; 
+                            $year=date('o');
+                            $consulta="SELECT SQM,Valor FROM registroIndicadores WHERE id_Req='R4A' AND año=$year ORDER by SQM DESC"; 
                             $result= mysqli_query($conexion,$consulta);
                             if($row=mysqli_fetch_array($result)){
                                 echo 'value="'.$row['Valor'].'"';
                             }
-                        ?>
-                       
-                       placeholder="No. de vacantes totales" required>
-
+                        ?>                       
+                       placeholder="No. de vacantes totales" required>  
                        <table class="table">
                             <thead>
                                 <tr>
@@ -89,30 +92,51 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td >10</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td >10</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td >10</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td contenteditable="true">10</td>
-                                </tr>
+                                <?php
+                                    $year=date('o');
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>01  and id_Req='R4B' ORDER BY SQM DESC limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<td contenteditable="true" id="VO"></td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false)
+                                                echo '<td contenteditable="true" id="VO">'.$row[1].'</td>';
+                                            else
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
                        
                     </div>
-                    <div class="col-sm text-center" >
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Descriptivos de puestos</h4>
                         Numero de puestos totales
-                       <input type="text"  name="puestosTotales" class="form-control m-2 ml-5" style="width : 250px" id="puestos" value="15" placeholder="No. de puestos totales" required>
+                       <input type="text"  name="puestosTotales" class="form-control m-2 ml-5" style="width : 250px" id="puestos" 
+                       <?php
+                            $consulta="SELECT SQM,Valor FROM registroIndicadores WHERE id_Req='R6A' AND año=$year ORDER by SQM DESC"; 
+                            $result= mysqli_query($conexion,$consulta);
+                            if($row=mysqli_fetch_array($result)){
+                                echo 'value="'.$row['Valor'].'"';
+                            }
+                        ?> 
+                       placeholder="No. de puestos totales" required>
 
                        <table class="table">
                             <thead>
@@ -142,7 +166,7 @@
                         </table>
 
                     </div>
-                    <div class="col-sm text-center">
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Satisfaccion del cliente</h4>
                        <table class="table">
                             <thead>
@@ -175,7 +199,7 @@
                     
                 </div>
                 <div class="row">
-                    <div class="col-sm text-center">
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Cursos otorgados</h4>
                        <table class="table">
                             <thead>
@@ -204,7 +228,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm text-center">
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Bajas de personal</h4>
                        <table class="table">
                             <thead>
@@ -233,7 +257,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm text-center">
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Reporte de impuestos</h4>
                     </div>
                 </div>
