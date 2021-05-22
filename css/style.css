@@ -45,3 +45,10 @@ border-radius: 10px;
 .editable{
     background-color: rgba(226, 80, 80, 0.418);
 }
+.celdas{
+    text-align: center;
+    background-color: rgba(216, 226, 80,0.0);
+}
+.valores{
+    text-align: center;
+}

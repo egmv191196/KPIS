@@ -196,6 +196,9 @@ function insIndGC(){
         alert("Hubo un error en el server, reintentelo de nuevo");
     });
 }
+function Cliente(){
+    alert("Valor cambiado");
+}
 
 //Redireccion
 function addClienteView() {

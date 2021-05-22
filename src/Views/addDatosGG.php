@@ -74,7 +74,7 @@
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Numero de vacantes cubiertas</h4>
                        <label>Numero de vacantes totales</label> 
-                       <input type="text"  name="vacantesTotales" class="form-control m-2 ml-5" style="width : 250px" id="Nombre" 
+                       <input type="text" name="vacantesTotales" class="form-control valores" id="Nombre" 
                        <?php
                             $year=date('o');
                             $consulta="SELECT SQM,Valor FROM registroIndicadores WHERE id_Req='R4A' AND año=$year ORDER by SQM DESC"; 
@@ -94,14 +94,15 @@
                             <tbody>
                                 <?php
                                     $year=date('o');
-                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>01  and id_Req='R4B' ORDER BY SQM DESC limit 4";
+                                    $mes=date('m');
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$mes-4  and id_Req='R4B' ORDER BY SQM DESC limit 4";
                                     $result= mysqli_query($conexion, $consulta);
                                     $filas=mysqli_num_rows($result);
                                     $primero=false;
                                     if($filas<=3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.date('m').'</th>';
-                                        echo '<td contenteditable="true" id="VO"></td>';
+                                        echo '<td > <input type="number" class="form-control celdas" onchange="Cliente();"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
@@ -113,11 +114,15 @@
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
-                                            if($primero==false)
-                                                echo '<td contenteditable="true" id="VO">'.$row[1].'</td>';
-                                            else
-                                            echo '<td>'.$row[1].'</td>';
-                                            echo '</tr>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" onchange="Cliente();" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            }  
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
                                         }
                                     }
                                 ?>
@@ -127,8 +132,9 @@
                     </div>
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Descriptivos de puestos</h4>
+                       <?php $semana= date("W");     ?> 
                         Numero de puestos totales
-                       <input type="text"  name="puestosTotales" class="form-control m-2 ml-5" style="width : 250px" id="puestos" 
+                       <input type="text"  name="puestosTotales" class="form-control valores" style="width: 100%;" style="text-align: center" id="puestos" 
                        <?php
                             $consulta="SELECT SQM,Valor FROM registroIndicadores WHERE id_Req='R6A' AND año=$year ORDER by SQM DESC"; 
                             $result= mysqli_query($conexion,$consulta);
@@ -141,27 +147,45 @@
                        <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Mes</th>
+                                <th scope="col">Quincena</th>
                                 <th scope="col">Descriptivos de puesto listos</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td >7</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td >15</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td contenteditable="true"></td>
-                                </tr>
+                            <?php
+                                    $quincenaActual=$semana/2;
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$quincenaActual-4 and id_Req='R6B' ORDER BY SQM DESC limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" onchange="Cliente();"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" onchange="Cliente();" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            }
+                                            
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
 
@@ -190,7 +214,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">4</th>
-                                    <td contenteditable="true"></td>
+                                    <td ><input type="number" class="form-control celdas" onchange="Cliente();" value="5"></input> </td>
                                 </tr>
                             </tbody>
                         </table>
