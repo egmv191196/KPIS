@@ -54,7 +54,7 @@
                         <a class="nav-link" href="Proveedor.php">Proveedores</a>
                     </li>    
                     <li class="nav-item">
-                        <a class="nav-link" href="addDatosGG.php">Insertar Datos</a>
+                        <a class="nav-link" href="addDatosGG.php">Datos</a>
                     </li>   
                     </ul>
                 </div>            
@@ -98,11 +98,12 @@
                                     $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$mes-4  and id_Req='R4B' ORDER BY SQM DESC limit 4";
                                     $result= mysqli_query($conexion, $consulta);
                                     $filas=mysqli_num_rows($result);
+                                    $indicador='R4B';
                                     $primero=false;
                                     if($filas<=3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.date('m').'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" onchange="Cliente();"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R4B" onchange="Valor(1);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
@@ -115,7 +116,7 @@
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
                                             if($primero==false){
-                                                echo '<td > <input type="number" class="form-control celdas" onchange="Cliente();" value="'.$row[1].'"> </input> </td>';
+                                                echo '<td > <input type="number" class="form-control celdas" id="R4B" onchange="Valor(1);" value="'.$row[1].'"> </input> </td>';
                                                 $primero=true;
                                             }  
                                             else{
@@ -161,7 +162,7 @@
                                     if($filas<=3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.date('m').'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" onchange="Cliente();"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R6B" onchange="Valor(2);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
@@ -174,7 +175,7 @@
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
                                             if($primero==false){
-                                                echo '<td > <input type="number" class="form-control celdas" onchange="Cliente();" value="'.$row[1].'"> </input> </td>';
+                                                echo '<td > <input type="number" class="form-control celdas" id="R6B" onchange="Valor(2);" value="'.$row[1].'"> </input> </td>';
                                                 $primero=true;
                                             }
                                             
@@ -262,22 +263,40 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td >7</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td >15</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td contenteditable="true"></td>
-                                </tr>
+                                <?php
+                                    $year=date('o');
+                                    $mes=date('m');
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=2021 AND SQM>$mes-4  and id_Req='R10A' ORDER BY SQM DESC limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R10A" onchange="Valor(3);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" id="R10A" onchange="Valor(3);" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            }  
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>

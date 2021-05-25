@@ -23,24 +23,24 @@ function login(){
 }
 //------Clientes----------
 //Agregar Cliente
-function addClientes(){ 
-    var datos=$('#frmCliente').serialize();
-        $.ajax({
-            type: "POST",
-            url: "../Script/Cliente.php",
-            data: datos,
-        }).done(function(response){
-            if(response == 1){
-                alert("Cliente agregado correctamente");
-                window.location="./Clientes.php";
-            }else{
-                alert("Usuario no agregado correctamente");
-            }
-    }).fail(function(response){
-        console.log("error"+response);
-    });
-    return false;
-}
+    function addClientes(){ 
+        var datos=$('#frmCliente').serialize();
+            $.ajax({
+                type: "POST",
+                url: "../Script/Cliente.php",
+                data: datos,
+            }).done(function(response){
+                if(response == 1){
+                    alert("Cliente agregado correctamente");
+                    window.location="./Clientes.php";
+                }else{
+                    alert("Usuario no agregado correctamente");
+                }
+        }).fail(function(response){
+            console.log("error"+response);
+        });
+        return false;
+    }
 //Update Cliente
 function updateCliente(){
         var datos=$('#upCliente').serialize();
@@ -196,8 +196,25 @@ function insIndGC(){
         alert("Hubo un error en el server, reintentelo de nuevo");
     });
 }
-function Cliente(){
-    alert("Valor cambiado");
+function Valor(id){
+    var valor;
+    switch (id) {
+        case 1:
+            valor=$('#R4B').val();
+            alert ("El nuevo valor de R4B es "+ valor); 
+        break;
+        case 2:
+            valor=$('#R6B').val();
+            alert ("El nuevo valor de R6B es "+ valor); 
+        break;
+        case 3:
+            valor=$('#R10A').val();
+            alert ("El nuevo valor de R10A es "+ valor); 
+        break;
+    
+        default:
+        break;
+    }
 }
 
 //Redireccion
