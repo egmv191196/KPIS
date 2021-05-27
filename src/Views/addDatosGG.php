@@ -192,69 +192,7 @@
 
                     </div>
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                       <h4>Satisfaccion del cliente</h4>
-                       <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Proyecto</th>
-                                <th scope="col">Calificaciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Tecamachalco</th>
-                                    <td >7</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td >10</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td ><input type="number" class="form-control celdas" onchange="Cliente();" value="5"></input> </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <label for="promedio">Promedio de calificaciones </label>
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                       <h4>Cursos otorgados</h4>
-                       <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Mes</th>
-                                <th scope="col">Cursos otorgados</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td >7</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td >15</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td contenteditable="true"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                       <h4>Bajas de personal</h4>
+                    <h4>Bajas de personal</h4>
                        <table class="table">
                             <thead>
                                 <tr>
@@ -299,6 +237,254 @@
                                 ?>
                             </tbody>
                         </table>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
+                        <h4>Propuestas de mejora</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Mes</th>
+                                <th scope="col">Propuestas entregadas</th>
+                                <th scope="col">Propuestas implementadas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                $year=date('o');
+                                $mes=date('m');
+                                $consulta1="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$mes-4  and id_Req='R3A'  ORDER BY SQM DESC limit 4";
+                                $consulta2="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$mes-4  and id_Req='R3B'  ORDER BY SQM DESC limit 4";
+                                $result1= mysqli_query($conexion, $consulta1);
+                                $result2= mysqli_query($conexion, $consulta2);
+                                $filas1=mysqli_num_rows($result1);
+                                $filas2=mysqli_num_rows($result2);
+                                $primero1=false;
+                                $primero2=false;
+                                if($filas1==$filas2 && $filas1==4){
+                                    while ($row = mysqli_fetch_array($result1)) {
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$row[0].'</th>';
+                                        if($primero1==false){
+                                            echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4);" value="'.$row[1].'"> </input> </td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5);" value="'.$row[1].'"> </input> </td>';
+                                            $primero1=true;
+                                        }  
+                                        else{
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                        
+                                    }
+                                }else{
+                                    echo "No completos";
+                                    if($filas1==3 && $filas2==3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result1)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else if($filas1==3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4);"> </input> </td>';
+                                        $row = mysqli_fetch_array($result2);
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5);" value="'.$row[1].'"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result1)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.date('m').'</th>';
+                                        $row = mysqli_fetch_array($result1);
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4);" value="'.$row[1].'"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result1)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }
+                                    
+                                }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
+                        <h4>Reportes atendidos</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Quincena</th>
+                                <th scope="col">Orden de trabajo recibida</th>
+                                <th scope="col">Orden de trabajo atendido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                $year=date('o');
+                                $mes=date('m');
+                                $consulta1="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$mes-4  and id_Req='R1A'  ORDER BY SQM DESC limit 4";
+                                $consulta2="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$mes-4  and id_Req='R1B'  ORDER BY SQM DESC limit 4";
+                                $result1= mysqli_query($conexion, $consulta1);
+                                $result2= mysqli_query($conexion, $consulta2);
+                                $filas1=mysqli_num_rows($result1);
+                                $filas2=mysqli_num_rows($result2);
+                                $primero1=false;
+                                $primero2=false;
+                                if($filas1==$filas2 && $filas1==4){
+                                    while ($row = mysqli_fetch_array($result1)) {
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$row[0].'</th>';
+                                        if($primero1==false){
+                                            echo '<td > <input type="number" class="form-control celdas" id="R1A" onchange="Valor(6);" value="'.$row[1].'"> </input> </td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td > <input type="number" class="form-control celdas" id="R1B" onchange="Valor(7);" value="'.$row[1].'"> </input> </td>';
+                                            $primero1=true;
+                                        }  
+                                        else{
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                        
+                                    }
+                                }else{
+                                    echo "No completos";
+                                    if($filas1==3 && $filas2==3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R1A" onchange="Valor(6);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R1B" onchange="Valor(7);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result1)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else if($filas1==3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(6);"> </input> </td>';
+                                        $row = mysqli_fetch_array($result2);
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(7);" value="'.$row[1].'"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result1)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.date('m').'</th>';
+                                        $row = mysqli_fetch_array($result1);
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(6);" value="'.$row[1].'"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(7);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result1)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }
+                                }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
+                       <h4>Cursos otorgados</h4>
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Mes</th>
+                                <th scope="col">Cursos otorgados</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td >7</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td >9</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td >15</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td contenteditable="true"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
+                        <h4>Satisfaccion del cliente</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Proyecto</th>
+                                <th scope="col">Calificaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Tecamachalco</th>
+                                    <td >7</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td >9</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td >10</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td ><input type="number" class="form-control celdas" onchange="Cliente();" value="5"></input> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <label for="promedio">Promedio de calificaciones </label>
                     </div>
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Reporte de impuestos</h4>

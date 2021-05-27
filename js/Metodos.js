@@ -211,7 +211,22 @@ function Valor(id){
             valor=$('#R10A').val();
             alert ("El nuevo valor de R10A es "+ valor); 
         break;
-    
+        case 4:
+            valor=$('#R3A').val();
+            alert ("El nuevo valor de R3A es "+ valor); 
+        break;
+        case 5:
+            valor=$('#R3B').val();
+            alert ("El nuevo valor de R3B es "+ valor); 
+        break;
+        case 6:
+            valor=$('#R1A').val();
+            alert ("El nuevo valor de R1B es "+ valor); 
+        break;
+        case 7:
+            valor=$('#R1B').val();
+            alert ("El nuevo valor de R1B es "+ valor); 
+        break;
         default:
         break;
     }
