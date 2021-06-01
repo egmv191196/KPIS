@@ -61,7 +61,7 @@
             </nav>
             <h1 class="text-center">Semana <?php echo date("W");?> </h1>
             <h3 class="text-center">Gerencia General</h3>
-            <div class="row">
+            <div class="row m-2">
                 <div class="col-4">
                     <div id="VacantesOcupadas">   
                     </div>
@@ -74,7 +74,13 @@
                     <div id="bajas_Personal"> 
                     </div>
                 </div>
-            </div>       
+            </div>    
+            <div class="row m-2">
+            <div class="col-4">
+                <div id="propuestas_Mejora">
+                </div>
+            </div>
+            </div>   
         
         </div>
         <script src='../../js/plotly-latest.min.js'></script>

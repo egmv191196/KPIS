@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Dashboard</title>
+        <title>Datos Gerencia General</title>
         <link rel="stylesheet" href="../../css/bootstrap.css" >
         <link rel="stylesheet" href="../../css/style.css" >
     </head>
@@ -67,8 +67,10 @@
             <h1 class="text-center">
                 <?php
                     echo date('o'); 
+                    
                 ?>
             </h1>
+            
             <div class="datos mt-5">
                 <div class="row">
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
@@ -133,7 +135,8 @@
                     </div>
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Descriptivos de puestos</h4>
-                       <?php $semana= date("W");     ?> 
+                       <?php $semana= date("W");     
+                       ?> 
                         Numero de puestos totales
                        <input type="text"  name="puestosTotales" class="form-control valores" style="width: 100%;" style="text-align: center" id="puestos" 
                        <?php
@@ -161,7 +164,7 @@
                                     $primero=false;
                                     if($filas<=3){
                                         echo '<tr>';
-                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<th scope="row">'.$quincenaActual.'</th>';
                                         echo '<td > <input type="number" class="form-control celdas" id="R6B" onchange="Valor(2);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result)) {
@@ -281,7 +284,6 @@
                                         
                                     }
                                 }else{
-                                    echo "No completos";
                                     if($filas1==3 && $filas2==3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.date('m').'</th>';
@@ -334,7 +336,7 @@
                         </table>
                     </div>
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                        <h4>Reportes atendidos</h4>
+                        <h4>Ordenes de trabajo</h4>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -347,8 +349,8 @@
                             <?php
                                 $year=date('o');
                                 $mes=date('m');
-                                $consulta1="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$mes-4  and id_Req='R1A'  ORDER BY SQM DESC limit 4";
-                                $consulta2="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$mes-4  and id_Req='R1B'  ORDER BY SQM DESC limit 4";
+                                $consulta1="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$quincenaActual-4  and id_Req='R1A'  ORDER BY SQM DESC limit 4";
+                                $consulta2="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$quincenaActual-4  and id_Req='R1B'  ORDER BY SQM DESC limit 4";
                                 $result1= mysqli_query($conexion, $consulta1);
                                 $result2= mysqli_query($conexion, $consulta2);
                                 $filas1=mysqli_num_rows($result1);
@@ -374,10 +376,9 @@
                                         
                                     }
                                 }else{
-                                    echo "No completos";
                                     if($filas1==3 && $filas2==3){
                                         echo '<tr>';
-                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<th scope="row">'.$quincenaActual.'</th>';
                                         echo '<td > <input type="number" class="form-control celdas" id="R1A" onchange="Valor(6);"> </input> </td>';
                                         echo '<td > <input type="number" class="form-control celdas" id="R1B" onchange="Valor(7);"> </input> </td>';
                                         echo '</tr>';
@@ -391,7 +392,7 @@
                                         }
                                     }else if($filas1==3){
                                         echo '<tr>';
-                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<th scope="row">'.$quincenaActual.'</th>';
                                         echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(6);"> </input> </td>';
                                         $row = mysqli_fetch_array($result2);
                                         echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(7);" value="'.$row[1].'"> </input> </td>';
@@ -406,7 +407,7 @@
                                         }
                                     }else{
                                         echo '<tr>';
-                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<th scope="row">'.$quincenaActual.'</th>';
                                         $row = mysqli_fetch_array($result1);
                                         echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(6);" value="'.$row[1].'"> </input> </td>';
                                         echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(7);"> </input> </td>';
@@ -427,6 +428,54 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
+                       <h4>Reportes de nomina</h4>
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Quincena</th>
+                                <th scope="col">Reportes de nomina registrados</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                    $quincenaActual=$semana/2;
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$quincenaActual-4 and id_Req='R5A' limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$quincenaActual.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R5A" onchange="Valor(8);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" id="R5A" onchange="Valor(8);" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            }
+                                            
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+
+                    </div>
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Cursos otorgados</h4>
                        <table class="table">
@@ -486,9 +535,7 @@
                         </table>
                         <label for="promedio">Promedio de calificaciones </label>
                     </div>
-                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                       <h4>Reporte de impuestos</h4>
-                    </div>
+                    
                 </div>
                 <div class="row">
                     <div class="col-sm text-center">

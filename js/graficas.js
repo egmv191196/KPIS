@@ -1,11 +1,13 @@
 $(document).ready(function(){
     vac_Ocupadas();
     Descriptivos();
-    Bajas_Personal()
+    Bajas_Personal();
+    propuestas_Mejora();
 }) 
 function vac_Ocupadas(){
     var datos = {
-        "Indicador" : 'R4B'
+        "Indicador" : 'R4B',
+        "Cantidad" : 'A'
     };
     $.ajax({
         type: "POST",
@@ -43,7 +45,8 @@ function vac_Ocupadas(){
 }
 function Descriptivos(){
     var datos = {
-        "Indicador" : 'R6B'
+        "Indicador" : 'R6B',
+        "Cantidad" : 'A'
     };
     $.ajax({
         type: "POST",
@@ -82,7 +85,8 @@ function Descriptivos(){
 }
 function Bajas_Personal(){
     var datos = {
-        "Indicador" : 'R10A'
+        "Indicador" : 'R10A',
+        "Cantidad" : 'A'
     };
     $.ajax({
         type: "POST",
@@ -114,6 +118,46 @@ function Bajas_Personal(){
         }
         };
         Plotly.newPlot('bajas_Personal', data,layout);
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function propuestas_Mejora(){
+    var datos = {
+        "Indicador" : 'R5A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Bajas de personal',
+        xaxis: {
+            title: 'Mes',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Bajas por mes',
+            showline: false
+        }
+        };
+        Plotly.newPlot('propuestas_Mejora', data,layout);
 
     }).fail(function(response){
         console.log("error"+response);

@@ -227,6 +227,10 @@ function Valor(id){
             valor=$('#R1B').val();
             alert ("El nuevo valor de R1B es "+ valor); 
         break;
+        case 8:
+            valor=$('#R5A').val();
+            alert ("El nuevo valor de R5A es "+ valor); 
+        break;
         default:
         break;
     }
