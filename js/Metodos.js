@@ -25,17 +25,17 @@ function login(){
 //Agregar Cliente
     function addClientes(){ 
         var datos=$('#frmCliente').serialize();
-            $.ajax({
-                type: "POST",
-                url: "../Script/Cliente.php",
-                data: datos,
-            }).done(function(response){
-                if(response == 1){
-                    alert("Cliente agregado correctamente");
-                    window.location="./Clientes.php";
-                }else{
-                    alert("Usuario no agregado correctamente");
-                }
+        $.ajax({
+            type: "POST",
+            url: "../Script/Cliente.php",
+            data: datos,
+        }).done(function(response){
+            if(response == 1){
+                alert("Cliente agregado correctamente");
+                window.location="./Clientes.php";
+            }else{
+                alert("Usuario no agregado correctamente");
+            }
         }).fail(function(response){
             console.log("error"+response);
         });
@@ -196,44 +196,84 @@ function insIndGC(){
         alert("Hubo un error en el server, reintentelo de nuevo");
     });
 }
-function Valor(id){
+function Valor(caso,id){
     var valor;
-    switch (id) {
+    switch (caso) {
         case 1:
             valor=$('#R4B').val();
-            alert ("El nuevo valor de R4B es "+ valor); 
+            req="R4B";
+            user="JosaGG";
+            //alert ("El nuevo valor de R4B es "+ valor); 
         break;
         case 2:
             valor=$('#R6B').val();
-            alert ("El nuevo valor de R6B es "+ valor); 
+            req="R6B";
+            user="JosaGG";
+            //alert ("El nuevo valor de R6B es "+ valor); 
         break;
         case 3:
             valor=$('#R10A').val();
-            alert ("El nuevo valor de R10A es "+ valor); 
+            req="R10A";
+            user="JosaGG";
+            //alert ("El nuevo valor de R10A es "+ valor); 
         break;
         case 4:
             valor=$('#R3A').val();
-            alert ("El nuevo valor de R3A es "+ valor); 
+            req="R3A";
+            user="JosaGG";
+            //alert ("El nuevo valor de R3A es "+ valor); 
         break;
         case 5:
             valor=$('#R3B').val();
-            alert ("El nuevo valor de R3B es "+ valor); 
+            req="R3B";
+            user="JosaGG";
+            //alert ("El nuevo valor de R3B es "+ valor); 
         break;
         case 6:
             valor=$('#R1A').val();
-            alert ("El nuevo valor de R1B es "+ valor); 
+            req="R1A";
+            user="JosaGG";
+            //alert ("El nuevo valor de R1B es "+ valor); 
         break;
         case 7:
             valor=$('#R1B').val();
-            alert ("El nuevo valor de R1B es "+ valor); 
+            req="R1B";
+            user="JosaGG";
+            //alert ("El nuevo valor de R1B es "+ valor); 
         break;
         case 8:
             valor=$('#R5A').val();
-            alert ("El nuevo valor de R5A es "+ valor); 
+            req="R5A";
+            user="JosaGG";
+            //alert ("El nuevo valor de R5A es "+ valor); 
         break;
         default:
-        break;
+        break;  
     }
+    //Traer el valor
+    SQM=$(id).parents("tr").find("th")[0].innerHTML;
+    //alert("El valor es "+ valor+" El requerimiento es el "+ req+" Renglon "+SQM);
+    datos={
+        'Req': req,
+        'Valor': valor,
+        'SQM' : SQM,
+        'User': user
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/indicadores.php",
+        data: datos,
+    }).done(function(response){
+        location.reload();
+        /*if(response == 1){
+            alert("Cliente agregado correctamente");
+            window.location="./Clientes.php";
+        }else{
+            alert("Usuario no agregado correctamente");
+        }*/
+    }).fail(function(response){
+        console.log("error"+response);
+    });
 }
 
 //Redireccion

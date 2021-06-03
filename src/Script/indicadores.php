@@ -1,25 +1,21 @@
 <?php
-    $Op=$_POST['Operacion'];
-    require_once('./conexionBD.php'); 
-    if($Op=='Insertar'){
-      $Name=$_POST['Name'];
-      $RFC=$_POST['RFC'];
-      $Email=$_POST['Email'];
-      $Phone=$_POST['Phone'];
-      $consulta = "INSERT INTO cliente (Nombre,RFC,Correo,Telefono) VALUES ('{$Name}','{$RFC}','{$Email}',{$Phone})";
-      echo mysqli_query($conexion,$consulta);
-    }else if($Op=="Eliminar"){
-      $Name=$_POST['Name'];
-      $Phone=$_POST['Phone'];
-      $consulta = "DELETE FROM cliente WHERE Nombre='$Name' AND Telefono='$Phone'";
-      echo mysqli_query($conexion,$consulta);
-    }else if($Op=="Modificar"){
-      $id_Cliente=$_POST['id_Cliente'];
-      $Name=$_POST['Name'];
-      $RFC=$_POST['RFC'];
-      $Email=$_POST['Email'];
-      $Phone=$_POST['Phone'];
-      $consulta = "UPDATE cliente SET Nombre='$Name',RFC='$RFC',Correo='$Email',Telefono='$Phone' WHERE id_Cliente='$id_Cliente'";
-      echo mysqli_query($conexion,$consulta);
-    }   
+  $Req=$_POST['Req'];
+  $Valor=$_POST['Valor'];
+  $SQM=$_POST['SQM'];
+  $Usuario=$_POST['User'];
+  $year=date('o');
+  $date=date('Y-m-d');
+  require_once('./conexionBD.php'); 
+  $consulta="SELECT * FROM registroindicadores Where año=$year AND SQM=$SQM  and id_Req='$Req'";
+  $result =mysqli_query($conexion,$consulta);
+  $filas=mysqli_num_rows($result);
+  if($filas>0){
+    $row = mysqli_fetch_array($result);
+    $id_registro=$row[0];
+    $consulta = "UPDATE registroindicadores SET Valor=$Valor WHERE id_registro=$id_registro";
+    $result =mysqli_query($conexion,$consulta);
+  }else{
+    $consulta = "INSERT INTO registroindicadores (id_registro, Usuario, id_Req, Fecha, Valor, año, SQM) VALUES (NULL, '$Usuario', '$Req', $date, $Valor, $year, $SQM)";
+    echo mysqli_query($conexion,$consulta);
+  }
 ?> 

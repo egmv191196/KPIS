@@ -3,6 +3,8 @@ $(document).ready(function(){
     Descriptivos();
     Bajas_Personal();
     propuestas_Mejora();
+    orden_Trabajo();
+    reporte_Nomina();
 }) 
 function vac_Ocupadas(){
     var datos = {
@@ -125,6 +127,86 @@ function Bajas_Personal(){
 }
 function propuestas_Mejora(){
     var datos = {
+        "Indicador" : 'R3B',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Propuestas de mejora implementadas',
+        xaxis: {
+            title: 'Mes',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Propuestas implementadas por mes',
+            showline: false
+        }
+        };
+        Plotly.newPlot('propuestas_Mejora', data,layout);
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function orden_Trabajo(){
+    var datos = {
+        "Indicador" : 'R1B',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Orden de trabajo atendidas',
+        xaxis: {
+            title: 'Quincena',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Ordenes atendidas quincenalmente',
+            showline: false
+        }
+        };
+        Plotly.newPlot('orden_Trabajo', data,layout);
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function reporte_Nomina(){
+    var datos = {
         "Indicador" : 'R5A',
         "Cantidad" : 'A'
     };
@@ -146,21 +228,20 @@ function propuestas_Mejora(){
             type: 'scatter'
         }];
         var layout = {
-        title: 'Bajas de personal',
+        title: 'Reportes de nomina',
         xaxis: {
-            title: 'Mes',
+            title: 'Quincena',
             showgrid: false,
             zeroline: false
         },
         yaxis: {
-            title: 'Bajas por mes',
+            title: 'Reportes reportados',
             showline: false
         }
         };
-        Plotly.newPlot('propuestas_Mejora', data,layout);
+        Plotly.newPlot('reporte_Nomina', data,layout);
 
     }).fail(function(response){
         console.log("error"+response);
     });     
 }
-

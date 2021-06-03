@@ -105,7 +105,7 @@
                                     if($filas<=3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.date('m').'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R4B" onchange="Valor(1);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R4B" onchange="Valor(1,this);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
@@ -118,7 +118,7 @@
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
                                             if($primero==false){
-                                                echo '<td > <input type="number" class="form-control celdas" id="R4B" onchange="Valor(1);" value="'.$row[1].'"> </input> </td>';
+                                                echo '<td > <input type="number" class="form-control celdas" id="R4B" onchange="Valor(1,this);" value="'.$row[1].'"> </input> </td>';
                                                 $primero=true;
                                             }  
                                             else{
@@ -165,7 +165,7 @@
                                     if($filas<=3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.$quincenaActual.'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R6B" onchange="Valor(2);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R6B" onchange="Valor(2,this);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
@@ -178,7 +178,7 @@
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
                                             if($primero==false){
-                                                echo '<td > <input type="number" class="form-control celdas" id="R6B" onchange="Valor(2);" value="'.$row[1].'"> </input> </td>';
+                                                echo '<td > <input type="number" class="form-control celdas" id="R6B" onchange="Valor(2,this);" value="'.$row[1].'"> </input> </td>';
                                                 $primero=true;
                                             }
                                             
@@ -214,7 +214,7 @@
                                     if($filas<=3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.date('m').'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R10A" onchange="Valor(3);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R10A" onchange="Valor(3,this);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
@@ -227,7 +227,7 @@
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
                                             if($primero==false){
-                                                echo '<td > <input type="number" class="form-control celdas" id="R10A" onchange="Valor(3);" value="'.$row[1].'"> </input> </td>';
+                                                echo '<td > <input type="number" class="form-control celdas" id="R10A" onchange="Valor(3,this);" value="'.$row[1].'"> </input> </td>';
                                                 $primero=true;
                                             }  
                                             else{
@@ -270,9 +270,9 @@
                                         echo '<tr>';
                                         echo '<th scope="row">'.$row[0].'</th>';
                                         if($primero1==false){
-                                            echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4);" value="'.$row[1].'"> </input> </td>';
+                                            echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4,this);" value="'.$row[1].'"> </input> </td>';
                                             $row = mysqli_fetch_array($result2);
-                                            echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5);" value="'.$row[1].'"> </input> </td>';
+                                            echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5,this);" value="'.$row[1].'"> </input> </td>';
                                             $primero1=true;
                                         }  
                                         else{
@@ -287,8 +287,8 @@
                                     if($filas1==3 && $filas2==3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.date('m').'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4);"> </input> </td>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4,this);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5,this);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result1)) {
                                             echo '<tr>';
@@ -301,9 +301,9 @@
                                     }else if($filas1==3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.date('m').'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4,this);"> </input> </td>';
                                         $row = mysqli_fetch_array($result2);
-                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5);" value="'.$row[1].'"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5,this);" value="'.$row[1].'"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result1)) {
                                             echo '<tr>';
@@ -317,8 +317,8 @@
                                         echo '<tr>';
                                         echo '<th scope="row">'.date('m').'</th>';
                                         $row = mysqli_fetch_array($result1);
-                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4);" value="'.$row[1].'"> </input> </td>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(4,this);" value="'.$row[1].'"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(5,this);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result1)) {
                                             echo '<tr>';
@@ -362,9 +362,9 @@
                                         echo '<tr>';
                                         echo '<th scope="row">'.$row[0].'</th>';
                                         if($primero1==false){
-                                            echo '<td > <input type="number" class="form-control celdas" id="R1A" onchange="Valor(6);" value="'.$row[1].'"> </input> </td>';
+                                            echo '<td > <input type="number" class="form-control celdas" id="R1A" onchange="Valor(6,this);" value="'.$row[1].'"> </input> </td>';
                                             $row = mysqli_fetch_array($result2);
-                                            echo '<td > <input type="number" class="form-control celdas" id="R1B" onchange="Valor(7);" value="'.$row[1].'"> </input> </td>';
+                                            echo '<td > <input type="number" class="form-control celdas" id="R1B" onchange="Valor(7,this);" value="'.$row[1].'"> </input> </td>';
                                             $primero1=true;
                                         }  
                                         else{
@@ -379,8 +379,8 @@
                                     if($filas1==3 && $filas2==3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.$quincenaActual.'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R1A" onchange="Valor(6);"> </input> </td>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R1B" onchange="Valor(7);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R1A" onchange="Valor(6,this);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R1B" onchange="Valor(7,this);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result1)) {
                                             echo '<tr>';
@@ -393,9 +393,9 @@
                                     }else if($filas1==3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.$quincenaActual.'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(6);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(6,this);"> </input> </td>';
                                         $row = mysqli_fetch_array($result2);
-                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(7);" value="'.$row[1].'"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(7,this);" value="'.$row[1].'"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result1)) {
                                             echo '<tr>';
@@ -409,8 +409,8 @@
                                         echo '<tr>';
                                         echo '<th scope="row">'.$quincenaActual.'</th>';
                                         $row = mysqli_fetch_array($result1);
-                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(6);" value="'.$row[1].'"> </input> </td>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(7);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3A" onchange="Valor(6,this);" value="'.$row[1].'"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R3B" onchange="Valor(7,this);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result1)) {
                                             echo '<tr>';
@@ -447,7 +447,7 @@
                                     if($filas<=3){
                                         echo '<tr>';
                                         echo '<th scope="row">'.$quincenaActual.'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R5A" onchange="Valor(8);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R5A" onchange="Valor(8,this);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
@@ -460,7 +460,7 @@
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
                                             if($primero==false){
-                                                echo '<td > <input type="number" class="form-control celdas" id="R5A" onchange="Valor(8);" value="'.$row[1].'"> </input> </td>';
+                                                echo '<td > <input type="number" class="form-control celdas" id="R5A" onchange="Valor(8,this);" value="'.$row[1].'"> </input> </td>';
                                                 $primero=true;
                                             }
                                             
@@ -476,72 +476,7 @@
                         </table>
 
                     </div>
-                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                       <h4>Cursos otorgados</h4>
-                       <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Mes</th>
-                                <th scope="col">Cursos otorgados</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td >7</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td >15</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td contenteditable="true"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                        <h4>Satisfaccion del cliente</h4>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Proyecto</th>
-                                <th scope="col">Calificaciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Tecamachalco</th>
-                                    <td >7</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td >10</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td ><input type="number" class="form-control celdas" onchange="Cliente();" value="5"></input> </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <label for="promedio">Promedio de calificaciones </label>
-                    </div>
                     
-                </div>
-                <div class="row">
-                    <div class="col-sm text-center">
-                       <h4>Certificacion de calidad</h4>
-                    </div>
-                </div>
             
             
             

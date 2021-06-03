@@ -80,6 +80,14 @@
                 <div id="propuestas_Mejora">
                 </div>
             </div>
+            <div class="col-4">
+                <div id="orden_Trabajo">
+                </div>
+            </div>
+            <div class="col-4">
+                <div id="reporte_Nomina">
+                </div>
+            </div>
             </div>   
         
         </div>
