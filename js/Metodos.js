@@ -247,6 +247,18 @@ function Valor(caso,id){
             user="JosaGG";
             //alert ("El nuevo valor de R5A es "+ valor); 
         break;
+        case 9:
+            valor=$('#R5A').val();
+            req="R5A";
+            user="JosaGG";
+            //alert ("El nuevo valor de R5A es "+ valor); 
+        break;
+        case 10:
+            valor=$('#R15A').val();
+            req="R15A";
+            user="LeoGC";
+            //alert ("El nuevo valor de R5A es "+ valor); 
+        break;
         default:
         break;  
     }

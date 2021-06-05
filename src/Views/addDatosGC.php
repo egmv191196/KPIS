@@ -38,37 +38,62 @@
                   <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
             <h2 class="text-center">Datos de  Gerencia Comercial</h2>
-
+            <?php 
+                $semana= date("W");   
+                $year=date('o');
+                $mes=date('m');  
+                $quincenaActual=$semana/2;         
+            ?> 
             <div class="datos mt-5">
                 <div class="row">      
                     <div class="col-sm text-center" >
-                       <h4>Reportes de nomina</h4>
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
+                       <h4>Reportes de facturacion</h4>
                        <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Quincena</th>
-                                <th scope="col">Numero de reportes</th>
+                                <th scope="col">Mes</th>
+                                <th scope="col">Saldo Facturado</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">12</th>
-                                    <td >7</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">13</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">14</th>
-                                    <td contenteditable="true">15</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">15</th>
-                                    <td contenteditable="true"></td>
-                                </tr>
+                                <?php
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$mes-4 and id_Req='R15A' ORDER BY SQM DESC limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$mes.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R15A" onchange="Valor(10,this);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" id="R15A" onchange="Valor(10,this);" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            }
+                                            
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
+
+                    </div>
 
                     </div>
                     <div class="col-sm text-center">

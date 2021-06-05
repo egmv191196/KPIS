@@ -5,6 +5,7 @@ $(document).ready(function(){
     propuestas_Mejora();
     orden_Trabajo();
     reporte_Nomina();
+    reporte_Facturacion()
 }) 
 function vac_Ocupadas(){
     var datos = {
@@ -240,6 +241,46 @@ function reporte_Nomina(){
         }
         };
         Plotly.newPlot('reporte_Nomina', data,layout);
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function reporte_Facturacion(){
+    var datos = {
+        "Indicador" : 'R15A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Reportes de facturacion',
+        xaxis: {
+            title: 'Mes',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Monto Facturado',
+            showline: false
+        }
+        };
+        Plotly.newPlot('reporte_Facturacion', data,layout);
 
     }).fail(function(response){
         console.log("error"+response);
