@@ -1,11 +1,21 @@
 $(document).ready(function(){
-    vac_Ocupadas();
-    Descriptivos();
-    Bajas_Personal();
-    propuestas_Mejora();
-    orden_Trabajo();
-    reporte_Nomina();
-    reporte_Facturacion()
+    if($("#GC").length != 1) {
+        reporte_Facturacion();
+        saldo_Bancos();
+        CXP();
+        CXC();
+        consumo_Efectivale();
+        cartera_Vencida();
+      }else if($("#GG").length != 1) {
+        vac_Ocupadas();
+        Descriptivos();
+        Bajas_Personal();
+        propuestas_Mejora();
+        orden_Trabajo();
+        reporte_Nomina();
+      }
+    
+    
 }) 
 function vac_Ocupadas(){
     var datos = {
@@ -281,6 +291,206 @@ function reporte_Facturacion(){
         }
         };
         Plotly.newPlot('reporte_Facturacion', data,layout);
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function saldo_Bancos(){
+    var datos = {
+        "Indicador" : 'R19A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Saldo en bancos',
+        xaxis: {
+            title: 'Semana',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Saldo',
+            showline: false
+        }
+        };
+        Plotly.newPlot('saldo_Bancos', data,layout);
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function CXP(){
+    var datos = {
+        "Indicador" : 'R16A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Cuentas por pagar',
+        xaxis: {
+            title: 'Semana',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Saldo por pagar',
+            showline: false
+        }
+        };
+        Plotly.newPlot('CXP', data,layout);
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function CXC(){
+    var datos = {
+        "Indicador" : 'R17A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Cuentas por cobrar',
+        xaxis: {
+            title: 'Semana',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Saldo por cobrar',
+            showline: false
+        }
+        };
+        Plotly.newPlot('CXC', data,layout);
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function consumo_Efectivale(){
+    var datos = {
+        "Indicador" : 'R21A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Consumo efectivale',
+        xaxis: {
+            title: 'Semana',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Consumo por semana',
+            showline: false
+        }
+        };
+        Plotly.newPlot('consumo_Efectivale', data,layout);
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function cartera_Vencida(){
+    var datos = {
+        "Indicador" : 'R22A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Cartera vencida',
+        xaxis: {
+            title: 'Semana',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Monto vencido',
+            showline: false
+        }
+        };
+        Plotly.newPlot('cartera_Vencida', data,layout);
 
     }).fail(function(response){
         console.log("error"+response);

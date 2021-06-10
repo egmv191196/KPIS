@@ -68,7 +68,7 @@
              Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> 
             </h1>
             
-            <div class="datos mt-5">
+            <div class="datos mt-5" id="GG">
                 <div class="row">
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Numero de vacantes cubiertas</h4>

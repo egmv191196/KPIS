@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Contraseña</label>
-                            <input type="password" name="passwd" class="form-control " id="passwd" autocomplete="OFF" placeholder="Contraseña">
+                            <input type="password" name="passwd" class="form-control " id="passwd" autocomplete="OFF" placeholder="Contraseña" onchange="login();">
                             <input type="button" class="btn btn-primary mt-3 center" onclick="login();" id="signIn" value="Iniciar Sesion">
                         </div>  
                     </form> 

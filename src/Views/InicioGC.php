@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Iniciar GG</title>
+        <title>Dashboard Gerencia Comercial</title>
         <link rel="stylesheet" href="../../css/bootstrap.css" >
         <link rel="stylesheet" href="../../css/style.css" >
     </head>
@@ -40,29 +40,29 @@
             <h3 class="text-center">Gerencia Comercial</h3>
             <div class="row m-2">
                 <div class="col-4">
-                    <div id="reporte_Facturacion">   
+                    <div id="saldo_Bancos">   
                     </div>
                 </div>
                 <div class="col-4">
-                    <div id="Descriptivos"> 
+                    <div id="CXP"> 
                     </div>
                 </div>
                 <div class="col-4">
-                    <div id="bajas_Personal"> 
+                    <div id="CXC"> 
                     </div>
                 </div>
             </div>    
             <div class="row m-2">
             <div class="col-4">
-                <div id="propuestas_Mejora">
+                <div id="consumo_Efectivale">
                 </div>
             </div>
             <div class="col-4">
-                <div id="orden_Trabajo">
+                <div id="cartera_Vencida">
                 </div>
             </div>
             <div class="col-4">
-                <div id="reporte_Nomina">
+                <div id="reporte_Facturacion">
                 </div>
             </div>
             </div>

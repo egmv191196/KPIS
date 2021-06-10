@@ -37,35 +37,36 @@
                 </div>
                   <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-            <h2 class="text-center">Datos de  Gerencia Comercial</h2>
+            <h1 class="text-center">
+             Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> 
+            </h1>
             <?php 
                 $semana= date("W");   
                 $year=date('o');
                 $mes=date('m');  
                 $quincenaActual=$semana/2;         
             ?> 
-            <div class="datos mt-5">
-                <div class="row">      
-                    <div class="col-sm text-center" >
-                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                       <h4>Reportes de facturacion</h4>
-                       <table class="table">
+            <div class="datos mt-5" id="GC">
+                <div class="row">     
+                    <div class="col-sm text-center">
+                        <h4>Saldo en cuentas</h4>
+                        <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Mes</th>
-                                <th scope="col">Saldo Facturado</th>
+                                <th scope="col">Semana</th>
+                                <th scope="col">Monto en el banco</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$mes-4 and id_Req='R15A' ORDER BY SQM DESC limit 4";
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$semana-4 and id_Req='R19A' ORDER BY SQM DESC limit 4";
                                     $result= mysqli_query($conexion, $consulta);
                                     $filas=mysqli_num_rows($result);
                                     $primero=false;
                                     if($filas<=3){
                                         echo '<tr>';
-                                        echo '<th scope="row">'.$mes.'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R15A" onchange="Valor(10,this);"> </input> </td>';
+                                        echo '<th scope="row">'.$semana.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R19A" onchange="Valor(19,this);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
@@ -78,7 +79,7 @@
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
                                             if($primero==false){
-                                                echo '<td > <input type="number" class="form-control celdas" id="R15A" onchange="Valor(10,this);" value="'.$row[1].'"> </input> </td>';
+                                                echo '<td > <input type="number" class="form-control celdas" id="R19A" onchange="Valor(19,this);" value="'.$row[1].'"> </input> </td>';
                                                 $primero=true;
                                             }
                                             
@@ -92,225 +93,189 @@
                                 ?>
                             </tbody>
                         </table>
-
-                    </div>
-
-                    </div>
+                    </div>                   
                     <div class="col-sm text-center">
-                        <h4>Reportes semanales</h4>
+                        <h4>Cuentas por pagar</h4>
                         <table class="table">
                             <thead>
                                 <tr>
                                 <th scope="col">Semana</th>
-                                <th scope="col">Reporte CXP</th>
-                                <th scope="col">Reporte CXC</th>
+                                <th scope="col">Monto por pagar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">11</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">12</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">13</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"disabled   ></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">14</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
-                                </tr>
+                                <?php
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$semana-4 and id_Req='R16A' ORDER BY SQM DESC limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$semana.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R16A" onchange="Valor(16,this);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" id="R16A" onchange="Valor(16,this);" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            }
+                                            
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>
                     <div class="col-sm text-center ">
-                        <h4>Reportes mensuales</h4>
+                        <h4>Cuentas por cobrar</h4>
                         <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Mes</th>
-                                <th scope="col">Reporte facturacion</th>
-                                <th scope="col">Reporte impuestos</th>
+                                <th scope="col">Semana</th>
+                                <th scope="col">Monto por cobrar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
-                                </tr>
+                                <?php
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$semana-4 and id_Req='R17A' ORDER BY SQM DESC limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$semana.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R17A" onchange="Valor(17,this);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" id="R17A" onchange="Valor(17,this);" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            }
+                                            
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>
                     <div class="col-sm text-center">
-                       <h4>Horas extras</h4>
+                       <h4>Consumo efectivale</h4>
                        <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">Quincena</th>
-                                <th scope="col">Horas extras</th>
+                                <th scope="col">Semana</th>
+                                <th scope="col">Monto de consumo</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">12</th>
-                                    <td >7</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">13</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">14</th>
-                                    <td >10</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">15</th>
-                                    <td contenteditable="true"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <label for="promedio">Promedio de horas extras </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm text-center">
-                       <h4>Cuentas por pagar</h4>
-                       <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Semana</th>
-                                    <th scope="col">Saldo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">S1</th>
-                                    <td> $ 933,596.87 </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S2</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S3</th>
-                                    <td >15</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S4</th>
-                                    <td <?php echo "class='editable'" ?>  contenteditable="true"></td>
-                                </tr>
+                                <?php
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$semana-4 and id_Req='R21A' ORDER BY SQM DESC limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$semana.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R21A" onchange="Valor(21,this);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" id="R21A" onchange="Valor(21,this);" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            } 
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm text-center">
-                       <h4>Cuentas por cobrar</h4>
-                       <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Semana</th>
-                                    <th scope="col">Saldo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                    <th scope="row">S1</th>
-                                    <td> $ 933,596.87 </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S2</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S3</th>
-                                    <td >15</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S4</th>
-                                    <td <?php echo "class='editable'" ?> contenteditable="true"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-sm text-center">
-                       <h4>Saldo en cuentas</h4>
-                       <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Semana</th>
-                                    <th scope="col">Saldo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                    <th scope="row">S1</th>
-                                    <td> $ 933,596.87 </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S2</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S3</th>
-                                    <td >15</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S4</th>
-                                    <td contenteditable="true"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                </div>                
                 <div class="row">
                     <div class="col-sm text-center">
                         <h4>Cartera vencida</h4>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Cliente</th>
-                                    <th scope="col">Saldo vencido</th>
+                                    <th scope="col">Semana</th>
+                                    <th scope="col">Monto de cartera vencido</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">Tecamachalco</th>
-                                    <td >$10000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tecamachalco</th>
-                                    <td >$250000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tecamachalco</th>
-                                    <td >$15000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tecamachalco</th>
-                                    <td >$1000</td>
-                                </tr>
+                                <?php
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$semana-4 and id_Req='R22A' ORDER BY SQM DESC limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$semana.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R22A" onchange="Valor(22,this);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" id="R22A" onchange="Valor(22,this);" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            }
+                                            
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -358,13 +323,57 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-                </div>
-                <button class="btn btn-danger float-right m-3 center btn-lg" >Guardar Datos</button> 
-            </div>
-
                 
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
+                       <h4>Facturacion</h4>
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Mes</th>
+                                <th scope="col">Monto de facturacion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$mes-4 and id_Req='R15A' ORDER BY SQM DESC limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$mes.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R15A" onchange="Valor(10,this);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" id="R15A" onchange="Valor(10,this);" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            }
+                                            
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
