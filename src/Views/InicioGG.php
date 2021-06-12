@@ -60,6 +60,7 @@
             <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
             <h1 class="text-center"> Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> </h1>
+            <input type="hidden" id="Area" value="1"></input>
             <h3 class="text-center">Gerencia General</h3>
             <div class="row m-2">
                 <div class="col-4">

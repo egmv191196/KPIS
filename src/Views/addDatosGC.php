@@ -48,7 +48,7 @@
             ?> 
             <div class="datos mt-5" id="GC">
                 <div class="row">     
-                    <div class="col-sm text-center">
+                    <div class="col-sm text-center border border-dark rounded  m-1 p-1">
                         <h4>Saldo en cuentas</h4>
                         <table class="table">
                             <thead>
@@ -94,7 +94,7 @@
                             </tbody>
                         </table>
                     </div>                   
-                    <div class="col-sm text-center">
+                    <div class="col-sm text-center border border-dark rounded  m-1 p-1">
                         <h4>Cuentas por pagar</h4>
                         <table class="table">
                             <thead>
@@ -140,7 +140,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm text-center ">
+                    <div class="col-sm text-center border border-dark rounded  m-1 p-1">
                         <h4>Cuentas por cobrar</h4>
                         <table class="table">
                             <thead>
@@ -186,7 +186,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm text-center">
+                    <div class="col-sm text-center border border-dark rounded  m-1 p-1">
                        <h4>Consumo efectivale</h4>
                        <table class="table">
                             <thead>
@@ -233,7 +233,7 @@
                     </div>
                 </div>                
                 <div class="row">
-                    <div class="col-sm text-center">
+                    <div class="col-sm text-center border border-dark rounded  m-1 p-1">
                         <h4>Cartera vencida</h4>
                         <table class="table">
                             <thead>
@@ -278,59 +278,14 @@
                                 ?>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="col-sm text-center">
-                        <h4>Estimaciones pendientes por proyecto</h4>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Proyecto</th>
-                                    <th scope="col">S1</th>
-                                    <th scope="col">S2</th>
-                                    <th scope="col">S3</th>
-                                    <th scope="col">S4</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Tecamachalco</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" ></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tecamachalco</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" ></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tecamachalco</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" ></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tecamachalco</th>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    <td ><input type="checkbox" id="cbox1" value="first_checkbox" ></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                
+                    </div>               
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                       <h4>Facturacion</h4>
+                       <h4>Monto de facturacion</h4>
                        <table class="table">
                             <thead>
                                 <tr>
                                 <th scope="col">Mes</th>
-                                <th scope="col">Monto de facturacion</th>
+                                <th scope="col">Monto facturado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -356,6 +311,52 @@
                                             echo '<th scope="row">'.$row[0].'</th>';
                                             if($primero==false){
                                                 echo '<td > <input type="number" class="form-control celdas" id="R15A" onchange="Valor(10,this);" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            }
+                                            
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
+                       <h4>Monto de impuestos</h4>
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Mes</th>
+                                <th scope="col">Monto de impuestos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$mes-4 and id_Req='R20A' ORDER BY SQM DESC limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$mes.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R20A" onchange="Valor(20,this);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" id="R20A" onchange="Valor(20,this);" value="'.$row[1].'"> </input> </td>';
                                                 $primero=true;
                                             }
                                             

@@ -19,7 +19,7 @@
                 header("Location:../../index.php");
             }
         ?>
-        <div class="container">
+        <div class="container" id="GC" >
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -38,6 +38,7 @@
             </nav>
             <h1 class="text-center"> Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> </h1>
             <h3 class="text-center">Gerencia Comercial</h3>
+            <input type="hidden" id="Area" value="2"></input>
             <div class="row m-2">
                 <div class="col-4">
                     <div id="saldo_Bancos">   
@@ -53,18 +54,24 @@
                 </div>
             </div>    
             <div class="row m-2">
-            <div class="col-4">
-                <div id="consumo_Efectivale">
+                <div class="col-4">
+                    <div id="consumo_Efectivale">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div id="cartera_Vencida">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div id="reporte_Facturacion">
+                    </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div id="cartera_Vencida">
+            <div class="row m-2">
+                <div class="col-4">
+                    <div id="monto_Impuestos">
+                    </div>
                 </div>
-            </div>
-            <div class="col-4">
-                <div id="reporte_Facturacion">
-                </div>
-            </div>
             </div>
         </div>
         <script src='../../js/plotly-latest.min.js'></script>

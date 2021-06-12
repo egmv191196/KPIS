@@ -271,6 +271,12 @@ function Valor(caso,id){
             user="LeoGC";
             //alert ("El nuevo valor de R5A es "+ valor); 
         break;
+        case 20:
+            valor=$('#R20A').val();
+            req="R20A";
+            user="LeoGC";
+            //alert ("El nuevo valor de R5A es "+ valor); 
+        break;
         case 21:
             valor=$('#R21A').val();
             req="R21A";

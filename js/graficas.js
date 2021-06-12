@@ -1,20 +1,29 @@
 $(document).ready(function(){
-    if($("#GC").length != 1) {
-        reporte_Facturacion();
-        saldo_Bancos();
-        CXP();
-        CXC();
-        consumo_Efectivale();
-        cartera_Vencida();
-      }else if($("#GG").length != 1) {
-        vac_Ocupadas();
-        Descriptivos();
-        Bajas_Personal();
-        propuestas_Mejora();
-        orden_Trabajo();
-        reporte_Nomina();
-      }
-    
+    var area=$("#Area").val();
+    switch (area) {
+        case '1':
+            vac_Ocupadas();
+            Descriptivos();
+            Bajas_Personal();
+            propuestas_Mejora();
+            orden_Trabajo();
+            reporte_Nomina();
+        break;
+        case '2':
+            reporte_Facturacion();
+            CXP();
+            CXC();
+            saldo_Bancos();
+            monto_impuestos()
+            consumo_Efectivale();
+            cartera_Vencida();
+        break;
+        default:
+            break;
+    }
+        
+        
+        
     
 }) 
 function vac_Ocupadas(){
@@ -177,44 +186,72 @@ function propuestas_Mejora(){
     });     
 }
 function orden_Trabajo(){
+    var x1=[];
+    var y1=[];
+    var x2=[];
+    var y2=[];
     var datos = {
-        "Indicador" : 'R1B',
+        "Indicador" : 'R1A',
         "Cantidad" : 'A'
     };
     $.ajax({
         type: "POST",
+        async:false,
         url: "../Script/graficas.php",
-        data: datos,
+        data: {
+            "Indicador" : 'R1A',
+            "Cantidad" : 'A'
+        },
     }).done(function(response){
         var datos=JSON.parse(response);
-        var x=[];
-        var y=[];
         datos.forEach(function(elemento) {
-            x.push(elemento[0]);
-            y.push(elemento[1]);       
+            x1.push(elemento[0]);
+            y1.push(elemento[1]);       
         });
-        var data = [{
-            x: x,
-            y: y,
-            type: 'scatter'
-        }];
-        var layout = {
-        title: 'Orden de trabajo atendidas',
-        xaxis: {
-            title: 'Quincena',
-            showgrid: false,
-            zeroline: false
-        },
-        yaxis: {
-            title: 'Ordenes atendidas quincenalmente',
-            showline: false
-        }
-        };
-        Plotly.newPlot('orden_Trabajo', data,layout);
-
     }).fail(function(response){
         console.log("error"+response);
-    });     
+    });
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "../Script/graficas.php",
+        data: {
+            "Indicador" : 'R1B',
+            "Cantidad" : 'A'
+        },
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        datos.forEach(function(elemento) {
+            x2.push(elemento[0]);
+            y2.push(elemento[1]);       
+        });
+    }).fail(function(response){
+        console.log("error"+response);
+    });  
+    var data1 = {
+        x: x1,
+        y: y1,
+        type: 'scatter'
+    };
+    var data2 = {
+        x: x2,
+        y: y2,
+        type: 'scatter'
+    };
+    var data=[data1,data2];
+    var layout = {
+    title: 'Orden de trabajo atendidas',
+    xaxis: {
+        title: 'Quincena',
+        showgrid: false,
+        zeroline: false
+    },
+    yaxis: {
+        title: 'Ordenes atendidas quincenalmente',
+        showline: false
+    }
+    };
+    Plotly.newPlot('orden_Trabajo', data,layout);   
 }
 function reporte_Nomina(){
     var datos = {
@@ -256,46 +293,7 @@ function reporte_Nomina(){
         console.log("error"+response);
     });     
 }
-function reporte_Facturacion(){
-    var datos = {
-        "Indicador" : 'R15A',
-        "Cantidad" : 'A'
-    };
-    $.ajax({
-        type: "POST",
-        url: "../Script/graficas.php",
-        data: datos,
-    }).done(function(response){
-        var datos=JSON.parse(response);
-        var x=[];
-        var y=[];
-        datos.forEach(function(elemento) {
-            x.push(elemento[0]);
-            y.push(elemento[1]);       
-        });
-        var data = [{
-            x: x,
-            y: y,
-            type: 'scatter'
-        }];
-        var layout = {
-        title: 'Reportes de facturacion',
-        xaxis: {
-            title: 'Mes',
-            showgrid: false,
-            zeroline: false
-        },
-        yaxis: {
-            title: 'Monto Facturado',
-            showline: false
-        }
-        };
-        Plotly.newPlot('reporte_Facturacion', data,layout);
 
-    }).fail(function(response){
-        console.log("error"+response);
-    });     
-}
 function saldo_Bancos(){
     var datos = {
         "Indicador" : 'R19A',
@@ -491,6 +489,86 @@ function cartera_Vencida(){
         }
         };
         Plotly.newPlot('cartera_Vencida', data,layout);
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function reporte_Facturacion(){
+    var datos = {
+        "Indicador" : 'R15A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Reportes de facturacion',
+        xaxis: {
+            title: 'Mes',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Monto Facturado',
+            showline: false
+        }
+        };
+        Plotly.newPlot('reporte_Facturacion', data,layout);
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function monto_impuestos(){
+    var datos = {
+        "Indicador" : 'R20A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Monto de impuestos',
+        xaxis: {
+            title: 'Mes',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Impuesto pagado',
+            showline: false
+        }
+        };
+        Plotly.newPlot('monto_Impuestos', data,layout);
 
     }).fail(function(response){
         console.log("error"+response);
