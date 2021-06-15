@@ -60,17 +60,22 @@
                 </div>
                 <div class="row">
                     <div class="col-8 text-center">
-                        <label for="name">Conceptos del proyecto</label>
+                        <label for="name">Numero de conceptos en el proyecto</label>
                         <select class="form-control" id="conceptos" required >
-                            <option value="">Seleccione:</option>
-                            <?php
-                                $link=mysqli_connect("localhost","root",""); //hace la conexion con la base de datos
-                                mysqli_select_db($link,"kpis");
-                                $result= mysqli_query($link, "select id_Concepto,Nombre from catalogo_conceptos");
-                                while ($row = mysqli_fetch_array($result)) {
-                                    echo '<option value="'.$row['id_Concepto'].'">'.$row['Nombre'].'</option>';
-                                }
-                            ?>
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
                         </select>
                     </div>
                 </div>
