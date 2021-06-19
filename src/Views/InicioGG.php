@@ -59,37 +59,74 @@
             </div>
             <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-            <h1 class="text-center"> Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> </h1>
-            <input type="hidden" id="Area" value="1"></input>
-            <h3 class="text-center">Gerencia General</h3>
-            <div class="row m-2">
-                <div class="col-4">
-                    <div id="VacantesOcupadas">   
+            <div >
+                <h1 class="text-center"> Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> </h1>
+                <input type="hidden" id="Area" value="4"></input>
+                <h3 class="text-center">Gerencia General</h3>
+                <div class="row m-2" >
+                    <div class="col-4">
+                        <div id="VacantesOcupadas">   
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="Descriptivos"> 
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="bajas_Personal"> 
+                        </div>
+                    </div>
+                </div>    
+                <div class="row m-2">
+                    <div class="col-4">
+                        <div id="propuestas_Mejora">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="orden_Trabajo">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="reporte_Nomina">
+                        </div>
+                    </div>
+                </div>  
+                <h3 class="text-center">Gerencia Comercial</h3>
+                <div class="row m-2">
+                    <div class="col-4">
+                        <div id="saldo_Bancos">   
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="CXP"> 
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="CXC"> 
+                        </div>
+                    </div>
+                </div>    
+                <div class="row m-2">
+                    <div class="col-4">
+                        <div id="consumo_Efectivale">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="cartera_Vencida">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="reporte_Facturacion">
+                        </div>
                     </div>
                 </div>
-                <div class="col-4">
-                    <div id="Descriptivos"> 
+                <div class="row m-2">
+                    <div class="col-4">
+                        <div id="monto_Impuestos">
+                        </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div id="bajas_Personal"> 
-                    </div>
-                </div>
-            </div>    
-            <div class="row m-2">
-            <div class="col-4">
-                <div id="propuestas_Mejora">
-                </div>
-            </div>
-            <div class="col-4">
-                <div id="orden_Trabajo">
-                </div>
-            </div>
-            <div class="col-4">
-                <div id="reporte_Nomina">
-                </div>
-            </div>
-            </div>   
+                </div>  
+            </div>           
         
         </div>
         <script src='../../js/plotly-latest.min.js'></script>

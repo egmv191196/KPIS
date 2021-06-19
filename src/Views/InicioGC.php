@@ -19,7 +19,7 @@
                 header("Location:../../index.php");
             }
         ?>
-        <div class="container" id="GC" >
+        <div class="container" >
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,43 +36,46 @@
                 </div>
                   <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-            <h1 class="text-center"> Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> </h1>
-            <h3 class="text-center">Gerencia Comercial</h3>
-            <input type="hidden" id="Area" value="2"></input>
-            <div class="row m-2">
-                <div class="col-4">
-                    <div id="saldo_Bancos">   
+            <div id="GC">
+                <h1 class="text-center"> Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> </h1>
+                <h3 class="text-center">Gerencia Comercial</h3>
+                <input type="hidden" id="Area" value="2"></input>
+                <div class="row m-2">
+                    <div class="col-4">
+                        <div id="saldo_Bancos">   
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="CXP"> 
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="CXC"> 
+                        </div>
+                    </div>
+                </div>    
+                <div class="row m-2">
+                    <div class="col-4">
+                        <div id="consumo_Efectivale">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="cartera_Vencida">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="reporte_Facturacion">
+                        </div>
                     </div>
                 </div>
-                <div class="col-4">
-                    <div id="CXP"> 
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div id="CXC"> 
-                    </div>
-                </div>
-            </div>    
-            <div class="row m-2">
-                <div class="col-4">
-                    <div id="consumo_Efectivale">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div id="cartera_Vencida">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div id="reporte_Facturacion">
+                <div class="row m-2">
+                    <div class="col-4">
+                        <div id="monto_Impuestos">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row m-2">
-                <div class="col-4">
-                    <div id="monto_Impuestos">
-                    </div>
-                </div>
-            </div>
+            
         </div>
         <script src='../../js/plotly-latest.min.js'></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

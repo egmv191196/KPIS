@@ -46,16 +46,52 @@
                 </div>
                 <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-            <h3 class="text-center">Semana 1</h3>
             <div class="Container text-center">
-                <h2>Gerencia Comercial</h2>
-                <?php
-                    echo "<h3> El día de hoy es el ". date('d / M / Y H:i:s')."</h3> <hr/>";
-                ?>
+                <div id="GC">
+                    <h1 class="text-center"> Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> </h1>
+                    <h3 class="text-center">Gerencia Comercial</h3>
+                    <input type="hidden" id="Area" value="2"></input>
+                    <div class="row m-2">
+                        <div class="col-4">
+                            <div id="saldo_Bancos">   
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div id="CXP"> 
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div id="CXC"> 
+                            </div>
+                        </div>
+                    </div>    
+                    <div class="row m-2">
+                        <div class="col-4">
+                            <div id="consumo_Efectivale">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div id="cartera_Vencida">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div id="reporte_Facturacion">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-4">
+                            <div id="monto_Impuestos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src='../../js/plotly-latest.min.js'></script>
+        <script src="../../js/graficas.js"></script>
     </body>
 </html>
