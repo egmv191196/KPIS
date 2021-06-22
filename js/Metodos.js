@@ -148,6 +148,16 @@ function ModificarP(id) {
     location.href ="upProveedor.php?Name="+Name+"&Phone="+Phone;
 }
 //------------------------------Proyecto------------------------------
+function tabla(){
+    $("#cuerpo tr").remove();
+    valor=$('#conceptos').val();
+    for ( i = 0; i < valor; i++) {
+        document.getElementById("cuerpo").insertRow(i).innerHTML = '<tr><td>'+(i+1)+'</td> <td contenteditable> </td><tr>';
+    }
+    
+}
+
+
 //-------Agregar Proyecto------
 function addProyecto(){
         var datos=$('#addProyecto').serialize();
