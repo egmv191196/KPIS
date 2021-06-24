@@ -154,6 +154,7 @@ function tabla(){
     for ( i = 0; i < valor; i++) {
         document.getElementById("cuerpo").insertRow(i).innerHTML = '<tr><td>'+(i+1)+'</td> <td contenteditable> </td><tr>';
     }
+    document.getElementById("cuerpo").insertRow(i).innerHTML = '<tr><td>Total</td> <td id="porcentaje_Total"> </td><tr>';
     
 }
 

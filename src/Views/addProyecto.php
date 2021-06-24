@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col- text-center">
+                    <div class="col-3 text-center">
                         <label for="name">Numero de conceptos en el proyecto</label>
                         <select class="form-control" id="conceptos" onchange="tabla();" required >
                             <option value="">Elige el numero de conceptos</option>
@@ -82,17 +82,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-3 m-2">
                         <table class="table dark-table" id="t_Conceptos">
-                        <thead>
-                            <tr>
-                            <th scope="col">Concepto</th>
-                            <th scope="col">Valor en el proyecto</th>
-                            </tr>
-                        </thead>
-                        <tbody id="cuerpo">
-                        </tbody>
-        </table>
+                            <thead>
+                                <tr>
+                                <th scope="col">Concepto</th>
+                                <th scope="col">Valor en el proyecto en porcentaje</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpo">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <input type="button" class="btn btn-primary mt-3 center btn-lg" onclick="addProyecto();" value="Agregar Proyecto">

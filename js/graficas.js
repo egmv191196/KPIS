@@ -5,7 +5,6 @@ $(document).ready(function(){
             vac_Ocupadas();
             Descriptivos();
             Bajas_Personal();
-            propuestas_Mejora();
             orden_Trabajo();
             reporte_Nomina();
         break;
@@ -22,7 +21,6 @@ $(document).ready(function(){
             vac_Ocupadas();
             Descriptivos();
             Bajas_Personal();
-            propuestas_Mejora();
             orden_Trabajo();
             reporte_Nomina();
             reporte_Facturacion();
@@ -166,74 +164,6 @@ function Bajas_Personal(){
     }).fail(function(response){
         console.log("error"+response);
     });     
-}
-function propuestas_Mejora(){
-    var x1=[];
-    var y1=[];
-    var x2=[];
-    var y2=[];
-    $.ajax({
-        type: "POST",
-        async:false,
-        url: "../Script/graficas.php",
-        data: {
-            "Indicador" : 'R3A',
-            "Cantidad" : 'A'
-        },
-    }).done(function(response){
-        var datos=JSON.parse(response);
-        datos.forEach(function(elemento) {
-            x1.push(elemento[0]);
-            y1.push(elemento[1]);       
-        });
-    }).fail(function(response){
-        console.log("error"+response);
-    });
-    $.ajax({
-        type: "POST",
-        async:false,
-        url: "../Script/graficas.php",
-        data: {
-            "Indicador" : 'R3B',
-            "Cantidad" : 'A'
-        },
-    }).done(function(response){
-        var datos=JSON.parse(response);
-        datos.forEach(function(elemento) {
-            x2.push(elemento[0]);
-            y2.push(elemento[1]);       
-        });
-    }).fail(function(response){
-        console.log("error"+response);
-    });  
-    var data1 = {
-        x: x1,
-        y: y1,
-        type: 'scatter',
-        name: 'Propuestas'
-    };
-    var data2 = {
-        x: x2,
-        y: y2,
-        type: 'scatter',
-        name:'Implementadas'
-    };
-    var data=[data1,data2];
-    var layout = {
-    title: 'Propuestas de mejora ',
-    xaxis: {
-        title: 'Mes',
-        showgrid: false,
-        zeroline: false
-    },
-    yaxis: {
-        title: 'Propuestas',
-        showline: false
-    },
-    widht:350,
-    height: 250
-    };
-    Plotly.newPlot('propuestas_Mejora', data,layout, {responsive: true});     
 }
 function orden_Trabajo(){
     var x1=[];
