@@ -148,6 +148,17 @@ function ModificarP(id) {
     location.href ="upProveedor.php?Name="+Name+"&Phone="+Phone;
 }
 //------------------------------Proyecto------------------------------
+function recorrerTabla(){
+    var resume_table = document.getElementById("t_Conceptos");
+    var concepto=[];
+    var lista_Conceptos=[];
+    for (var i = 1, row; row = resume_table.rows[i]; i++) {
+        concepto=[row.cells[0].innerText,row.cells[1].innerText];
+        lista_Conceptos.push(concepto);
+    }
+    return lista_Conceptos;
+}
+
 function tabla(){
     $("#cuerpo tr").remove();
     valor=$('#conceptos').val();
@@ -161,18 +172,19 @@ function tabla(){
 
 //-------Agregar Proyecto------
 function addProyecto(){
-        var datos=$('#addProyecto').serialize();
-        $.ajax({
-            type: "POST",
-            url: "../Script/Proyecto.php",
-            data: datos,
-        }).done(function(response){
-            alert(response);
-            location.href ="./Proyectos.php";
+    alert(recorrerTabla());
+    /*var datos=$('#addProyecto').serialize();
+    $.ajax({
+        type: "POST",
+        url: "../Script/Proyecto.php",
+        data: datos,
+    }).done(function(response){
+        alert(response);
+        location.href ="./Proyectos.php";
     }).fail(function(response){
         console.log("error"+response);
     });
-        return false
+        return false*/
 }
 //------------------Agregar proyecto-------------------------
 /*function addProyecto(){
