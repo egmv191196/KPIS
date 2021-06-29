@@ -37,10 +37,41 @@
                 </div>
                 <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-            <h2 class="text-center">Datos de  Gerencia Tecnica</h2>
+            <?php
+                require_once('../Script/conexionBD.php'); 
+            ?>
+            <h1 class="text-center">
+             Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> 
+            </h1>
                 <div class="datos mt-5">
-                    <h4 class="text-center">Reportes entregados</h4>
+                    <h4 class="text-center">Proyectos</h4>
                     <div class="row">
+                    <?php
+                        $consulta="SELECT * FROM proyecto WHERE Estado=1 ORDER by fecha_Fin ASC"; 
+                        $result= mysqli_query($conexion,$consulta);
+                        while($row=mysqli_fetch_array($result)){
+                            echo'<div class="col-sm text-center">';
+                            echo'<h4 class="text-center">'.$row[1].'</h4>';
+                            echo'   <table class="table dark-table">';
+                            echo'       <tr>';
+                            echo'            <th>Month</th>';
+                            echo'           <th>Savings</th>';
+                            echo'       </tr>';
+                            echo'       <tr>';
+                            echo'           <td>January</td>';
+                            echo'           <td>$100</td>';
+                            echo'       </tr>';
+                            echo'       <tr>';
+                            echo'           <td>February</td>';
+                            echo'           <td>$50</td>';
+                            echo'       </tr>';
+                            echo'   </table>';
+                            echo'</div>';
+                        }
+                    ?> 
+
+
+
                         <div class="col-sm text-center">
                                 <table class="table">
                                     <thead>
@@ -204,108 +235,6 @@
                         </div>
                     
                     </div>
-                    <div class="row">
-                    
-                        <div class="col-sm text-center" >
-                        <h4>Inconformidades por el cliente </h4>
-                        <table class="table">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Proyecto</th>
-                                    <th scope="col">Semana 1</th>
-                                    <th scope="col">Semana 2</th>
-                                    <th scope="col">Semana 3</th>
-                                    <th scope="col">Semana 4</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Tecamachalco</th>
-                                        <td >7</td>
-                                        <td >7</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">13</th>
-                                        <td >9</td>
-                                        <td contenteditable="true">15</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">14</th>
-                                        <td >9</td>
-                                        <td contenteditable="true">15</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">15</th>
-                                        <td >9</td>
-                                        <td contenteditable="true">7</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                    <div class="col-sm text-center">
-                       <h4>Horas extras</h4>
-                       <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Quincena</th>
-                                <th scope="col">Horas extras</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">12</th>
-                                    <td >7</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">13</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">14</th>
-                                    <td >10</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">15</th>
-                                    <td contenteditable="true"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <label for="promedio">Promedio de horas extras </label>
-                    </div>
-                    
-                
-                    <div class="col-sm text-center">
-                       <h4>Proyectos</h4>
-                       <table class="table" title="Proyectos">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Semana/proyectos</th>
-                                    <th scope="col">Saldo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">S1</th>
-                                    <td> $ 933,596.87 </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S2</th>
-                                    <td >9</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S3</th>
-                                    <td >15</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">S4</th>
-                                    <td contenteditable="true"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>                   
-                </div>
-                <button class="btn btn-danger float-right m-3 center btn-lg" >Guardar Datos</button> 
             </div>
         </div>
     </body>

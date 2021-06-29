@@ -25,6 +25,7 @@
             }
             $res=mysqli_query($conexion,$consulta);
             //echo $consulta;
+            //echo $res;
             if($res==1){
                 echo 1;
             }else{

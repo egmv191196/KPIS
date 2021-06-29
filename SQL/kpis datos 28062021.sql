@@ -176,8 +176,6 @@ CREATE TABLE `proyecto` (
 -- Volcado de datos para la tabla `proyecto`
 --
 
-INSERT INTO `proyecto` (`clave_Proyecto`, `Nombre`, `fecha_Inicio`, `fecha_Fin`, `monto_Contrato`, `id_Presupuesto`, `Estado`, `id_Cliente`) VALUES
-('Tec-102', 'Mercado Tecamachalco', '2020-07-23', '2020-07-23', 150000, 'Tec_Pres_102', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -253,12 +251,12 @@ INSERT INTO `registroindicadores` (`id_registro`, `Usuario`, `id_Req`, `Fecha`, 
 (56, 'JosaGG', 'R5A', '2021-03-10', 1, 2021, 5),
 (57, 'JosaGG', 'R4B', '2021-06-03', 18, 2021, 6),
 (58, 'JosaGG', 'R6B', '2021-06-03', 20, 2021, 11),
-(59, 'JosaGG', 'R10A', '0000-00-00', 3, 2021, 6),
-(60, 'JosaGG', 'R5A', '0000-00-00', 15, 2021, 11),
-(61, 'JosaGG', 'R1A', '0000-00-00', 18, 2021, 11),
-(62, 'JosaGG', 'R3B', '0000-00-00', 5, 2021, 6),
-(63, 'JosaGG', 'R3A', '0000-00-00', 10, 2021, 6),
-(64, 'JosaGG', 'R1B', '0000-00-00', 10, 2021, 11),
+(59, 'JosaGG', 'R10A', '2021-06-03', 3, 2021, 6),
+(60, 'JosaGG', 'R5A', '2020-11-23', 15, 2021, 11),
+(61, 'JosaGG', 'R1A', '2020-11-23', 18, 2021, 11),
+(62, 'JosaGG', 'R3B', '2021-06-03', 5, 2021, 6),
+(63, 'JosaGG', 'R3A', '2021-06-03', 10, 2021, 6),
+(64, 'JosaGG', 'R1B', '2020-11-23', 10, 2021, 11),
 (65, 'LeoGC', 'R15A', '2021-05-05', 150000, 2021, 5),
 (66, 'LeoGC', 'R15A', '2021-04-05', 300000, 2021, 4),
 (67, 'LeoGC', 'R15A', '2021-03-05', 200000, 2021, 3),
@@ -386,6 +384,12 @@ ALTER TABLE `usuario`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `concepto`
+--
+ALTER TABLE `conceptos`
+  MODIFY `id_Concepto` int(1) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
