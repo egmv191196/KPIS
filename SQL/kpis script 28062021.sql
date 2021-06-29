@@ -77,7 +77,7 @@ ALTER TABLE `catalogo_Conceptos` ADD PRIMARY KEY (`id_Concepto`)
 CREATE TABLE `catalogo_Indicadores`
 (
   `id_Dat` Varchar(20) NOT NULL,
-  `Nombre` Varchar(30) NOT NULL,
+  `Nombre` Varchar(50) NOT NULL,
   `Permiso` Varchar(20) NOT NULL,
   `Periodicidad` Varchar(20) NOT NULL
 )
@@ -111,18 +111,16 @@ CREATE INDEX `IX_Relationship7` ON `registroIndicadores` (`id_Req`)
 
 CREATE TABLE `Conceptos`
 (
-  `id_Concepto` Int NOT NULL,
+  `id_Concepto` Int NOT NULL AUTO_INCREMENT,
   `num_Concepto` Int NOT NULL,
   `Valor` Int NOT NULL,
   `Avance` Int NOT NULL,
-  `clave_Proyecto` Varchar(30) NOT NULL
+  `clave_Proyecto` Varchar(30) NOT NULL,
+  PRIMARY KEY (`id_Concepto`)
 )
 ;
 
 CREATE INDEX `IX_Relationship20` ON `Conceptos` (`clave_Proyecto`)
-;
-
-ALTER TABLE `Conceptos` ADD PRIMARY KEY (`id_Concepto`)
 ;
 
 -- Create foreign keys (relationships) section -------------------------------------------------

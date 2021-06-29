@@ -11,17 +11,16 @@
 <body>
     <div class="container">
         <h1>Agregar un proyecto</h1>
-        <div class="row  justify-content-center pt-5 mt-5"></div>
         <form id="addProyecto" method="POST">
             <div class="form-group">
                 <div class="row">
                     <div class="col-6 text-center" >
                     <label for="name">Clave del proyecto</label>
-                        <input type="text" name="claveProyecto"  required class="form-control " id="name" placeholder="Clave del proyecto">
+                        <input type="text" name="claveProyecto"  required class="form-control " id="claveProyecto" placeholder="Clave del proyecto">
                     </div>
                     <div class="col-6 text-center">
                         <label for="name">Nombre del proyecto</label>
-                        <input type="text" name="nombreProyecto"  required class="form-control " id="name" placeholder="Nombre del proyecto">
+                        <input type="text" name="nombreProyecto"  required class="form-control " id="nombreProyecto" placeholder="Nombre del proyecto">
                     </div>
                 </div>
                 <div class="row">
@@ -31,7 +30,7 @@
                     </div>
                     <div class="col-6 ">
                         <label for="dateFin">Fecha de finalizacion</label>
-                        <input type="date" name="fechaFin"  required class="form-control " id="dateFin" placeholder="">
+                        <input type="date" name="fechaFin" required class="form-control " id="dateFin" placeholder="">
                     </div>
                 </div>
                 <div class="row">
@@ -45,7 +44,7 @@
                     </div>
                     <div class="col-4 ">
                         <label for="name">Nombre del cliente</label>
-                        <select class="form-control" name="id_Cliente" required >
+                        <select class="form-control" name="id_Cliente" id="id_Cliente" required >
                             <option value="">Seleccione:</option>
                             <?php
                                 $link=mysqli_connect("localhost","root",""); //hace la conexion con la base de datos
@@ -91,6 +90,8 @@
                                 </tr>
                             </thead>
                             <tbody id="cuerpo">
+                            </tbody>
+                            <tbody id="footer">
                             </tbody>
                         </table>
                     </div>
