@@ -31,7 +31,7 @@
                         <a class="nav-link" href="InicioGT.php">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="insertarDatos.php">Datos</a>
+                        <a class="nav-link" href="addDatosGT.php">Datos</a>
                     </li>
                     </ul>
                 </div>
@@ -50,21 +50,24 @@
                         $consulta="SELECT * FROM proyecto WHERE Estado=1 ORDER by fecha_Fin ASC"; 
                         $result= mysqli_query($conexion,$consulta);
                         while($row=mysqli_fetch_array($result)){
+                            $idProyecto=$row[0];
                             echo'<div class="col-sm text-center">';
                             echo'<h4 class="text-center">'.$row[1].'</h4>';
                             echo'   <table class="table dark-table">';
+                            $consulta2="SELECT * FROM conceptos WHERE clave_Proyecto='$idProyecto'";
+                            $result2= mysqli_query($conexion,$consulta2);
                             echo'       <tr>';
-                            echo'            <th>Month</th>';
-                            echo'           <th>Savings</th>';
+                            echo'            <th>Concepto</th>';
+                            echo'            <th>Valor en el proyecto</th>';
+                            echo'            <th>Avance</th>';             
                             echo'       </tr>';
-                            echo'       <tr>';
-                            echo'           <td>January</td>';
-                            echo'           <td>$100</td>';
-                            echo'       </tr>';
-                            echo'       <tr>';
-                            echo'           <td>February</td>';
-                            echo'           <td>$50</td>';
-                            echo'       </tr>';
+                            while($row2=mysqli_fetch_array($result2)){
+                                echo'       <tr>';
+                                echo'           <td>'.$row2[1].'</td>';
+                                echo'           <td>'.$row2[2].'</td>';
+                                echo'           <td contenteditable>'.$row2[3].'</td>';
+                                echo'       </tr>';
+                            } 
                             echo'   </table>';
                             echo'</div>';
                         }
