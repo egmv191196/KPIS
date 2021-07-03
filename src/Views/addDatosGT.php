@@ -44,201 +44,81 @@
              Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> 
             </h1>
                 <div class="datos mt-5">
-                    <h4 class="text-center">Proyectos</h4>
-                    <div class="row">
-                    <?php
-                        $consulta="SELECT * FROM proyecto WHERE Estado=1 ORDER by fecha_Fin ASC"; 
-                        $result= mysqli_query($conexion,$consulta);
-                        while($row=mysqli_fetch_array($result)){
-                            $idProyecto=$row[0];
-                            echo'<div class="col-sm text-center">';
-                            echo'<h4 class="text-center">'.$row[1].'</h4>';
-                            echo'   <table class="table dark-table">';
-                            $consulta2="SELECT * FROM conceptos WHERE clave_Proyecto='$idProyecto'";
-                            $result2= mysqli_query($conexion,$consulta2);
-                            echo'       <tr>';
-                            echo'            <th>Concepto</th>';
-                            echo'            <th>Valor en el proyecto</th>';
-                            echo'            <th>Avance</th>';             
-                            echo'       </tr>';
-                            while($row2=mysqli_fetch_array($result2)){
+                    <div class="border p-3">
+                        <h4 class="text-center">Proyectos</h4>
+                        <div class="row">
+                        <?php
+                            $consulta="SELECT * FROM proyecto WHERE Estado=1 ORDER by fecha_Fin ASC"; 
+                            $result= mysqli_query($conexion,$consulta);
+                            while($row=mysqli_fetch_array($result)){
+                                $idProyecto=$row[0];
+                                echo'<div class="col-sm text-center">';
+                                echo'<h4 class="text-center">'.$row[1].'</h4>';
+                                echo'   <table class="table dark-table" id="'.$idProyecto.'">';
+                                $consulta2="SELECT * FROM conceptos WHERE clave_Proyecto='$idProyecto'";
+                                $result2= mysqli_query($conexion,$consulta2);
                                 echo'       <tr>';
-                                echo'           <td>'.$row2[1].'</td>';
-                                echo'           <td>'.$row2[2].'</td>';
-                                echo'           <td contenteditable>'.$row2[3].'</td>';
+                                echo'            <th>Concepto</th>';
+                                echo'            <th>Valor en el proyecto</th>';
+                                echo'            <th>Avance</th>';             
                                 echo'       </tr>';
-                            } 
-                            echo'   </table>';
-                            echo'</div>';
-                        }
-                    ?> 
-
-
-
-                        <div class="col-sm text-center">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                        <th scope="col">Semana</th>
-                                        <th scope="col">Proyectos vigentes y culminados</th>
-                                        <th scope="col">Retrabajos</th>
-                                        <th scope="col">Plazos de entrega cumplidos</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">11</th>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">12</th>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">13</th>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"disabled   ></td>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">14</th>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
-                                            <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>                       
+                                while($row2=mysqli_fetch_array($result2)){
+                                    echo'       <tr>';
+                                    echo'           <td>'.$row2[1].'</td>';
+                                    echo'           <td>'.$row2[2].'</td>';
+                                    echo'           <td ><input type="number" class="form-control celdas" id="R6B" onchange="Valor(2,this);" value='.$row2[3].'> </input></td>';
+                                    echo'       </tr>';
+                                } 
+                                echo'   </table>';
+                                echo'   <div class="row">';
+                                echo'       <div class="col-sm">';
+                                echo'           <h4>Avance del proyecto</h4>';
+                                echo'       </div>';
+                                echo'       <div class="col-sm">';
+                                echo'           <h4>23%</h4>';
+                                echo'       </div>';
+                                echo'   </div>';
+                                echo'</div>';
+                            }
+                        ?> 
+                        
                         </div>
-                        <div class="col-sm text-center">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Quincena</th>
-                                    <th scope="col">KMS por concepto</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">11</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox" checked disabled></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">12</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">13</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"checked disabled></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">14</th>
-                                        <td ><input type="checkbox" id="cbox1" value="first_checkbox"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-
-                        </div>
-
                     </div>
-                    <div class="row">
-                        <div class="col-sm text-center" >
-                            <h4>Avance por proyecto</h4>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Proyecto</th>
-                                    <th scope="col">Semana 1</th>
-                                    <th scope="col">Semana 2</th>
-                                    <th scope="col">Semana 3</th>
-                                    <th scope="col">Semana 4</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Tecamachalco</th>
-                                        <td >7</td>
-                                        <td >7</td>
-                                        <td >7</td>
-                                        <td contenteditable="true">7</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Tecamachalco</th>
-                                        <td >9</td>
-                                        <td >7</td>
-                                        <td >7</td>
-                                        <td contenteditable="true">15</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Tecamachalco</th>
-                                        <td >9</td>
-                                        <td >7</td>
-                                        <td >7</td>
-                                        <td contenteditable="true">15</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Tecamachalco</th>
-                                        <td >9</td>
-                                        <td >7</td>
-                                        <td >7</td>
-                                        <td contenteditable="true">7</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
+                    <div class="row"> 
+                        <div class="col-sm text-center">
+                            <h3>Cuantificacion de servicios</h3>
+                            <?php
+                                echo'   <table class="table dark-table">';
+                                echo'       <tr>';
+                                echo'            <th>Servicio</th>';
+                                echo'            <th>Quincena 04</th>';
+                                echo'            <th>Quincena 05</th>'; 
+                                echo'            <th>Quincena 06</th>'; 
+                                echo'            <th>Quincena 07</th>';             
+                                echo'       </tr>';
+                                $consulta="SELECT * FROM catalogo_conceptos"; 
+                                $result= mysqli_query($conexion,$consulta);
+                                while($row=mysqli_fetch_array($result)){
+                                    echo'       <tr>';
+                                    echo'           <th>'.$row[1].'</th>';
+                                    echo'           <td>10</td>';
+                                    echo'           <td>5</td>';
+                                    echo'           <td>15</td>';
+                                    echo'           <td ><input type="number" class="form-control celdas" id="R6B" onchange="Valor(2,this);" value=0> </input></td>';
+                                    echo'       </tr>';
+                                }
+                                    echo'   </table>';
+                                
+                            ?>                       
                         </div>
-                        <div class="col-sm text-center" >
-                            <h4>Plan de trabajo ejecutado</h4>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Proyecto</th>
-                                    <th scope="col">Semana 1</th>
-                                    <th scope="col">Semana 2</th>
-                                    <th scope="col">Semana 3</th>
-                                    <th scope="col">Semana 4</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Tecamachalco</th>
-                                        <td >7</td>
-                                        <td >7</td>
-                                        <td >7</td>
-                                        <td >7</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Tecamachalco</th>
-                                        <td >9</td>
-                                        <td >7</td>
-                                        <td >7</td>
-                                        <td contenteditable="true">15</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Tecamachalco</th>
-                                        <td >9</td>
-                                        <td >7</td>
-                                        <td >7</td>
-                                        <td contenteditable="true">15</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Tecamachalco</th>
-                                        <td >9</td>
-                                        <td >7</td>
-                                        <td >7</td>
-                                        <td contenteditable="true">7</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
+                        
+                    </div>
                     
-                    </div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="../../js/Metodos.js"></script>
     </body>
 </html>
