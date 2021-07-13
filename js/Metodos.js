@@ -157,7 +157,7 @@ function obtenerConceptos(a){
     var lista_Conceptos=[];
     for (var i = 0; i<a; i++) {
         console.log(valor=$('#concepto_'+(i+1)).val());
-        concepto=[(i+1),$('#concepto_'+(i+1)).val()];
+        concepto=[(i+1), $('#concepto_'+(i+1)).val(), $('#Nombreconcepto_'+(i+1)).val()];
         lista_Conceptos.push(concepto);
     }
     return lista_Conceptos;
@@ -177,7 +177,8 @@ function tabla(){
     valor=$('#conceptos').val();
     for ( i = 0; i < valor; i++) {
         document.getElementById("cuerpo").insertRow(i).innerHTML = '<tr><td>'+(i+1)+'</td> <td>'+
-        '<input type="string" class="form-control" onchange="sumaPorcentaje(numeroFilas());" id="concepto_'+(i+1)+'" ></td><tr>';
+        '<input type="string" class="form-control" onchange="sumaPorcentaje(numeroFilas());" id="concepto_'+(i+1)+'" ></td>'+
+        '<td><input type="string" class="form-control" id="Nombreconcepto_'+(i+1)+'" ></td><tr>';
     }
     document.getElementById("footer").insertRow(0).innerHTML = '<tr><td>Total</td> <td id="porcentaje_Total"> </td><tr>'; 
 }

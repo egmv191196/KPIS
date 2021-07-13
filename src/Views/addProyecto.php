@@ -87,6 +87,7 @@
                                 <tr>
                                 <th scope="col">Concepto</th>
                                 <th scope="col">Valor en el proyecto en porcentaje</th>
+                                <th scope="col">Nombre del concepto</th>
                                 </tr>
                             </thead>
                             <tbody id="cuerpo">

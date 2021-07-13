@@ -59,6 +59,7 @@
                                 $result2= mysqli_query($conexion,$consulta2);
                                 echo'       <tr>';
                                 echo'            <th>Concepto</th>';
+                                echo'            <th>Nombre</th>';
                                 echo'            <th>Valor en el proyecto</th>';
                                 echo'            <th>Avance</th>';             
                                 echo'       </tr>';
@@ -66,7 +67,8 @@
                                     echo'       <tr>';
                                     echo'           <td>'.$row2[1].'</td>';
                                     echo'           <td>'.$row2[2].'</td>';
-                                    echo'           <td ><input type="number" class="form-control celdas" id="R6B" onchange="Valor(2,this);" value='.$row2[3].'> </input></td>';
+                                    echo'           <td>'.$row2[3].'</td>';
+                                    echo'           <td ><input type="number" class="form-control celdas" id="R6B" onchange="Valor(2,this);" value='.$row2[4].'> </input></td>';
                                     echo'       </tr>';
                                 } 
                                 echo'   </table>';
