@@ -44,7 +44,7 @@
              Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> 
             </h1>
                 <div class="datos mt-5">
-                    <div class="border p-3">
+                    <div class="p-3">
                         <h4 class="text-center">Proyectos</h4>
                         <div class="row">
                         <?php
@@ -52,9 +52,9 @@
                             $result= mysqli_query($conexion,$consulta);
                             while($row=mysqli_fetch_array($result)){
                                 $idProyecto=$row[0];
-                                echo'<div class="col-sm text-center">';
+                                echo'<div class="col-3 mb-5 pb-3 text-center border-right border-bottom">';
                                 echo'<h4 class="text-center">'.$row[1].'</h4>';
-                                echo'   <table class="table dark-table" id="'.$idProyecto.'">';
+                                echo'   <table class="table dark-table m-1 ">';
                                 $consulta2="SELECT * FROM conceptos WHERE clave_Proyecto='$idProyecto'";
                                 $result2= mysqli_query($conexion,$consulta2);
                                 echo'       <tr>';
@@ -63,12 +63,14 @@
                                 echo'            <th>Valor en el proyecto</th>';
                                 echo'            <th>Avance</th>';             
                                 echo'       </tr>';
+                                $total=0.0;
                                 while($row2=mysqli_fetch_array($result2)){
-                                    echo'       <tr>';
+                                    echo'       <tr data-uid="'.$idProyecto.'">';
                                     echo'           <td>'.$row2[1].'</td>';
                                     echo'           <td>'.$row2[2].'</td>';
                                     echo'           <td>'.$row2[3].'</td>';
-                                    echo'           <td ><input type="number" class="form-control celdas" id="R6B" onchange="Valor(2,this);" value='.$row2[4].'> </input></td>';
+                                    echo'           <td ><input type="number" class="form-control celdas" id="R6B" onchange="valorProyecto(this);" value='.$row2[4].'> </input></td>';
+                                    $total=$total+($row2[4]*($row2[3]/100));
                                     echo'       </tr>';
                                 } 
                                 echo'   </table>';
@@ -77,7 +79,7 @@
                                 echo'           <h4>Avance del proyecto</h4>';
                                 echo'       </div>';
                                 echo'       <div class="col-sm">';
-                                echo'           <h4>23%</h4>';
+                                echo'           <h4>'.$total.'%</h4>';
                                 echo'       </div>';
                                 echo'   </div>';
                                 echo'</div>';

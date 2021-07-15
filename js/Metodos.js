@@ -207,6 +207,7 @@ function addProyecto(){
         if (verificarPorcentaje()==1) {
             conceptos = obtenerConceptos(numeroFilas());
             datos={
+                Operacion : 'Insertar',
                 Clave : $('#claveProyecto').val(),
                 Name : $('#nombreProyecto').val(),
                 fechaInicio : $('#dateInicio').val(),
@@ -221,7 +222,7 @@ function addProyecto(){
                 url: "../Script/Proyecto.php",
                 data: datos,
             }).done(function(response){
-                alert(response);
+                //alert(response);
                 if (response==1) {
                     alert("Se registro correctamente el proyecto");
                     location.href ="./Proyectos.php";
@@ -238,22 +239,33 @@ function addProyecto(){
         alert("Verificar que todos los conceptos tenga su valor correspondiente");
     }
 }
-//------------------Agregar proyecto-------------------------
-/*function addProyecto(){
-var datos=$('#frmProv').serialize();
-alert(datos);
-location.href ="./addClientes.php";
-/*
-        $.ajax({
-            type: "POST",
-            url: "../Script/Proyecto.php",
-            data: datos,
-        }).done(function(response){
-            //alert(response);
+//----------------Valores del proyecto
+function valorProyecto(a){
+    id_Proyecto=$(a).closest('tr').data('uid');
+    concepto=$(a).parents("tr").find("td")[0].innerHTML;
+    valor=$(a).val();
+    //alert("El proyecto es "+ id_Proyecto+" EL concepto es"+concepto+" El valor es "+ valor);
+    datos={
+        Operacion: 'Actualizar',
+        id_Proyecto: id_Proyecto,
+        Concepto: concepto,
+        Valor : valor
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/Proyecto.php",
+        data: datos,
+    }).done(function(response){
+        if(response == 1){
+            location.reload();
+        }else{
+            alert("Error al actualizar los valores");
+        }
     }).fail(function(response){
-        alert("error"+response);
+        console.log("error"+response);
     });
-}*/
+
+}
 
 //------------------------------Indicadores----------------------
 
