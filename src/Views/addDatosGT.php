@@ -52,7 +52,7 @@
                             $result= mysqli_query($conexion,$consulta);
                             while($row=mysqli_fetch_array($result)){
                                 $idProyecto=$row[0];
-                                echo'<div class="col-3 mb-5 pb-3 text-center border-right border-bottom">';
+                                echo'<div class="col-4 mb-5 pb-3 text-center border-right border-bottom">';
                                 echo'<h4 class="text-center">'.$row[1].'</h4>';
                                 echo'   <table class="table dark-table m-1 ">';
                                 $consulta2="SELECT * FROM conceptos WHERE clave_Proyecto='$idProyecto'";
@@ -95,6 +95,7 @@
                                 echo'   <table class="table dark-table">';
                                 echo'       <tr>';
                                 echo'            <th>Servicio</th>';
+                                echo'            <th>Unidad de medida</th>';
                                 echo'            <th>Quincena 04</th>';
                                 echo'            <th>Quincena 05</th>'; 
                                 echo'            <th>Quincena 06</th>'; 
@@ -105,6 +106,7 @@
                                 while($row=mysqli_fetch_array($result)){
                                     echo'       <tr>';
                                     echo'           <th>'.$row[1].'</th>';
+                                    echo'           <td>M^2</td>';
                                     echo'           <td>10</td>';
                                     echo'           <td>5</td>';
                                     echo'           <td>15</td>';

@@ -25,7 +25,7 @@
         ?>
 
         <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,27 +35,38 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="InicioGG.php">Dashboard<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="GGIndicador.php">Gerencia General</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="Graficas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Graficas</a>
+                        <div class="dropdown-menu" aria-labelledby="Graficas">
+                            <a class="dropdown-item" href="GGIndicador.php">Gerencia General</a>
+                            <a class="dropdown-item" href="GCIndicador.php">Gerencia Comercial</a>
+                            <a class="dropdown-item" href="GTIndicador.php">Gerencia Tecnica</a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="GCIndicador.php">Gerencia Comercial</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="Proyectos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proyectos</a>
+                        <div class="dropdown-menu" aria-labelledby="Proyectos">
+                            <a class="dropdown-item" href="Proyectos.php">Listar Proyectos</a>
+                            <a class="dropdown-item" href="addProyecto.php">Agregar Proyecto</a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="GTIndicador.php">Gerencia Tecnica</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="Clientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
+                        <div class="dropdown-menu" aria-labelledby="Clientes">
+                            <a class="dropdown-item" href="Clientes.php"> Listar Clientes</a>
+                            <a class="dropdown-item" href="addClientes.php">Agregar Clientes</a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Proyectos.php">Proyectos</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="Proveedores" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedores</a>
+                        <div class="dropdown-menu" aria-labelledby="Proveedores">
+                            <a class="dropdown-item" href="Proveedor.php">Listar Proveedores</a>
+                            <a class="dropdown-item" href="addProveedor.php">Agregar Proyecto</a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Clientes.php">Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Proveedor.php">Proveedores</a>
-                    </li>    
                     <li class="nav-item">
                         <a class="nav-link" href="addDatosGG.php">Datos</a>
-                    </li>   
+                    </li>       
                     </ul>
                 </div>            
             </div>
@@ -64,16 +75,16 @@
             <?php
                 require_once('../Script/conexionBD.php'); 
             ?>
-            <h1 class="text-center">
-             Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> 
-            </h1>
+            <h1 class="text-center">Gerencia General</h1>
+            <h5 class="text-center">Año: <?php echo date("Y");?></h5>
+            <h5 class="text-center"> Semana: <?php echo date("W");?> </h5>
             
             <div class="datos mt-5" id="GG">
                 <div class="row">
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Numero de vacantes cubiertas</h4>
                        <label>Numero de vacantes totales</label> 
-                       <input type="text" name="vacantesTotales" class="form-control valores" id="Nombre" 
+                       <input type="text" name="vacantesTotales" class="form-control valores" id="vacantesTotales" 
                        <?php
                             $year=date('o');
                             $consulta="SELECT SQM,Valor FROM registroIndicadores WHERE id_Req='R4A' AND año=$year ORDER by SQM DESC"; 
@@ -82,7 +93,7 @@
                                 echo 'value="'.$row['Valor'].'"';
                             }
                         ?>                       
-                       placeholder="No. de vacantes totales" required>  
+                       placeholder="No. de vacantes totales" onchange="vacantesTotales(this);">  
                        <table class="table">
                             <thead>
                                 <tr>
@@ -130,6 +141,7 @@
                         </table>
                        
                     </div>
+                    <!--
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
                        <h4>Descriptivos de puestos</h4>
                        <?php $semana= date("W");     
@@ -190,7 +202,7 @@
                             </tbody>
                         </table>
 
-                    </div>
+                    </div>-->
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
                     <h4>Bajas de personal</h4>
                        <table class="table">
@@ -364,6 +376,53 @@
                                             echo '<th scope="row">'.$row[0].'</th>';
                                             if($primero==false){
                                                 echo '<td > <input type="number" class="form-control celdas" id="R5A" onchange="Valor(8,this);" value="'.$row[1].'"> </input> </td>';
+                                                $primero=true;
+                                            }
+                                            
+                                            else{
+                                                echo '<td>'.$row[1].'</td>';
+                                                echo '</tr>';
+                                            }
+                                            
+                                        }
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
+                       <h4>Horas Extras</h4>
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Quincena</th>
+                                <th scope="col">Horas extras registradas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                    $quincenaActual=$semana/2;
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$quincenaActual-4 and id_Req='R11A' ORDER BY SQM DESC limit 4";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    $primero=false;
+                                    if($filas<=3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$quincenaActual.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R11A" onchange="Valor(11,this);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            if($primero==false){
+                                                echo '<td > <input type="number" class="form-control celdas" id="R11A" onchange="Valor(11,this);" value="'.$row[1].'"> </input> </td>';
                                                 $primero=true;
                                             }
                                             

@@ -346,9 +346,21 @@ function Valor(caso,id){
             user="LeoGC";
             //alert ("El nuevo valor de R5A es "+ valor); 
         break;
+        case 11:
+            valor=$('#R11A').val();
+            req="R11A";
+            user="JosaGG";
+            //alert ("El nuevo valor de R5A es "+ valor); 
+        break;
         case 16:
             valor=$('#R16A').val();
             req="R16A";
+            user="LeoGC";
+            //alert ("El nuevo valor de R5A es "+ valor); 
+        break;
+        case 17:
+            valor=$('#R17A').val();
+            req="R17A";
             user="LeoGC";
             //alert ("El nuevo valor de R5A es "+ valor); 
         break;
@@ -367,6 +379,12 @@ function Valor(caso,id){
         case 21:
             valor=$('#R21A').val();
             req="R21A";
+            user="LeoGC";
+            //alert ("El nuevo valor de R5A es "+ valor); 
+        break;
+        case 22:
+            valor=$('#R22A').val();
+            req="R22A";
             user="LeoGC";
             //alert ("El nuevo valor de R5A es "+ valor); 
         break;
@@ -399,6 +417,25 @@ function Valor(caso,id){
     });
 }
 
+function vacantesTotales(id){
+    valor=$(id).val();
+    req="R4A";
+    user="JosaGG";
+    datos={
+        'Req': req,
+        'Valor': valor,
+        'User': user
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/indicadores.php",
+        data: datos,
+    }).done(function(response){
+        location.reload();
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+}
 //Redireccion
 function addClienteView() {
     location.href ="./addClientes.php";

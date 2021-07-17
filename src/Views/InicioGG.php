@@ -33,23 +33,34 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="InicioGG.php">Dashboard<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="GGIndicador.php">Gerencia General</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="Graficas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Graficas</a>
+                        <div class="dropdown-menu" aria-labelledby="Graficas">
+                            <a class="dropdown-item" href="GGIndicador.php">Gerencia General</a>
+                            <a class="dropdown-item" href="GCIndicador.php">Gerencia Comercial</a>
+                            <a class="dropdown-item" href="GTIndicador.php">Gerencia Tecnica</a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="GCIndicador.php">Gerencia Comercial</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="Proyectos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proyectos</a>
+                        <div class="dropdown-menu" aria-labelledby="Proyectos">
+                            <a class="dropdown-item" href="Proyectos.php">Listar Proyectos</a>
+                            <a class="dropdown-item" href="addProyecto.php">Agregar Proyecto</a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="GTIndicador.php">Gerencia Tecnica</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="Clientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
+                        <div class="dropdown-menu" aria-labelledby="Clientes">
+                            <a class="dropdown-item" href="Clientes.php"> Listar Clientes</a>
+                            <a class="dropdown-item" href="addClientes.php">Agregar Clientes</a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Proyectos.php">Proyectos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Clientes.php">Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Proveedor.php">Proveedores</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="Proveedores" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedores</a>
+                        <div class="dropdown-menu" aria-labelledby="Proveedores">
+                            <a class="dropdown-item" href="Proveedor.php">Listar Proveedores</a>
+                            <a class="dropdown-item" href="addProveedor.php">Agregar Proveedor</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="addDatosGG.php">Datos</a>
@@ -60,31 +71,27 @@
             <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
             <div >
-                <h1 class="text-center"> Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> </h1>
                 <input type="hidden" id="Area" value="4"></input>
+                <h5 class="text-center">Año: <?php echo date("Y");?></h5>
+                <h5 class="text-center"> Semana: <?php echo date("W");?> </h5>
                 <h3 class="text-center">Gerencia General</h3>
                 <div class="row m-2" >
                     <div class="col-4">
-                        <div id="VacantesOcupadas">   
-                        </div>
+                        <div id="orden_Trabajo"> </div>
                     </div>
                     <div class="col-4">
-                        <div id="Descriptivos"> 
-                        </div>
+                        <div id="VacantesOcupadas"> </div>
                     </div>
                     <div class="col-4">
-                        <div id="bajas_Personal"> 
-                        </div>
+                        <div id="reporte_Nomina"> </div>
                     </div>
                 </div>    
                 <div class="row m-2">
                     <div class="col-4">
-                        <div id="orden_Trabajo">
-                        </div>
+                        <div id="bajas_Personal"> </div>
                     </div>
                     <div class="col-4">
-                        <div id="reporte_Nomina">
-                        </div>
+                        <div id="horas_Extras"> </div>
                     </div>
                 </div>  
                 <h3 class="text-center">Gerencia Comercial</h3>
@@ -120,6 +127,12 @@
                     <div class="col-4">
                         <div id="monto_Impuestos">
                         </div>
+                    </div>
+                </div>
+                <h3 class="text-center">Gerencia Tecnica</h3>
+                <div class="row m-2" >
+                    <div class="col-12">
+                        <div id="avanceProyectos"> </div>
                     </div>
                 </div>  
             </div>           

@@ -1,10 +1,15 @@
 <?php
   $Req=$_POST['Req'];
   $Valor=$_POST['Valor'];
-  $SQM=$_POST['SQM'];
+  //$SQM=$_POST['SQM'];
   $Usuario=$_POST['User'];
   $year=date('o');
   $date=date('Y-m-d');
+  if($Req=="R4A"){
+    $SQM=date('m');
+  }else{
+    $SQM=$_POST['SQM'];
+  }
   require_once('./conexionBD.php'); 
   $consulta="SELECT * FROM registroindicadores Where año=$year AND SQM=$SQM  and id_Req='$Req'";
   $result =mysqli_query($conexion,$consulta);

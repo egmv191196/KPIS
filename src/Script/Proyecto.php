@@ -43,9 +43,23 @@
             $Valor=$_POST['Valor'];
             $consulta="UPDATE conceptos SET Avance={$Valor} WHERE num_Concepto={$Concepto} AND clave_Proyecto='{$id_Proyecto}'";
             echo mysqli_query($conexion,$consulta);
+        }else if($Operacion=="Avances"){
+            $Valores=array();
+            $consulta="SELECT * FROM proyecto WHERE Estado=1 ORDER by fecha_Fin ASC"; 
+            $result= mysqli_query($conexion,$consulta);
+            while($row=mysqli_fetch_array($result)){
+                $idProyecto=$row[0];
+                $nombreProyecto=$row[1];
+                $consulta2="SELECT * FROM conceptos WHERE clave_Proyecto='$idProyecto'";
+                $result2= mysqli_query($conexion,$consulta2);
+                $total=0.0;
+                while($row2=mysqli_fetch_array($result2)){
+                    $total=$total+($row2[4]*($row2[3]/100));
+                }        
+                $Proyecto=[$nombreProyecto,$total];
+                array_push($Valores,$Proyecto);
+            }
+            echo json_encode($Valores);
         }
-        
-        
 
-        
 ?>

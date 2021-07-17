@@ -3,10 +3,10 @@ $(document).ready(function(){
     switch (area) {
         case '1':
             vac_Ocupadas();
-            Descriptivos();
             Bajas_Personal();
             orden_Trabajo();
             reporte_Nomina();
+            horas_Extras()
         break;
         case '2':
             reporte_Facturacion();
@@ -17,12 +17,15 @@ $(document).ready(function(){
             consumo_Efectivale();
             cartera_Vencida();
         break;
+        case '3':
+            AvanceProyectos();
+        break;
         case '4':
             vac_Ocupadas();
-            Descriptivos();
             Bajas_Personal();
             orden_Trabajo();
             reporte_Nomina();
+            horas_Extras()
             reporte_Facturacion();
             CXP();
             CXC();
@@ -30,141 +33,16 @@ $(document).ready(function(){
             monto_impuestos()
             consumo_Efectivale();
             cartera_Vencida();
+            AvanceProyectos();
         break;
         default:
-            break;
+        break;
     }
         
         
         
     
 }) 
-function vac_Ocupadas(){
-    var datos = {
-        "Indicador" : 'R4B',
-        "Cantidad" : 'A'
-    };
-    $.ajax({
-        type: "POST",
-        url: "../Script/graficas.php",
-        data: datos,
-    }).done(function(response){
-        var datos=JSON.parse(response);
-        var x=[];
-        var y=[];
-        datos.forEach(function(elemento) {
-            x.push(elemento[0]);
-            y.push(elemento[1]);       
-        });
-        var data = [{
-            x: x,
-            y: y,
-            type: 'scatter'
-        }];
-        var layout = {
-        title: 'Numero de vacantes',
-        xaxis: {
-            title: 'Mes',
-            showgrid: false,
-            zeroline: false
-
-        },
-        yaxis: {
-            title: 'Vacantes ocupadas',
-            showline: false
-        },
-        widht:350,
-        height: 250
-        };
-        Plotly.newPlot('VacantesOcupadas', data, layout, {responsive: true});
-    }).fail(function(response){
-        console.log("error"+response);
-    });     
-}
-function Descriptivos(){
-    var datos = {
-        "Indicador" : 'R6B',
-        "Cantidad" : 'A'
-    };
-    $.ajax({
-        type: "POST",
-        url: "../Script/graficas.php",
-        data: datos,
-    }).done(function(response){
-        var datos=JSON.parse(response);
-        var x=[];
-        var y=[];
-        datos.forEach(function(elemento) {
-            x.push(elemento[0]);
-            y.push(elemento[1]);       
-        });
-        var data = [{
-            x: x,
-            y: y,
-            type: 'scatter'
-        }];
-        var layout = {
-        title: 'Descriptivos realizados',
-        xaxis: {
-            title: 'Quincena',
-            showgrid: false,
-            zeroline: false
-        },
-        yaxis: {
-            title: 'Descriptivos entregados',
-            showline: false
-        },
-        widht:350,
-        height: 250
-        };
-        Plotly.newPlot('Descriptivos', data,layout, {responsive: true});
-
-    }).fail(function(response){
-        console.log("error"+response);
-    });     
-}
-function Bajas_Personal(){
-    var datos = {
-        "Indicador" : 'R10A',
-        "Cantidad" : 'A'
-    };
-    $.ajax({
-        type: "POST",
-        url: "../Script/graficas.php",
-        data: datos,
-    }).done(function(response){
-        var datos=JSON.parse(response);
-        var x=[];
-        var y=[];
-        datos.forEach(function(elemento) {
-            x.push(elemento[0]);
-            y.push(elemento[1]);       
-        });
-        var data = [{
-            x: x,
-            y: y,
-            type: 'scatter'
-        }];
-        var layout = {
-        title: 'Bajas de personal',
-        xaxis: {
-            title: 'Mes',
-            showgrid: false,
-            zeroline: false
-        },
-        yaxis: {
-            title: 'Bajas por mes',
-            showline: false
-        },
-        widht:350,
-        height: 250
-        };
-        Plotly.newPlot('bajas_Personal', data,layout, {responsive: true});
-
-    }).fail(function(response){
-        console.log("error"+response);
-    });     
-}
 function orden_Trabajo(){
     var x1=[];
     var y1=[];
@@ -237,6 +115,48 @@ function orden_Trabajo(){
     };
     Plotly.newPlot('orden_Trabajo', data,layout, {responsive: true});   
 }
+function vac_Ocupadas(){
+    var datos = {
+        "Indicador" : 'R4B',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Numero de vacantes',
+        xaxis: {
+            title: 'Mes',
+            showgrid: false,
+            zeroline: false
+
+        },
+        yaxis: {
+            title: 'Vacantes ocupadas',
+            showline: false
+        },
+        widht:350,
+        height: 250
+        };
+        Plotly.newPlot('VacantesOcupadas', data, layout, {responsive: true});
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
 function reporte_Nomina(){
     var datos = {
         "Indicador" : 'R5A',
@@ -274,6 +194,132 @@ function reporte_Nomina(){
         height: 250
         };
         Plotly.newPlot('reporte_Nomina', data,layout, {responsive: true});
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function Bajas_Personal(){
+    var datos = {
+        "Indicador" : 'R10A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Bajas de personal',
+        xaxis: {
+            title: 'Mes',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Bajas por mes',
+            showline: false
+        },
+        widht:350,
+        height: 250
+        };
+        Plotly.newPlot('bajas_Personal', data,layout, {responsive: true});
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function horas_Extras(){
+    var datos = {
+        "Indicador" : 'R11A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Horas extras',
+        xaxis: {
+            title: 'Quincena',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Horas extras por quincena',
+            showline: false
+        },
+        widht:350,
+        height: 250
+        };
+        Plotly.newPlot('horas_Extras', data,layout, {responsive: true});
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function Descriptivos(){
+    var datos = {
+        "Indicador" : 'R6B',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Descriptivos realizados',
+        xaxis: {
+            title: 'Quincena',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Descriptivos entregados',
+            showline: false
+        },
+        widht:350,
+        height: 250
+        };
+        Plotly.newPlot('Descriptivos', data,layout, {responsive: true});
 
     }).fail(function(response){
         console.log("error"+response);
@@ -568,6 +614,52 @@ function monto_impuestos(){
         height: 250
         };
         Plotly.newPlot('monto_Impuestos', data,layout, {responsive: true});
+    
+    }).fail(function(response){
+        console.log("error"+response);
+    });      
+}
+function AvanceProyectos(){
+    var datos = {
+        Operacion : "Avances"
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/Proyecto.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: y,
+            y: x,
+            type: 'bar',
+            orientation:'h'
+        }];
+        var layout = {
+        title: 'Avance por proyecto',
+        xaxis: {
+            title: 'Porcentaje avanzado',
+            range: [0, 100],
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            showline: false
+        },
+        margin: {
+            l: 200,
+            r: 200,
+            t: 50,
+            b: 70
+          },
+        };
+        Plotly.newPlot('avanceProyectos', data,layout, {responsive: true});
 
     }).fail(function(response){
         console.log("error"+response);
