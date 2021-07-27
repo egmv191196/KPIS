@@ -417,6 +417,7 @@ function Valor(caso,id){
         url: "../Script/indicadores.php",
         data: datos,
     }).done(function(response){
+        alert(response);
         location.reload();
         /*if(response == 1){
             alert("Cliente agregado correctamente");
@@ -452,3 +453,21 @@ function vacantesTotales(id){
 function addClienteView() {
     location.href ="./addClientes.php";
 }
+function montoGastado(id){
+    monto=$(id).val();
+    Codigo=$(id).parents("tr").find("th")[0].innerHTML;
+    datos={
+        'Operacion': "actualizacionGasto",
+        'Codigo': Codigo,
+        'Monto': monto
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/Proyecto.php",
+        data: datos,
+    }).done(function(response){
+        location.reload();
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+}   

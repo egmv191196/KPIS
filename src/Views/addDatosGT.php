@@ -60,7 +60,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                $consulta="SELECT SQM, Valor FROM registroindicadores Where año=2021 AND SQM>$semana-4  and id_Req='R27A' ORDER BY SQM DESC limit 4";
+                                $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$semana-4  and id_Req='R27A' ORDER BY SQM DESC limit 4";
                                 $result= mysqli_query($conexion, $consulta);
                                 $filas=mysqli_num_rows($result);
                                 $primero=false;

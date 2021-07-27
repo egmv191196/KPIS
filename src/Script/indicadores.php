@@ -21,6 +21,7 @@
     $result =mysqli_query($conexion,$consulta);
   }else{
     $consulta = "INSERT INTO registroindicadores (id_registro, Usuario, id_Req, Fecha, Valor, año, SQM) VALUES (NULL, '$Usuario', '$Req', '$date', $Valor, $year, $SQM)";
-    echo mysqli_query($conexion,$consulta);
+    mysqli_query($conexion,$consulta);
   }
+  echo $consulta;
 ?> 

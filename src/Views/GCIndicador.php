@@ -99,6 +99,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row m-2">
+                        <div class="col-12">
+                            <div id="CostosProyecto">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

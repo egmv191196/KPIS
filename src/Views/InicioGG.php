@@ -75,6 +75,12 @@
                 <h5 class="text-center">Año: <?php echo date("Y");?></h5>
                 <h5 class="text-center"> Semana: <?php echo date("W");?> </h5>
                 <h3 class="text-center">Gerencia General</h3>
+                <div class="row m-2">
+                    <div class="col-12">
+                        <div id="tVSc">
+                        </div>
+                    </div>
+                </div>
                 <div class="row m-2" >
                     <div class="col-4">
                         <div id="orden_Trabajo"> </div>
@@ -123,6 +129,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="row m-2">
                     <div class="col-4">
                         <div id="monto_Impuestos">

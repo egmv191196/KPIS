@@ -372,6 +372,37 @@
                         </table>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
+                       <h4>Gastos por proyecto</h4>
+                       <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Codigo del proyecto</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Monto del proyecto</th>
+                                <th scope="col">Monto gastado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $consulta="SELECT * FROM proyecto Where Estado=1  ORDER BY fecha_Fin DESC";
+                                    $result= mysqli_query($conexion, $consulta);
+                                    $filas=mysqli_num_rows($result);
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$row[0].'</th>';
+                                        echo '<td scope="row">'.$row[1].'</td>';
+                                        echo '<td scope="row">'.$row[4].'</td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="'.$row[0].'" onchange="montoGastado(this);" value="'.$row[5].'"> </input> </td>';
+                                        echo '</tr>';
+                                    }
+                                    
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 

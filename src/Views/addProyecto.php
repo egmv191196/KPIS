@@ -128,7 +128,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3 m-2">
+                    <div class="col-6 m-2">
                         <table class="table dark-table" id="t_Conceptos">
                             <thead>
                                 <tr>

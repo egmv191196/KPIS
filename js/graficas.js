@@ -16,6 +16,7 @@ $(document).ready(function(){
             monto_impuestos()
             consumo_Efectivale();
             cartera_Vencida();
+            cVSg();
         break;
         case '3':
             Retrabajos();
@@ -36,6 +37,7 @@ $(document).ready(function(){
             consumo_Efectivale();
             cartera_Vencida();
             AvanceProyectos();
+            tVSc();
         break;
         default:
         break;
@@ -750,4 +752,88 @@ function Inconformidades(){
     }).fail(function(response){
         console.log("error"+response);
     });     
+}
+function cVSg(){
+    var datos = {
+        "Operacion" : 'cVSg',
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas2.php",
+        data: datos,
+    }).done(function(response){
+        //alert(response);
+        var datos=JSON.parse(response);
+        var nombre=[];
+        var contrato=[];
+        var gastado=[];
+        datos.forEach(function(elemento) {
+            nombre.push(elemento[0]);
+            contrato.push(elemento[1]);
+            gastado.push(elemento[2]);        
+        });
+        var gra1 = {
+            x: nombre,
+            y: contrato,
+            name: 'Presupuesto',
+            type: 'bar'
+        };
+        var gra2 = {
+            x: nombre,
+            y: gastado,
+            name: 'Gastado',
+            type: 'bar'
+        };
+        var data=[gra1, gra2];
+        var layout = {
+            title: 'Costos por proyecto',
+            barmode: 'group'
+        };
+        Plotly.newPlot('CostosProyecto', data,layout, {responsive: true});
+
+    }).fail(function(response){
+        console.log("error"+response);
+    }); 
+}
+function tVSc(){
+    var datos = {
+        "Operacion" : 'tVSc',
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas2.php",
+        data: datos,
+    }).done(function(response){
+        //alert(response);
+        var datos=JSON.parse(response);
+        var nombre=[];
+        var Avanzado=[];
+        var gastado=[];
+        datos.forEach(function(elemento) {
+            nombre.push(elemento[0]);
+            Avanzado.push(elemento[1]);
+            gastado.push(elemento[2]);        
+        });
+        var gra1 = {
+            x: nombre,
+            y: Avanzado,
+            name: 'Porcentaje Avanzado',
+            type: 'bar'
+        };
+        var gra2 = {
+            x: nombre,
+            y: gastado,
+            name: 'Porcentaje Gastado',
+            type: 'bar'
+        };
+        var data=[gra1, gra2];
+        var layout = {
+            title: 'Tecnico vs Comercial',
+            barmode: 'group'
+        };
+        Plotly.newPlot('tVSc', data,layout, {responsive: true});
+
+    }).fail(function(response){
+        console.log("error"+response);
+    }); 
 }

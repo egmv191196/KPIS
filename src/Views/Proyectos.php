@@ -84,10 +84,10 @@
                             echo '<tr>';
                             echo '<th scope="row">'.$row[0].'</th>';
                             echo '<td>'.$row[1].'</td>';
-                            echo '<td>'.$row[2].'</td>';
-                            echo '<td>'.$row[3].'</td>';
+                            echo '<td>'.date("d-m-Y",strtotime($row[2])).'</td>';
+                            echo '<td>'.date("d-m-Y",strtotime($row[3])).'</td>';
                             echo '<td>'.$row[4].'</td>';
-                            echo '<td>'.$row[8].'</td>';
+                            echo '<td>'.$row[10].'</td>';
                             echo '</tr>';
                         }
                     ?>
