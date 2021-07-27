@@ -18,6 +18,8 @@ $(document).ready(function(){
             cartera_Vencida();
         break;
         case '3':
+            Retrabajos();
+            Inconformidades();
             AvanceProyectos();
         break;
         case '4':
@@ -660,6 +662,90 @@ function AvanceProyectos(){
           },
         };
         Plotly.newPlot('avanceProyectos', data,layout, {responsive: true});
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function Retrabajos(){
+    var datos = {
+        "Indicador" : 'R27A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Retrabajos por semana',
+        xaxis: {
+            title: 'Semana',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Retrabajos por semana',
+            showline: false
+        },
+        widht:350,
+        height: 250
+        };
+        Plotly.newPlot('Retrabajos', data,layout, {responsive: true});
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function Inconformidades(){
+    var datos = {
+        "Indicador" : 'R28A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Inconformidades por semana',
+        xaxis: {
+            title: 'Semana',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Inconformidades',
+            showline: false
+        },
+        widht:350,
+        height: 250
+        };
+        Plotly.newPlot('Inconformidades', data,layout, {responsive: true});
 
     }).fail(function(response){
         console.log("error"+response);
