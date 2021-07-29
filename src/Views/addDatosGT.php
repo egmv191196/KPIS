@@ -182,33 +182,62 @@
                 ?> 
             </div>
             <div class="row"> 
-                <div class="col-sm text-center">
+
+                <div class="col-12 text-center">
                     <h3>Cuantificacion de servicios</h3>
+                    <div class="row">
                     <?php
-                        echo'   <table class="table dark-table">';
-                        echo'       <tr>';
-                        echo'            <th>Servicio</th>';
-                        echo'            <th>Unidad de medida</th>';
-                        echo'            <th>Quincena 04</th>';
-                        echo'            <th>Quincena 05</th>'; 
-                        echo'            <th>Quincena 06</th>'; 
-                        echo'            <th>Quincena 07</th>';             
-                        echo'       </tr>';
-                        $consulta="SELECT * FROM catalogo_conceptos"; 
+                        $consulta="SELECT * FROM catalogo_indicadores WHERE id_Dat LIKE 'K%' ORDER by id_Dat"; 
                         $result= mysqli_query($conexion,$consulta);
                         while($row=mysqli_fetch_array($result)){
+                            $Cod=$row[0];
+                            echo '<div class="col-4 text-center border border-dark rounded p-1">';
+                            echo '<h4>'.$row[1].'</h4>';
+                            echo'   <table class="table dark-table">';
                             echo'       <tr>';
-                            echo'           <th>'.$row[1].'</th>';
-                            echo'           <td>M^2</td>';
-                            echo'           <td>10</td>';
-                            echo'           <td>5</td>';
-                            echo'           <td>15</td>';
-                            echo'           <td ><input type="number" class="form-control celdas" id="R6B" onchange="Valor(2,this);" value=0> </input></td>';
-                            echo'       </tr>';
-                        }
+                            echo'            <th>Semana</th>';
+                            echo'            <th>Valor</th>';             
+                            echo'       </tr>';                            
+                            $consulta1="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$semana-4  and id_Req='$Cod' ORDER BY SQM DESC limit 4";
+                            //echo $consulta1;
+                            $result1= mysqli_query($conexion, $consulta1);
+                            //echo $result1;
+                            $filas=mysqli_num_rows($result1);
+                            //echo $filas;
+                            $primero=false;
+                            if($filas<=3){
+                                if ($filas==0) {
+                                    echo '<tr>';
+                                    echo '<th scope="row">'.date('W').'</th>';
+                                    echo '<td > <input type="number" class="form-control celdas" id="'.$Cod.'" onchange="Cuantificacion('.$Cod.',this);"> </input> </td>';
+                                    echo '</tr>';
+                                }else if ($filas==1) {
+                                    $row = mysqli_fetch_array($result1);
+                                    echo '<tr>';
+                                    echo '<th scope="row">'.$row[0].'</th>';
+                                    echo '<td > <input type="number" class="form-control celdas" id="R27A" onchange="Cuantificacion('.$Cod.',this);" value="'.$row[1].'"> </input> </td>';
+                                    echo '</tr>';
+                                } else if ($filas>1) {
+                                    while ($row = mysqli_fetch_array($result1)) {
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$row[0].'</th>';
+                                        if($primero==false){
+                                            echo '<td > <input type="number" class="form-control celdas" id="R27A" onchange="Cuantificacion('.$Cod.',this);" value="'.$row[1].'"> </input> </td>';
+                                            $primero=true;
+                                        }  
+                                        else{
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                        
+                                    }
+                                }
+                            }
                             echo'   </table>';
-                        
-                    ?>                       
+                            echo'</div>';
+                        }
+                    ?> 
+                    </div>                      
                 </div>
                 
             </div>

@@ -30,41 +30,75 @@
             <div class="collapse navbar-collapse" id="menu">
                 <div class="navbar-nav">
                     <ul class="navbar-nav mr-auto mt-1 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="InicioGG.php">Dashboard<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="Graficas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Graficas</a>
-                        <div class="dropdown-menu" aria-labelledby="Graficas">
-                            <a class="dropdown-item" href="GGIndicador.php">Gerencia General</a>
-                            <a class="dropdown-item" href="GCIndicador.php">Gerencia Comercial</a>
-                            <a class="dropdown-item" href="GTIndicador.php">Gerencia Tecnica</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="Proyectos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proyectos</a>
-                        <div class="dropdown-menu" aria-labelledby="Proyectos">
-                            <a class="dropdown-item" href="Proyectos.php">Listar Proyectos</a>
-                            <a class="dropdown-item" href="addProyecto.php">Agregar Proyecto</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="Clientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
-                        <div class="dropdown-menu" aria-labelledby="Clientes">
-                            <a class="dropdown-item" href="Clientes.php"> Listar Clientes</a>
-                            <a class="dropdown-item" href="addClientes.php">Agregar Clientes</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="Proveedores" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedores</a>
-                        <div class="dropdown-menu" aria-labelledby="Proveedores">
-                            <a class="dropdown-item" href="Proveedor.php">Listar Proveedores</a>
-                            <a class="dropdown-item" href="addProveedor.php">Agregar Proveedor</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="addDatosGG.php">Datos</a>
-                    </li>       
+                        <?php
+                        session_start();
+                        $car=$_SESSION['cargo'];
+                            if($car=="GG" || $car=="Admin" ){ 
+                        ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="InicioGG.php">Dashboard<span class="sr-only">(current)</span></a>
+                            </li>
+                        <?php
+                            }elseif ($car=="GC" ) {?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="InicioGC.php">Dashboard <span class="sr-only">(current)</span></a>
+                                </li>
+                        <?php
+                            }
+                        ?>   
+                        <?php
+                            if(!isset($_SESSION['k_user'])){	
+                                header("Location:../../index.php");
+                            }
+                            if($car=="GG" || $car=="Admin" ){ 
+                        ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="" id="Graficas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Graficas</a>
+                                <div class="dropdown-menu" aria-labelledby="Graficas">
+                                    <a class="dropdown-item" href="GGIndicador.php">Gerencia General</a>
+                                    <a class="dropdown-item" href="GCIndicador.php">Gerencia Comercial</a>
+                                    <a class="dropdown-item" href="GTIndicador.php">Gerencia Tecnica</a>
+                                </div>
+                            </li>
+                        <?php
+                            }elseif ($car!="GG" || $car!="Admin" ) {
+                            }
+                        ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="Proyectos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proyectos</a>
+                            <div class="dropdown-menu" aria-labelledby="Proyectos">
+                                <a class="dropdown-item" href="Proyectos.php">Listar Proyectos</a>
+                                <a class="dropdown-item" href="addProyecto.php">Agregar Proyecto</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="Clientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
+                            <div class="dropdown-menu" aria-labelledby="Clientes">
+                                <a class="dropdown-item" href="Clientes.php"> Listar Clientes</a>
+                                <a class="dropdown-item" href="addClientes.php">Agregar Clientes</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="Proveedores" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedores</a>
+                            <div class="dropdown-menu" aria-labelledby="Proveedores">
+                                <a class="dropdown-item" href="Proveedor.php">Listar Proveedores</a>
+                                <a class="dropdown-item" href="addProveedor.php">Agregar Proveedor</a>
+                            </div>
+                        </li>
+                        <?php
+                            if($car=="GG" || $car=="Admin" ){ 
+                        ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="addDatosGG.php">Datos</a>
+                            </li>
+                        <?php
+                            }elseif ($car=="GC" ) {?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="addDatosGC.php">Datos</a>
+                                </li>
+                        <?php
+                            }
+                        ?>       
                     </ul>
                 </div>            
             </div>

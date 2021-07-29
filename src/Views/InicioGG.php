@@ -70,10 +70,16 @@
             </div>
             <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-            <div >
+            <div>
+                <?php 
+                    $semana=date("W");
+                    $mes=date('m');  
+                    $quincenaActual=($semana/2);
+                    $year=date("Y");               
+                ?>
                 <input type="hidden" id="Area" value="4"></input>
-                <h5 class="text-center">Año: <?php echo date("Y");?></h5>
-                <h5 class="text-center"> Semana: <?php echo date("W");?> </h5>
+                <h5 class="text-center">Año: <?php echo $year;?></h5>
+                <h5 class="text-center"> Semana: <?php echo $mes;?> </h5>
                 <h3 class="text-center">Gerencia General</h3>
                 <div class="row m-2">
                     <div class="col-12">

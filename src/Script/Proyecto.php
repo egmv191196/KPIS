@@ -12,8 +12,8 @@
             $id_Presupuesto=$_POST['id_Presupuesto'];
             $id_Cliente=$_POST['id_Cliente'];
             $conceptos=$_POST['list_Conceptos'];
-            $consulta = "INSERT INTO proyecto (clave_Proyecto, Nombre, fecha_IniciO, fecha_Fin, monto_Contrato, monto_Gastado, id_Presupuesto, Estado,  id_Cliente) VALUES 
-            ('{$Clave}','{$Name}','{$date}','{$date}',{$costoProyecto}, 0, '{$id_Presupuesto}', 1 ,{$id_Cliente})";
+            $consulta = "INSERT INTO proyecto (clave_Proyecto, Nombre, fecha_IniciO, fecha_Fin, monto_Contrato, monto_Gastado, monto_Pagado id_Presupuesto, Estado,  id_Cliente) VALUES 
+            ('{$Clave}','{$Name}','{$date}','{$date}',{$costoProyecto}, 0, 0, '{$id_Presupuesto}', 1 ,{$id_Cliente})";
             $res= mysqli_query($conexion,$consulta);
             if ($res==1) {
                 $consulta="INSERT INTO conceptos (id_Concepto, num_Concepto, Nombre, Valor, Avance, clave_Proyecto) VALUES "; 
@@ -65,6 +65,12 @@
             $id_Proyecto=$_POST['Codigo'];
             $Monto=$_POST['Monto'];
             $consulta="UPDATE proyecto SET monto_Gastado={$Monto} WHERE clave_Proyecto='{$id_Proyecto}'";
+            echo mysqli_query($conexion,$consulta);
+
+        }else if ($Operacion=="actualizacionAbono") {
+            $id_Proyecto=$_POST['Codigo'];
+            $Monto=$_POST['Monto'];
+            $consulta="UPDATE proyecto SET monto_Pagado={$Monto} WHERE clave_Proyecto='{$id_Proyecto}'";
             echo mysqli_query($conexion,$consulta);
 
         }

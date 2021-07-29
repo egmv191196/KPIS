@@ -429,6 +429,35 @@ function Valor(caso,id){
         console.log("error"+response);
     });
 }
+function Cuantificacion(id){
+    Req=$(id).attr('id');
+    valor= $(id).val();
+    SQM=$(id).parents("tr").find("th")[0].innerHTML;
+    user="EsmeGT";
+    //alert("El valor es "+ valor+" El requerimiento es el "+ Req+" Renglon "+SQM);
+    datos={
+        'Req': Req,
+        'Valor': valor,
+        'SQM' : SQM,
+        'User': user
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/indicadores.php",
+        data: datos,
+    }).done(function(response){
+        //alert(response);
+        location.reload();
+        /*if(response == 1){
+            alert("Cliente agregado correctamente");
+            window.location="./Clientes.php";
+        }else{
+            alert("Usuario no agregado correctamente");
+        }*/
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+}
 
 function vacantesTotales(id){
     valor=$(id).val();
@@ -470,4 +499,24 @@ function montoGastado(id){
     }).fail(function(response){
         console.log("error"+response);
     });
-}   
+} 
+
+function montoAbonado(id){
+    monto=$(id).val();
+    Codigo=$(id).parents("tr").find("th")[0].innerHTML;
+    datos={
+        'Operacion': "actualizacionAbono",
+        'Codigo': Codigo,
+        'Monto': monto
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/Proyecto.php",
+        data: datos,
+    }).done(function(response){
+        location.reload();
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+}
+  

@@ -30,8 +30,29 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="InicioGC.php">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="Proyectos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proyectos</a>
+                        <div class="dropdown-menu" aria-labelledby="Proyectos">
+                            <a class="dropdown-item" href="Proyectos.php">Listar Proyectos</a>
+                            <a class="dropdown-item" href="addProyecto.php">Agregar Proyecto</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="Clientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
+                        <div class="dropdown-menu" aria-labelledby="Clientes">
+                            <a class="dropdown-item" href="Clientes.php"> Listar Clientes</a>
+                            <a class="dropdown-item" href="addClientes.php">Agregar Clientes</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="Proveedores" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Proveedores</a>
+                        <div class="dropdown-menu" aria-labelledby="Proveedores">
+                            <a class="dropdown-item" href="Proveedor.php">Listar Proveedores</a>
+                            <a class="dropdown-item" href="addProveedor.php">Agregar Proveedor</a>
+                        </div>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Datos</a>
+                        <a class="nav-link" href="addDatosGC.php">Datos</a>
                     </li>
                     </ul>
                 </div>
@@ -41,10 +62,10 @@
              Año: <?php echo date("Y");?> -- Semana: <?php echo date("W");?> 
             </h1>
             <?php 
-                $semana= date("W");   
-                $year=date('o');
-                $mes=date('m');  
-                $quincenaActual=$semana/2;         
+                $semana=date("W")-1;
+                $mes=date('m')-1;  
+                $quincenaActual=($semana/2)-1   ;
+                $year=date("Y");         
             ?> 
             <div class="datos mt-5" id="GC">
                 <div class="row">     
@@ -374,7 +395,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                       <h4>Gastos por proyecto</h4>
+                       <h4>Datos por proyecto</h4>
                        <table class="table">
                             <thead>
                                 <tr>
@@ -382,6 +403,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Monto del proyecto</th>
                                 <th scope="col">Monto gastado</th>
+                                <th scope="col">Monto abonado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -395,9 +417,9 @@
                                         echo '<td scope="row">'.$row[1].'</td>';
                                         echo '<td scope="row">'.$row[4].'</td>';
                                         echo '<td > <input type="number" class="form-control celdas" id="'.$row[0].'" onchange="montoGastado(this);" value="'.$row[5].'"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="'.$row[0].'" onchange="montoAbonado(this);" value="'.$row[6].'"> </input> </td>';
                                         echo '</tr>';
-                                    }
-                                    
+                                    } 
                                 ?>
                             </tbody>
                         </table>

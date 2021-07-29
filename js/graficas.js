@@ -828,7 +828,7 @@ function tVSc(){
         };
         var data=[gra1, gra2];
         var layout = {
-            title: 'Tecnico vs Comercial',
+            title: 'Tecnico vs Financiero',
             barmode: 'group'
         };
         Plotly.newPlot('tVSc', data,layout, {responsive: true});

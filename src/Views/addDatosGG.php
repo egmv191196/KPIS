@@ -76,7 +76,14 @@
                 require_once('../Script/conexionBD.php'); 
             ?>
             <h1 class="text-center">Gerencia General</h1>
-            <h5 class="text-center">Año: <?php echo date("Y");?></h5>
+            <?php 
+                $semana=date("W")-1;
+                $mes=date('m')-1;  
+                $quincenaActual=($semana/2)-1   ;
+                $year=date("Y");         
+            ?> 
+
+            <h5 class="text-center">Año: <?php echo date("o");?></h5>
             <h5 class="text-center"> Semana: <?php echo date("W");?> </h5>
             
             <div class="datos mt-5" id="GG">
@@ -86,7 +93,6 @@
                        <label>Numero de vacantes totales</label> 
                        <input type="text" name="vacantesTotales" class="form-control valores" id="vacantesTotales" 
                        <?php
-                            $year=date('o');
                             $consulta="SELECT SQM,Valor FROM registroIndicadores WHERE id_Req='R4A' AND año=$year ORDER by SQM DESC"; 
                             $result= mysqli_query($conexion,$consulta);
                             if($row=mysqli_fetch_array($result)){
@@ -103,8 +109,6 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $year=date('o');
-                                    $mes=date('m');
                                     $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$mes-4  and id_Req='R4B' ORDER BY SQM DESC limit 4";
                                     $result= mysqli_query($conexion, $consulta);
                                     $filas=mysqli_num_rows($result);
@@ -141,68 +145,6 @@
                         </table>
                        
                     </div>
-                    <!--
-                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                       <h4>Descriptivos de puestos</h4>
-                       <?php $semana= date("W");     
-                       ?> 
-                        Numero de puestos totales
-                       <input type="text"  name="puestosTotales" class="form-control valores" style="width: 100%;" style="text-align: center" id="puestos" 
-                       <?php
-                            $consulta="SELECT SQM,Valor FROM registroIndicadores WHERE id_Req='R6A' AND año=$year ORDER by SQM DESC"; 
-                            $result= mysqli_query($conexion,$consulta);
-                            if($row=mysqli_fetch_array($result)){
-                                echo 'value="'.$row['Valor'].'"';
-                            }
-                        ?> 
-                       placeholder="No. de puestos totales" required>
-
-                       <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Quincena</th>
-                                <th scope="col">Descriptivos de puesto listos</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                    $quincenaActual=$semana/2;
-                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$quincenaActual-4 and id_Req='R6B' ORDER BY SQM DESC limit 4";
-                                    $result= mysqli_query($conexion, $consulta);
-                                    $filas=mysqli_num_rows($result);
-                                    $primero=false;
-                                    if($filas<=3){
-                                        echo '<tr>';
-                                        echo '<th scope="row">'.$quincenaActual.'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R6B" onchange="Valor(2,this);"> </input> </td>';
-                                        echo '</tr>';
-                                        while ($row = mysqli_fetch_array($result)) {
-                                            echo '<tr>';
-                                            echo '<th scope="row">'.$row[0].'</th>';
-                                            echo '<td>'.$row[1].'</td>';
-                                            echo '</tr>';
-                                        }
-                                    }else{
-                                        while ($row = mysqli_fetch_array($result)) {
-                                            echo '<tr>';
-                                            echo '<th scope="row">'.$row[0].'</th>';
-                                            if($primero==false){
-                                                echo '<td > <input type="number" class="form-control celdas" id="R6B" onchange="Valor(2,this);" value="'.$row[1].'"> </input> </td>';
-                                                $primero=true;
-                                            }
-                                            
-                                            else{
-                                                echo '<td>'.$row[1].'</td>';
-                                                echo '</tr>';
-                                            }
-                                            
-                                        }
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
-
-                    </div>-->
                     <div class="col-sm text-center border border-dark rounded m-1 p-1">
                     <h4>Bajas de personal</h4>
                        <table class="table">
@@ -214,9 +156,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $year=date('o');
-                                    $mes=date('m');
-                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=2021 AND SQM>$mes-4  and id_Req='R10A' ORDER BY SQM DESC limit 4";
+                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$mes-4  and id_Req='R10A' ORDER BY SQM DESC limit 4";
                                     $result= mysqli_query($conexion, $consulta);
                                     $filas=mysqli_num_rows($result);
                                     $primero=false;
@@ -264,8 +204,6 @@
                             </thead>
                             <tbody>
                             <?php
-                                $year=date('o');
-                                $mes=date('m');
                                 $consulta1="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$quincenaActual-4  and id_Req='R1A'  ORDER BY SQM DESC limit 4";
                                 $consulta2="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$quincenaActual-4  and id_Req='R1B'  ORDER BY SQM DESC limit 4";
                                 $result1= mysqli_query($conexion, $consulta1);
@@ -353,8 +291,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
-                                    $quincenaActual=$semana/2;
+                                <?php
                                     $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$quincenaActual-4 and id_Req='R5A' ORDER BY SQM DESC limit 4";
                                     $result= mysqli_query($conexion, $consulta);
                                     $filas=mysqli_num_rows($result);
@@ -400,8 +337,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
-                                    $quincenaActual=$semana/2;
+                                <?php
                                     $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$quincenaActual-4 and id_Req='R11A' ORDER BY SQM DESC limit 4";
                                     $result= mysqli_query($conexion, $consulta);
                                     $filas=mysqli_num_rows($result);
