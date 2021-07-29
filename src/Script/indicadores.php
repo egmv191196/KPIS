@@ -1,7 +1,6 @@
 <?php
   $Req=$_POST['Req'];
   $Valor=$_POST['Valor'];
-  //$SQM=$_POST['SQM'];
   $Usuario=$_POST['User'];
   $year=date('o');
   $date=date('Y-m-d');

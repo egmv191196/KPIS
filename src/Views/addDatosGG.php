@@ -116,7 +116,7 @@
                                     $primero=false;
                                     if($filas<=3){
                                         echo '<tr>';
-                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<th scope="row">'.$mes.'</th>';
                                         echo '<td > <input type="number" class="form-control celdas" id="R4B" onchange="Valor(1,this);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result)) {
@@ -162,7 +162,7 @@
                                     $primero=false;
                                     if($filas<=3){
                                         echo '<tr>';
-                                        echo '<th scope="row">'.date('m').'</th>';
+                                        echo '<th scope="row">'.$mes.'</th>';
                                         echo '<td > <input type="number" class="form-control celdas" id="R10A" onchange="Valor(3,this);"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result)) {

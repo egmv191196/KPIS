@@ -38,14 +38,11 @@ $(document).ready(function(){
             cartera_Vencida();
             AvanceProyectos();
             tVSc();
+            cxcVScxp()
         break;
         default:
         break;
-    }
-        
-        
-        
-    
+    }  
 }) 
 function orden_Trabajo(){
     var x1=[];
@@ -104,7 +101,7 @@ function orden_Trabajo(){
     };
     var data=[data1,data2];
     var layout = {
-    title: 'Orden de trabajo ',
+    title: 'Orden de trabajo <br>(Materiales) ',
     xaxis: {
         title: 'Quincena',
         showgrid: false,
@@ -753,6 +750,7 @@ function Inconformidades(){
         console.log("error"+response);
     });     
 }
+//VS GG
 function cVSg(){
     var datos = {
         "Operacion" : 'cVSg',
@@ -767,22 +765,34 @@ function cVSg(){
         var nombre=[];
         var contrato=[];
         var gastado=[];
+        var contrato1=[];
+        var gastado1=[];
         datos.forEach(function(elemento) {
             nombre.push(elemento[0]);
             contrato.push(elemento[1]);
-            gastado.push(elemento[2]);        
+            gastado.push(elemento[2]); 
+            contrato1.push('$'+elemento[1]);
+            gastado1.push('$'+elemento[2]);       
         });
         var gra1 = {
             x: nombre,
             y: contrato,
             name: 'Presupuesto',
-            type: 'bar'
+            type: 'bar',
+            text: contrato1,
+            textposition: 'auto',
+            hoverinfo: 'none',
+            opacity: 1
         };
         var gra2 = {
             x: nombre,
             y: gastado,
             name: 'Gastado',
-            type: 'bar'
+            type: 'bar',
+            text: gastado1,
+            textposition: 'auto',
+            hoverinfo: 'none',
+            opacity: 1
         };
         var data=[gra1, gra2];
         var layout = {
@@ -808,27 +818,42 @@ function tVSc(){
         var datos=JSON.parse(response);
         var nombre=[];
         var Avanzado=[];
+        var Avanzado1=[];
         var gastado=[];
+        var gastado1=[];
+        
+        
         datos.forEach(function(elemento) {
             nombre.push(elemento[0]);
             Avanzado.push(elemento[1]);
-            gastado.push(elemento[2]);        
+            gastado.push(elemento[2]);
+            Avanzado1.push(elemento[1]+'%');
+            gastado1.push(elemento[2]+'%');        
         });
         var gra1 = {
             x: nombre,
             y: Avanzado,
             name: 'Porcentaje Avanzado',
-            type: 'bar'
+            type: 'bar',
+            text: Avanzado1,
+            textposition: 'auto',
+            hoverinfo: 'none',
+            opacity: 1            
         };
         var gra2 = {
             x: nombre,
             y: gastado,
             name: 'Porcentaje Gastado',
-            type: 'bar'
+            type: 'bar',
+            text: gastado1,
+            textposition: 'auto',
+            hoverinfo: 'none',
+            opacity: 1 
         };
         var data=[gra1, gra2];
         var layout = {
-            title: 'Tecnico vs Financiero',
+            title: 'Proyectos <br><b>Tecnico vs Financiero',
+            paper_bgcolor: '#E58A9D ',
             barmode: 'group'
         };
         Plotly.newPlot('tVSc', data,layout, {responsive: true});
@@ -836,4 +861,73 @@ function tVSc(){
     }).fail(function(response){
         console.log("error"+response);
     }); 
+}
+function cxcVScxp(){
+    var x1=[];
+    var y1=[];
+    var x2=[];
+    var y2=[];
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "../Script/graficas.php",
+        data: {
+            "Indicador" : 'R16A',
+            "Cantidad" : 'A'
+        },
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        datos.forEach(function(elemento) {
+            x1.push(elemento[0]);
+            y1.push(elemento[1]);       
+        });
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "../Script/graficas.php",
+        data: {
+            "Indicador" : 'R17A',
+            "Cantidad" : 'A'
+        },
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        datos.forEach(function(elemento) {
+            x2.push(elemento[0]);
+            y2.push(elemento[1]);       
+        });
+    }).fail(function(response){
+        console.log("error"+response);
+    });  
+    var data1 = {
+        x: x1,
+        y: y1,
+        type: 'scatter',
+        name: 'CXP'
+    };
+    var data2 = {
+        x: x2,
+        y: y2,
+        type: 'scatter',
+        name:'CXC'
+    };
+    var data=[data1,data2];
+    var layout = {
+    title: '<b>CXP VS CXC',
+    paper_bgcolor: '#7ECBD5',
+    xaxis: {
+        title: 'Semana',
+        showgrid: false,
+        zeroline: false
+    },
+    yaxis: {
+        title: 'Ordenes ',
+        showline: false
+    },
+    widht:350,
+    height: 500
+    };
+    Plotly.newPlot('cxcVScxp', data,layout, {responsive: true}); 
 }

@@ -87,6 +87,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="row m-2">
+                    <div class="col-12">
+                        <div id="cxcVScxp">
+                        </div>
+                    </div>
+                </div>
                 <div class="row m-2" >
                     <div class="col-4">
                         <div id="orden_Trabajo"> </div>

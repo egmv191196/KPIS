@@ -400,6 +400,18 @@ function Valor(caso,id){
             user="EsmeGT";
             //alert ("El nuevo valor de R5A es "+ valor); 
         break;
+        case 30:
+            valor=$('#R30A').val();
+            req="R30A";
+            user="LeoGC";
+            //alert ("El nuevo valor de R5A es "+ valor); 
+        break;
+        case 31:
+            valor=$('#R30B').val();
+            req="R30B";
+            user="LeoGC";
+            //alert ("El nuevo valor de R5A es "+ valor); 
+        break;
         default:
         break;  
     }
@@ -432,7 +444,7 @@ function Valor(caso,id){
 function Cuantificacion(id){
     Req=$(id).attr('id');
     valor= $(id).val();
-    SQM=$(id).parents("tr").find("th")[0].innerHTML;
+    SQM=$(cuanti).find("th")[1].innerHTML;
     user="EsmeGT";
     //alert("El valor es "+ valor+" El requerimiento es el "+ Req+" Renglon "+SQM);
     datos={
@@ -446,7 +458,7 @@ function Cuantificacion(id){
         url: "../Script/indicadores.php",
         data: datos,
     }).done(function(response){
-        //alert(response);
+        alert(response);
         location.reload();
         /*if(response == 1){
             alert("Cliente agregado correctamente");
