@@ -331,7 +331,7 @@ function Valor(caso,id){
         case 8:
             valor=$('#R5A').val();
             req="R5A";
-            user="GG";
+            user="GC";
             //alert ("El nuevo valor de R5A es "+ valor); 
         break;
         case 9:

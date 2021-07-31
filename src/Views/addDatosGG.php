@@ -76,6 +76,8 @@
                 require_once('../Script/conexionBD.php'); 
             ?>
             <h1 class="text-center">Gerencia General</h1>
+            <h5 class="text-center">Año: <?php echo date("o");?></h5>
+            <h5 class="text-center"> Semana: <?php echo date("W");?> </h5>
             <?php 
                 $semana=date("W")-1;
                 $mes=date('m')-1;  
@@ -83,8 +85,7 @@
                 $year=date("Y");         
             ?> 
 
-            <h5 class="text-center">Año: <?php echo date("o");?></h5>
-            <h5 class="text-center"> Semana: <?php echo date("W");?> </h5>
+            
             
             <div class="datos mt-5" id="GG">
                 <div class="row">
@@ -284,52 +285,6 @@
                                     }
                                 }
                             ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-sm text-center border border-dark rounded m-1 p-1">
-                       <h4>Reportes de nomina</h4>
-                       <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Quincena</th>
-                                <th scope="col">Reportes de nomina registrados</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    $consulta="SELECT SQM, Valor FROM registroindicadores Where año=$year and SQM>$quincenaActual-4 and id_Req='R5A' ORDER BY SQM DESC limit 4";
-                                    $result= mysqli_query($conexion, $consulta);
-                                    $filas=mysqli_num_rows($result);
-                                    $primero=false;
-                                    if($filas<=3){
-                                        echo '<tr>';
-                                        echo '<th scope="row">'.$quincenaActual.'</th>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R5A" onchange="Valor(8,this);"> </input> </td>';
-                                        echo '</tr>';
-                                        while ($row = mysqli_fetch_array($result)) {
-                                            echo '<tr>';
-                                            echo '<th scope="row">'.$row[0].'</th>';
-                                            echo '<td>'.$row[1].'</td>';
-                                            echo '</tr>';
-                                        }
-                                    }else{
-                                        while ($row = mysqli_fetch_array($result)) {
-                                            echo '<tr>';
-                                            echo '<th scope="row">'.$row[0].'</th>';
-                                            if($primero==false){
-                                                echo '<td > <input type="number" class="form-control celdas" id="R5A" onchange="Valor(8,this);" value="'.$row[1].'"> </input> </td>';
-                                                $primero=true;
-                                            }
-                                            
-                                            else{
-                                                echo '<td>'.$row[1].'</td>';
-                                                echo '</tr>';
-                                            }
-                                            
-                                        }
-                                    }
-                                ?>
                             </tbody>
                         </table>
                     </div>

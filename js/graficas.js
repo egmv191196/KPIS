@@ -5,7 +5,6 @@ $(document).ready(function(){
             vac_Ocupadas();
             Bajas_Personal();
             orden_Trabajo();
-            reporte_Nomina();
             horas_Extras()
         break;
         case '2':
@@ -18,12 +17,14 @@ $(document).ready(function(){
             cartera_Vencida();
             cVSg();
             estimacionesProyecto();
+            reporte_Nomina();
         break;
         case '3':
             Retrabajos();
             Inconformidades();
             plazosCumplidos();
             AvanceProyectos();
+            
         break;
         case '4':
             estimacionesProyecto();
@@ -114,7 +115,7 @@ function orden_Trabajo(){
     },
     paper_bgcolor: '#E0C98F',
     widht:350,
-    height: 250
+    height: 400
     };
     Plotly.newPlot('orden_Trabajo', data,layout, {responsive: true});   
 }
@@ -154,56 +155,14 @@ function vac_Ocupadas(){
         },
         paper_bgcolor: '#E0C98F',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('VacantesOcupadas', data, layout, {responsive: true});
     }).fail(function(response){
         console.log("error"+response);
     });     
 }
-function reporte_Nomina(){
-    var datos = {
-        "Indicador" : 'R5A',
-        "Cantidad" : 'A'
-    };
-    $.ajax({
-        type: "POST",
-        url: "../Script/graficas.php",
-        data: datos,
-    }).done(function(response){
-        var datos=JSON.parse(response);
-        var x=[];
-        var y=[];
-        datos.forEach(function(elemento) {
-            x.push(elemento[0]);
-            y.push(elemento[1]);       
-        });
-        var data = [{
-            x: x,
-            y: y,
-            type: 'scatter'
-        }];
-        var layout = {
-        title: 'Reportes de nomina',
-        xaxis: {
-            title: 'Quincena',
-            showgrid: false,
-            zeroline: false
-        },
-        yaxis: {
-            title: 'Reportes reportados',
-            showline: false
-        },
-        paper_bgcolor: '#E0C98F',
-        widht:350,
-        height: 250
-        };
-        Plotly.newPlot('reporte_Nomina', data,layout, {responsive: true});
 
-    }).fail(function(response){
-        console.log("error"+response);
-    });     
-}
 function Bajas_Personal(){
     var datos = {
         "Indicador" : 'R10A',
@@ -239,7 +198,7 @@ function Bajas_Personal(){
         },
         paper_bgcolor: '#E0C98F',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('bajas_Personal', data,layout, {responsive: true});
 
@@ -282,7 +241,7 @@ function horas_Extras(){
         },
         paper_bgcolor: '#E0C98F',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('horas_Extras', data,layout, {responsive: true});
 
@@ -324,9 +283,52 @@ function Descriptivos(){
             showline: false
         },
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('Descriptivos', data,layout, {responsive: true});
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+}
+function reporte_Nomina(){
+    var datos = {
+        "Indicador" : 'R5A',
+        "Cantidad" : 'A'
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/graficas.php",
+        data: datos,
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        var x=[];
+        var y=[];
+        datos.forEach(function(elemento) {
+            x.push(elemento[0]);
+            y.push(elemento[1]);       
+        });
+        var data = [{
+            x: x,
+            y: y,
+            type: 'scatter'
+        }];
+        var layout = {
+        title: 'Reportes de nomina',
+        xaxis: {
+            title: 'Quincena',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Reportes reportados',
+            showline: false
+        },
+        paper_bgcolor: '#59AA66',
+        widht:350,
+        height: 400
+        };
+        Plotly.newPlot('reporte_Nomina', data,layout, {responsive: true});
 
     }).fail(function(response){
         console.log("error"+response);
@@ -352,7 +354,7 @@ function saldo_Bancos(){
         var data = [{
             x: x,
             y: y,
-            type: 'scatter'
+            mode: 'lines+markers'
         }];
         var layout = {
         title: 'Saldo en bancos',
@@ -367,7 +369,7 @@ function saldo_Bancos(){
         },
         paper_bgcolor: '#59AA66',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('saldo_Bancos', data,layout, {responsive: true});
 
@@ -410,7 +412,7 @@ function CXP(){
         },
         paper_bgcolor: '#59AA66',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('CXP', data,layout, {responsive: true});
 
@@ -453,7 +455,7 @@ function CXC(){
         },
         paper_bgcolor: '#59AA66',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('CXC', data,layout, {responsive: true});
 
@@ -481,7 +483,7 @@ function consumo_Efectivale(){
         var data = [{
             x: x,
             y: y,
-            type: 'scatter'
+            mode: 'lines+markers',
         }];
         var layout = {
         title: 'Consumo efectivale',
@@ -496,7 +498,7 @@ function consumo_Efectivale(){
         },
         paper_bgcolor: '#59AA66',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('consumo_Efectivale', data,layout, {responsive: true});
 
@@ -539,7 +541,7 @@ function cartera_Vencida(){
         },
         paper_bgcolor: '#59AA66',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('cartera_Vencida', data,layout, {responsive: true});
 
@@ -567,7 +569,7 @@ function reporte_Facturacion(){
         var data = [{
             x: x,
             y: y,
-            type: 'scatter'
+            type: 'Scatter'
         }];
         var layout = {
         title: 'Reportes de facturacion',
@@ -582,7 +584,7 @@ function reporte_Facturacion(){
         },
         paper_bgcolor: '#59AA66',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('reporte_Facturacion', data,layout, {responsive: true});
 
@@ -625,7 +627,7 @@ function monto_impuestos(){
         },
         paper_bgcolor: '#59AA66',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('monto_Impuestos', data,layout, {responsive: true});
     
@@ -715,7 +717,7 @@ function Retrabajos(){
         },
         paper_bgcolor: '#EE8199',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('Retrabajos', data,layout, {responsive: true});
 
@@ -758,7 +760,7 @@ function Inconformidades(){
         },
         paper_bgcolor: '#EE8199',
         widht:350,
-        height: 250
+        height: 400
         };
         Plotly.newPlot('Inconformidades', data,layout, {responsive: true});
 
@@ -831,7 +833,7 @@ function estimacionesProyecto(){
     },
     paper_bgcolor: '#59AA66',
     widht:350,
-    height: 500
+    height: 400
     };
     Plotly.newPlot('Estimaciones', data,layout, {responsive: true});
 }
@@ -953,7 +955,9 @@ function cVSg(){
         var layout = {
             title: 'Costos por proyecto',
             paper_bgcolor: '#59AA66',
-            barmode: 'group'
+            barmode: 'group',
+            widht:350,
+            height: 500
         };
         Plotly.newPlot('CostosProyecto', data,layout, {responsive: true});
 
@@ -1058,13 +1062,13 @@ function cxcVScxp(){
     var data1 = {
         x: x1,
         y: y1,
-        type: 'scatter',
+        mode: 'lines+markers',
         name: 'CXP'
     };
     var data2 = {
         x: x2,
         y: y2,
-        type: 'scatter',
+        mode: 'lines+markers',
         name:'CXC'
     };
     var data=[data1,data2];

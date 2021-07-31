@@ -81,18 +81,6 @@
                 <h5 class="text-center">Año: <?php echo $year;?></h5>
                 <h5 class="text-center"> Semana: <?php echo $mes;?> </h5>
                 <h3 class="text-center">Gerencia General</h3>
-                <div class="row m-2">
-                    <div class="col-12">
-                        <div id="tVSc">
-                        </div>
-                    </div>
-                </div>
-                <div class="row m-2">
-                    <div class="col-12">
-                        <div id="CostosProyecto">
-                        </div>
-                    </div>
-                </div>
                 <div class="row m-2" >
                     <div class="col-4">
                         <div id="horas_Extras"> </div>
@@ -100,13 +88,14 @@
                     <div class="col-4">
                         <div id="orden_Trabajo"> </div>
                     </div>
-                    <div class="col-4">
-                        <div id="reporte_Nomina"> </div>
-                    </div>
                 </div>     
                 <h3 class="text-center">Gerencia Comercial</h3>
                 <div class="row m-2">
-                    <div class="col-12">
+                    <div class="col-sm">
+                        <div id="CostosProyecto">
+                        </div>
+                    </div>
+                    <div class="col-sm">
                         <div id="cxcVScxp">
                         </div>
                     </div>
@@ -127,9 +116,12 @@
                     
                 </div>    
                 <div class="row m-2">
-                    <div class="col-4">
+                    <div class="col-sm">
                         <div id="consumo_Efectivale">
                         </div>
+                    </div>
+                    <div class="col-sm">
+                        <div id="reporte_Nomina"> </div>
                     </div>                   
                 </div>
                 
@@ -141,8 +133,12 @@
                 </div>
                 <h3 class="text-center">Gerencia Tecnica</h3>
                 <div class="row m-2" >
-                    <div class="col-12">
+                    <div class="col-sm">
                         <div id="avanceProyectos"> </div>
+                    </div>
+                    <div class="col-sm">
+                        <div id="tVSc">
+                        </div>
                     </div>
                 </div>
                 <div class="row m-2" >
