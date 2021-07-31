@@ -17,28 +17,29 @@ $(document).ready(function(){
             consumo_Efectivale();
             cartera_Vencida();
             cVSg();
+            estimacionesProyecto();
         break;
         case '3':
             Retrabajos();
             Inconformidades();
+            plazosCumplidos();
             AvanceProyectos();
         break;
         case '4':
-            vac_Ocupadas();
-            Bajas_Personal();
+            estimacionesProyecto();
+            horas_Extras();
+            cVSg();
             orden_Trabajo();
             reporte_Nomina();
-            horas_Extras()
+            horas_Extras();
             reporte_Facturacion();
-            CXP();
-            CXC();
             saldo_Bancos();
             monto_impuestos()
             consumo_Efectivale();
-            cartera_Vencida();
             AvanceProyectos();
             tVSc();
-            cxcVScxp()
+            cxcVScxp();
+            plazosCumplidos();
         break;
         default:
         break;
@@ -111,6 +112,7 @@ function orden_Trabajo(){
         title: 'Ordenes ',
         showline: false
     },
+    paper_bgcolor: '#E0C98F',
     widht:350,
     height: 250
     };
@@ -150,6 +152,7 @@ function vac_Ocupadas(){
             title: 'Vacantes ocupadas',
             showline: false
         },
+        paper_bgcolor: '#E0C98F',
         widht:350,
         height: 250
         };
@@ -191,6 +194,7 @@ function reporte_Nomina(){
             title: 'Reportes reportados',
             showline: false
         },
+        paper_bgcolor: '#E0C98F',
         widht:350,
         height: 250
         };
@@ -233,6 +237,7 @@ function Bajas_Personal(){
             title: 'Bajas por mes',
             showline: false
         },
+        paper_bgcolor: '#E0C98F',
         widht:350,
         height: 250
         };
@@ -275,6 +280,7 @@ function horas_Extras(){
             title: 'Horas extras por quincena',
             showline: false
         },
+        paper_bgcolor: '#E0C98F',
         widht:350,
         height: 250
         };
@@ -359,6 +365,7 @@ function saldo_Bancos(){
             title: 'Saldo',
             showline: false
         },
+        paper_bgcolor: '#59AA66',
         widht:350,
         height: 250
         };
@@ -401,6 +408,7 @@ function CXP(){
             title: 'Saldo por pagar',
             showline: false
         },
+        paper_bgcolor: '#59AA66',
         widht:350,
         height: 250
         };
@@ -443,6 +451,7 @@ function CXC(){
             title: 'Saldo por cobrar',
             showline: false
         },
+        paper_bgcolor: '#59AA66',
         widht:350,
         height: 250
         };
@@ -485,6 +494,7 @@ function consumo_Efectivale(){
             title: 'Consumo por semana',
             showline: false
         },
+        paper_bgcolor: '#59AA66',
         widht:350,
         height: 250
         };
@@ -527,6 +537,7 @@ function cartera_Vencida(){
             title: 'Monto vencido',
             showline: false
         },
+        paper_bgcolor: '#59AA66',
         widht:350,
         height: 250
         };
@@ -569,6 +580,7 @@ function reporte_Facturacion(){
             title: 'Monto Facturado',
             showline: false
         },
+        paper_bgcolor: '#59AA66',
         widht:350,
         height: 250
         };
@@ -611,6 +623,7 @@ function monto_impuestos(){
             title: 'Impuesto pagado',
             showline: false
         },
+        paper_bgcolor: '#59AA66',
         widht:350,
         height: 250
         };
@@ -653,6 +666,7 @@ function AvanceProyectos(){
         yaxis: {
             showline: false
         },
+        paper_bgcolor: '#EE8199',
         margin: {
             l: 200,
             r: 200,
@@ -699,6 +713,7 @@ function Retrabajos(){
             title: 'Retrabajos por semana',
             showline: false
         },
+        paper_bgcolor: '#EE8199',
         widht:350,
         height: 250
         };
@@ -741,6 +756,7 @@ function Inconformidades(){
             title: 'Inconformidades',
             showline: false
         },
+        paper_bgcolor: '#EE8199',
         widht:350,
         height: 250
         };
@@ -749,6 +765,145 @@ function Inconformidades(){
     }).fail(function(response){
         console.log("error"+response);
     });     
+}
+function estimacionesProyecto(){
+    var x1=[];
+    var y1=[];
+    var x2=[];
+    var y2=[];
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "../Script/graficas.php",
+        data: {
+            "Indicador" : 'R30A',
+            "Cantidad" : 'A'
+        },
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        datos.forEach(function(elemento) {
+            x1.push(elemento[0]);
+            y1.push(elemento[1]);       
+        });
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "../Script/graficas.php",
+        data: {
+            "Indicador" : 'R30B',
+            "Cantidad" : 'A'
+        },
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        datos.forEach(function(elemento) {
+            x2.push(elemento[0]);
+            y2.push(elemento[1]);       
+        });
+    }).fail(function(response){
+        console.log("error"+response);
+    });  
+    var data1 = {
+        x: x1,
+        y: y1,
+        type: 'scatter',
+        name: 'Estimaciones programadas'
+    };
+    var data2 = {
+        x: x2,
+        y: y2,
+        type: 'scatter',
+        name:'Cumplidas'
+    };
+    var data=[data1,data2];
+    var layout = {
+    title: 'Estimaciones entregadas',
+    xaxis: {
+        title: 'Semana',
+        showgrid: false,
+        zeroline: false
+    },
+    yaxis: {
+        title: 'Entregas',
+        showline: false
+    },
+    paper_bgcolor: '#59AA66',
+    widht:350,
+    height: 500
+    };
+    Plotly.newPlot('Estimaciones', data,layout, {responsive: true});
+}
+
+function plazosCumplidos(){
+    var x1=[];
+    var y1=[];
+    var x2=[];
+    var y2=[];
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "../Script/graficas.php",
+        data: {
+            "Indicador" : 'R29A',
+            "Cantidad" : 'A'
+        },
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        datos.forEach(function(elemento) {
+            x1.push(elemento[0]);
+            y1.push(elemento[1]);       
+        });
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "../Script/graficas.php",
+        data: {
+            "Indicador" : 'R29B',
+            "Cantidad" : 'A'
+        },
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        datos.forEach(function(elemento) {
+            x2.push(elemento[0]);
+            y2.push(elemento[1]);       
+        });
+    }).fail(function(response){
+        console.log("error"+response);
+    });  
+    var data1 = {
+        x: x1,
+        y: y1,
+        type: 'scatter',
+        name: 'Programadas'
+    };
+    var data2 = {
+        x: x2,
+        y: y2,
+        type: 'scatter',
+        name:'Cumplidas'
+    };
+    var data=[data1,data2];
+    var layout = {
+    title: 'Plazos cumplidos',
+    xaxis: {
+        title: 'Semana',
+        showgrid: false,
+        zeroline: false
+    },
+    yaxis: {
+        title: 'Entregas',
+        showline: false
+    },
+    paper_bgcolor: '#EE8199',
+    widht:350,
+    height: 500
+    };
+    Plotly.newPlot('plazosCumplidos', data,layout, {responsive: true});
 }
 //VS GG
 function cVSg(){
@@ -797,6 +952,7 @@ function cVSg(){
         var data=[gra1, gra2];
         var layout = {
             title: 'Costos por proyecto',
+            paper_bgcolor: '#59AA66',
             barmode: 'group'
         };
         Plotly.newPlot('CostosProyecto', data,layout, {responsive: true});
@@ -821,8 +977,6 @@ function tVSc(){
         var Avanzado1=[];
         var gastado=[];
         var gastado1=[];
-        
-        
         datos.forEach(function(elemento) {
             nombre.push(elemento[0]);
             Avanzado.push(elemento[1]);
@@ -852,7 +1006,7 @@ function tVSc(){
         };
         var data=[gra1, gra2];
         var layout = {
-            title: 'Proyectos <br><b>Tecnico vs Financiero',
+            title: 'Proyectos <br><b>Avance Fisico vs Avance Financiero',
             paper_bgcolor: '#E58A9D ',
             barmode: 'group'
         };
@@ -926,6 +1080,7 @@ function cxcVScxp(){
         title: 'Ordenes ',
         showline: false
     },
+    paper_bgcolor: '#59AA66',
     widht:350,
     height: 500
     };

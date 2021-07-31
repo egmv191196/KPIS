@@ -98,6 +98,10 @@
                             <div id="monto_Impuestos">
                             </div>
                         </div>
+                        <div class="col-sm">
+                        <div id="Estimaciones">
+                        </div>
+                    </div>
                     </div>
                     <div class="row m-2">
                         <div class="col-12">

@@ -46,7 +46,7 @@
             <?php 
                 $semana=date("W")-1;
                 $mes=date('m')-1;  
-                $quincenaActual=($semana/2)-1   ;
+                $quincenaActual=round($semana/2, 0, PHP_ROUND_HALF_UP)-1;
                 $year=date("Y");     
             ?>
             <div class="row">
@@ -140,6 +140,101 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="col-sm text-center border border-dark rounded m-1 p-1">
+                        <h4>Plazos de entrega</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Semana</th>
+                                <th scope="col">Entregas programas</th>
+                                <th scope="col">Entregas completadas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                $consulta1="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$semana-4  and id_Req='R29A'  ORDER BY SQM DESC limit 4";
+                                $consulta2="SELECT SQM, Valor FROM registroindicadores Where año=$year AND SQM>$semana-4  and id_Req='R29B'  ORDER BY SQM DESC limit 4";
+                                $result1= mysqli_query($conexion, $consulta1);
+                                $result2= mysqli_query($conexion, $consulta2);
+                                $filas1=mysqli_num_rows($result1);
+                                $filas2=mysqli_num_rows($result2);
+                                $primero1=false;
+                                $primero2=false;
+                                if($filas1==$filas2 && $filas1==0){
+                                    echo '<tr>';
+                                    echo '<th scope="row">'.$semana.'</th>';
+                                    echo '<td > <input type="number" class="form-control celdas" id="R29A" onchange="Valor(29,this);"> </input> </td>';
+                                    echo '<td > <input type="number" class="form-control celdas" id="R29B" onchange="Valor(32,this);"> </input> </td>';
+                                    echo '</tr>';
+                                }else if($filas1==$filas2 && $filas1==4){
+                                    while ($row = mysqli_fetch_array($result1)) {
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$row[0].'</th>';
+                                        if($primero1==false){
+                                            echo '<td > <input type="number" class="form-control celdas" id="R1A" onchange="Valor(29,this);" value="'.$row[1].'"> </input> </td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td > <input type="number" class="form-control celdas" id="R1B" onchange="Valor(32,this);" value="'.$row[1].'"> </input> </td>';
+                                            $primero1=true;
+                                        }  
+                                        else{
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                        
+                                    }
+                                }else{
+                                    if($filas1==3 && $filas2==3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$semana.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R29A" onchange="Valor(29,this);"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R29B" onchange="Valor(32,this);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result1)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else if($filas1==3){
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$semana.'</th>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R29A" onchange="Valor(29,this);"> </input> </td>';
+                                        $row = mysqli_fetch_array($result2);
+                                        echo '<td > <input type="number" class="form-control celdas" id="R29B" onchange="Valor(32,this);" value="'.$row[1].'"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result1)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }else{
+                                        echo '<tr>';
+                                        echo '<th scope="row">'.$semana.'</th>';
+                                        $row = mysqli_fetch_array($result1);
+                                        echo '<td > <input type="number" class="form-control celdas" id="R29A" onchange="Valor(29,this);" value="'.$row[1].'"> </input> </td>';
+                                        echo '<td > <input type="number" class="form-control celdas" id="R29B" onchange="Valor(32,this);"> </input> </td>';
+                                        echo '</tr>';
+                                        while ($row = mysqli_fetch_array($result1)) {
+                                            echo '<tr>';
+                                            echo '<th scope="row">'.$row[0].'</th>';
+                                            echo '<td>'.$row[1].'</td>';
+                                            $row = mysqli_fetch_array($result2);
+                                            echo '<td>'.$row[1].'</td>';
+                                            echo '</tr>';
+                                        }
+                                    }
+                                }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
             </div>
             <h4 class="text-center">Proyectos</h4>
             <div class="row">

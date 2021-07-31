@@ -79,7 +79,7 @@
             <?php 
                 $semana=date("W")-1;
                 $mes=date('m')-1;  
-                $quincenaActual=($semana/2)-1   ;
+                $quincenaActual=round($semana/2, 0, PHP_ROUND_HALF_UP)-1;
                 $year=date("Y");         
             ?> 
 
@@ -212,7 +212,13 @@
                                 $filas2=mysqli_num_rows($result2);
                                 $primero1=false;
                                 $primero2=false;
-                                if($filas1==$filas2 && $filas1==4){
+                                if($filas1==$filas2 && $filas1==0){
+                                    echo '<tr>';
+                                    echo '<th scope="row">'.$quincenaActual.'</th>';
+                                    echo '<td > <input type="number" class="form-control celdas" id="R1A" onchange="Valor(6,this);"> </input> </td>';
+                                    echo '<td > <input type="number" class="form-control celdas" id="R1B" onchange="Valor(7,this);"> </input> </td>';
+                                    echo '</tr>';
+                                }else if($filas1==$filas2 && $filas1==4){
                                     while ($row = mysqli_fetch_array($result1)) {
                                         echo '<tr>';
                                         echo '<th scope="row">'.$row[0].'</th>';

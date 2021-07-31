@@ -89,71 +89,67 @@
                 </div>
                 <div class="row m-2">
                     <div class="col-12">
-                        <div id="cxcVScxp">
+                        <div id="CostosProyecto">
                         </div>
                     </div>
                 </div>
                 <div class="row m-2" >
                     <div class="col-4">
-                        <div id="orden_Trabajo"> </div>
+                        <div id="horas_Extras"> </div>
                     </div>
                     <div class="col-4">
-                        <div id="VacantesOcupadas"> </div>
+                        <div id="orden_Trabajo"> </div>
                     </div>
                     <div class="col-4">
                         <div id="reporte_Nomina"> </div>
                     </div>
-                </div>    
-                <div class="row m-2">
-                    <div class="col-4">
-                        <div id="bajas_Personal"> </div>
-                    </div>
-                    <div class="col-4">
-                        <div id="horas_Extras"> </div>
-                    </div>
-                </div>  
+                </div>     
                 <h3 class="text-center">Gerencia Comercial</h3>
                 <div class="row m-2">
+                    <div class="col-12">
+                        <div id="cxcVScxp">
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="col-4">
+                        <div id="reporte_Facturacion">
+                        </div>
+                    </div>
                     <div class="col-4">
                         <div id="saldo_Bancos">   
                         </div>
                     </div>
                     <div class="col-4">
-                        <div id="CXP"> 
+                        <div id="monto_Impuestos">
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div id="CXC"> 
-                        </div>
-                    </div>
+                    
                 </div>    
                 <div class="row m-2">
                     <div class="col-4">
                         <div id="consumo_Efectivale">
                         </div>
-                    </div>
-                    <div class="col-4">
-                        <div id="cartera_Vencida">
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div id="reporte_Facturacion">
-                        </div>
-                    </div>
+                    </div>                   
                 </div>
                 
                 <div class="row m-2">
-                    <div class="col-4">
-                        <div id="monto_Impuestos">
+                    <div class="col-sm">
+                        <div id="Estimaciones">
                         </div>
-                    </div>
+                    </div> 
                 </div>
                 <h3 class="text-center">Gerencia Tecnica</h3>
                 <div class="row m-2" >
                     <div class="col-12">
                         <div id="avanceProyectos"> </div>
                     </div>
-                </div>  
+                </div>
+                <div class="row m-2" >
+                    <div class="col-12">
+                        <div id="plazosCumplidos"> </div>
+                    </div>
+                </div>
             </div>           
         
         </div>

@@ -64,7 +64,7 @@
             <?php 
                 $semana=date("W")-1;
                 $mes=date('m')-1;  
-                $quincenaActual=($semana/2)-1   ;
+                $quincenaActual=round($semana/2, 0, PHP_ROUND_HALF_UP)-1;
                 $year=date("Y");         
             ?> 
             <div class="datos mt-5" id="GC">
@@ -92,7 +92,7 @@
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
-                                            echo '<td>'.$row[1].'</td>';
+                                            echo '<td>$ '.number_format($row[1],2).'</td>';
                                             echo '</tr>';
                                         }
                                     }else{
@@ -105,7 +105,7 @@
                                             }
                                             
                                             else{
-                                                echo '<td>'.$row[1].'</td>';
+                                                echo '<td>$ '.number_format($row[1],2).'</td>';
                                                 echo '</tr>';
                                             }
                                             
@@ -138,7 +138,7 @@
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
-                                            echo '<td>'.$row[1].'</td>';
+                                            echo '<td>$ '.number_format($row[1],2).'</td>';
                                             echo '</tr>';
                                         }
                                     }else{
@@ -151,7 +151,7 @@
                                             }
                                             
                                             else{
-                                                echo '<td>'.$row[1].'</td>';
+                                                echo '<td>$ '.number_format($row[1],2).'</td>';
                                                 echo '</tr>';
                                             }
                                             
@@ -184,7 +184,7 @@
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
-                                            echo '<td>'.$row[1].'</td>';
+                                            echo '<td>$ '.number_format($row[1],2).'</td>';
                                             echo '</tr>';
                                         }
                                     }else{
@@ -197,7 +197,7 @@
                                             }
                                             
                                             else{
-                                                echo '<td>'.$row[1].'</td>';
+                                                echo '<td>$ '.number_format($row[1],2).'</td>';
                                                 echo '</tr>';
                                             }
                                             
@@ -418,7 +418,7 @@
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
-                                            echo '<td>'.$row[1].'</td>';
+                                            echo '<td>$ '.number_format($row[1],2).'</td>';
                                             echo '</tr>';
                                         }
                                     }else{
@@ -431,7 +431,7 @@
                                             }
                                             
                                             else{
-                                                echo '<td>'.$row[1].'</td>';
+                                                echo '<td>$ '.number_format($row[1],2).'</td>';
                                                 echo '</tr>';
                                             }
                                             
@@ -464,7 +464,7 @@
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
-                                            echo '<td>'.$row[1].'</td>';
+                                            echo '<td>$ '.number_format($row[1],2).'</td>';
                                             echo '</tr>';
                                         }
                                     }else{
@@ -477,7 +477,7 @@
                                             }
                                             
                                             else{
-                                                echo '<td>'.$row[1].'</td>';
+                                                echo '<td>$ '.number_format($row[1],2).'</td>';
                                                 echo '</tr>';
                                             }
                                             
