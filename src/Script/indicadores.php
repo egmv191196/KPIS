@@ -1,7 +1,8 @@
 <?php
+  session_start();
+  $Usuario=$_SESSION['cargo'];
   $Req=$_POST['Req'];
   $Valor=$_POST['Valor'];
-  $Usuario=$_POST['User'];
   $year=date('o');
   $date=date('Y-m-d');
   if($Req=="R4A"){

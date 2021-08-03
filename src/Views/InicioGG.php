@@ -62,8 +62,12 @@
                             <a class="dropdown-item" href="addProveedor.php">Agregar Proveedor</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="addDatosGG.php">Datos</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="datos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datos</a>
+                        <div class="dropdown-menu" aria-labelledby="datos">
+                            <a class="dropdown-item" href="addDatosGG.php">Mis datos</a>
+                            <a class="dropdown-item" href="datosManuales    .php">Datos manuales</a>
+                        </div>
                     </li>       
                     </ul>
                 </div>            
@@ -78,73 +82,78 @@
                     $year=date("Y");               
                 ?>
                 <input type="hidden" id="Area" value="4"></input>
-                <h5 class="text-center">Año: <?php echo $year;?></h5>
-                <h5 class="text-center"> Semana: <?php echo $mes;?> </h5>
-                <h3 class="text-center">Gerencia General</h3>
-                <div class="row m-2" >
-                    <div class="col-4">
-                        <div id="horas_Extras"> </div>
-                    </div>
-                    <div class="col-4">
-                        <div id="orden_Trabajo"> </div>
-                    </div>
-                </div>     
-                <h3 class="text-center">Gerencia Comercial</h3>
-                <div class="row m-2">
-                    <div class="col-sm">
-                        <div id="CostosProyecto">
+                <h5 class="text-center">Año: <?php echo $year;?> Semana: <?php echo $mes;?></h5>
+                <div class=" mt-2 borderGC">
+                    <h3 class="text-center">Gerencia Comercial</h3>
+                    <div class="row m-2">
+                        <div class="col-sm m-2 grafica">
+                            <div id="CostosProyecto">
+                            </div>
+                        </div>
+                        <div class="col-sm m-2 grafica">
+                            <div id="cxcVScxp">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm">
-                        <div id="cxcVScxp">
+                    <div class="row m-2">
+                        <div class="col-sm m-2 grafica">
+                            <div id="reporte_Facturacion">
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row m-2">
-                    <div class="col-4">
-                        <div id="reporte_Facturacion">
+                        <div class="col-sm m-2 grafica">
+                            <div id="saldo_Bancos">   
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-4">
-                        <div id="saldo_Bancos">   
+                        <div class="col-sm m-2 grafica">
+                            <div id="monto_Impuestos">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-4">
-                        <div id="monto_Impuestos">
+                        
+                    </div>    
+                    <div class="row m-2">
+                        <div class="col-sm m-2 grafica">
+                            <div id="consumo_Efectivale">
+                            </div>
                         </div>
+                        <div class="col-sm m-2 grafica">
+                            <div id="reporte_Nomina"> </div>
+                        </div>                   
                     </div>
                     
-                </div>    
-                <div class="row m-2">
-                    <div class="col-sm">
-                        <div id="consumo_Efectivale">
+                    <div class="row m-2">
+                        <div class="col-sm m-2 grafica">
+                            <div id="Estimaciones">
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="borderGT mt-2">
+                    <h3 class="text-center">Gerencia Tecnica</h3>
+                    <div class="row m-2" >
+                        <div class="col-sm m-2 grafica">
+                            <div id="avanceProyectos"> </div>
+                        </div>
+                        <div class="col-sm m-2 grafica">
+                            <div id="tVSc">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm">
-                        <div id="reporte_Nomina"> </div>
-                    </div>                   
-                </div>
-                
-                <div class="row m-2">
-                    <div class="col-sm">
-                        <div id="Estimaciones">
-                        </div>
-                    </div> 
-                </div>
-                <h3 class="text-center">Gerencia Tecnica</h3>
-                <div class="row m-2" >
-                    <div class="col-sm">
-                        <div id="avanceProyectos"> </div>
-                    </div>
-                    <div class="col-sm">
-                        <div id="tVSc">
+                    <div class="row m-2" >
+                        <div class="col-sm m-2 grafica">
+                            <div id="plazosCumplidos"> </div>
                         </div>
                     </div>
                 </div>
-                <div class="row m-2" >
-                    <div class="col-12">
-                        <div id="plazosCumplidos"> </div>
-                    </div>
+                <div class="borderGG mt-2">
+                    <h3 class="text-center">Gerencia General</h3>
+                    <div class="row m-2" >
+                        <div class="col-sm m-2 grafica">
+                            <div id="horas_Extras" > </div>
+                        </div>
+                        <div class="col-sm m-2 grafica">
+                            <div id="orden_Trabajo"> </div>
+                        </div>
+                    </div>   
                 </div>
             </div>           
         

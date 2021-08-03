@@ -71,34 +71,59 @@
                     </div>
                 </div> 
                 <div class="row"> 
-                <div class="col-12 text-center">
-                    <h3>Cuantificacion de servicios<br> Suma anual</h3>
-                    <div class="row">
-                    <?php
-                        echo '<div class="col-12 text-center border border-dark rounded p-1">';
-                        echo'   <table class="table dark-table" id="cuanti">';
-                        echo'       <tr>';
-                        echo'            <th>Concepto</th>';
-                        echo'            <th>Valor acumulado </th>';           
-                        echo'       </tr>';      
-                        $consulta="SELECT DISTINCT registroindicadores.id_Req, catalogo_indicadores.Nombre, SUM(Valor) AS total 
-                        FROM registroindicadores JOIN catalogo_indicadores
-                        WHERE registroindicadores.id_Req LIKE 'K%'AND registroindicadores.año=$year AND registroindicadores.id_Req=catalogo_indicadores.id_Dat 
-                        GROUP BY registroindicadores.id_Req ORDER BY registroindicadores.id_Req ASC"; 
-                        $result= mysqli_query($conexion,$consulta);
-                        while($row=mysqli_fetch_array($result)){
+                    <div class="col-12 text-center">
+                        <h3>Cuantificacion de servicios<br> Suma anual</h3>
+                        <div class="row">
+                        <?php
+                            echo '<div class="col-12 text-center border border-dark rounded p-1">';
+                            echo'   <table class="table dark-table" id="cuanti">';
                             echo'       <tr>';
-                            echo'            <th>'.$row[1].'</th>';
-                            echo'            <td>'.$row[2].'</td>'; 
-                            echo '</tr>';
-                        }                                       
-                        echo'   </table>';
-                        echo'</div>';
-                    ?> 
-                    </div>                      
+                            echo'            <th>Concepto</th>';
+                            echo'            <th>Valor acumulado </th>';           
+                            echo'       </tr>';      
+                            $consulta="SELECT DISTINCT registroindicadores.id_Req, catalogo_indicadores.Nombre, SUM(Valor) AS total 
+                            FROM registroindicadores JOIN catalogo_indicadores
+                            WHERE registroindicadores.id_Req LIKE 'K%'AND registroindicadores.año=$year AND registroindicadores.id_Req=catalogo_indicadores.id_Dat 
+                            GROUP BY registroindicadores.id_Req ORDER BY registroindicadores.id_Req ASC"; 
+                            $result= mysqli_query($conexion,$consulta);
+                            while($row=mysqli_fetch_array($result)){
+                                echo'       <tr>';
+                                echo'            <th>'.$row[1].'</th>';
+                                echo'            <td>'.$row[2].'</td>'; 
+                                echo '</tr>';
+                            }                                       
+                            echo'   </table>';
+                            echo'</div>';
+                        ?> 
+                        </div>                      
+                    </div>
                 </div>
-                
-            </div>
+                <div class="row"> 
+                    <div class="col-12 text-center">
+                        <h3>Avance por proyecto</h3>
+                        <?php
+                            $consulta="SELECT * FROM proyecto WHERE Estado=1"; 
+                            $result= mysqli_query($conexion,$consulta);
+                            $i=0;
+                            while($row=mysqli_fetch_array($result)){
+                                if($i==0){
+                                    echo'    <div class="row"">'; 
+                                }
+                                echo'       <div class="col-sm m-2 grafica">';
+                                echo'           <div id="'.$row[0].'">';
+                                echo'       </div>';
+                                $i++;
+                                if($i==4){
+                                    echo'    </div>';
+                                    $i=0; 
+                                }
+                                
+                                }                                       
+                        ?> 
+                        </div>                      
+                    </div>
+                </div>
+
                 
             </div>
 

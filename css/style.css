@@ -1,9 +1,10 @@
 body{
-    background-color: rgba(156, 148, 148, 0.788);
+    background-color: rgb(230, 225, 225);
     /*background-image: url(../src/Img/Fondo.png);*/
 }
 .formulario{
-    background-color: rgba(255, 255, 255,.4);
+    background-color: rgb(245, 241, 241);
+    border: 1px solid black;
     border-radius: 15px;
 }
 .form-control{
@@ -11,7 +12,7 @@ body{
     border-radius: 10px;
     color: white;
 }
-.form-control:focus{
+.form-control:focus{    
     background: none;
     color:black;
 }
@@ -52,4 +53,22 @@ border-radius: 10px;
 }
 .valores{
     text-align: center;
+}
+.grafica{
+    background-color: white;
+    border-color: white;
+    border-width: 1px;
+    border-radius: .5rem;
+}
+.borderGC{
+    /*background: linear-gradient(180deg, rgb(158, 158, 158), white,rgb(158, 158, 158));*/
+    border-bottom: 5px solid black;
+    /*border-radius: .5rem;*/
+}
+.borderGG{
+    border-radius: 1.25rem;
+}
+.borderGT{
+    /*border-radius: 3.25rem;*/
+    border-bottom: 5px solid rgb(156, 73, 108);
 }

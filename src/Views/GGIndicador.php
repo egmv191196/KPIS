@@ -51,8 +51,12 @@
                             <a class="dropdown-item" href="addProveedor.php">Agregar Proveedor</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="addDatosGG.php">Datos</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="datos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datos</a>
+                        <div class="dropdown-menu" aria-labelledby="datos">
+                            <a class="dropdown-item" href="addDatosGG.php">Mis datos</a>
+                            <a class="dropdown-item" href="datosManuales.php">Datos manuales</a>
+                        </div>
                     </li>       
                     </ul>
                 </div>            
@@ -65,21 +69,18 @@
             <h5 class="text-center"> Semana: <?php echo date("W");?> </h5>
                 <input type="hidden" id="Area" value="1"></input>
                 <div class="row m-2" >
-                    <div class="col-4">
+                    <div class="col-sm">
                         <div id="orden_Trabajo"> </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm">
                         <div id="VacantesOcupadas"> </div>
-                    </div>
-                    <div class="col-4">
-                        <div id="reporte_Nomina"> </div>
                     </div>
                 </div>    
                 <div class="row m-2">
-                    <div class="col-4">
+                    <div class="col-sm">
                         <div id="bajas_Personal"> </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm">
                         <div id="horas_Extras"> </div>
                     </div>
                 </div>  
