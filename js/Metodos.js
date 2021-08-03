@@ -227,6 +227,7 @@ function addProyecto(){
                     alert("Se registro correctamente el proyecto");
                     location.href ="./Proyectos.php";
                 } else {
+                    alert(response);
                     alert("Error al registrar el proyecto");
                 }
             }).fail(function(response){
@@ -398,7 +399,7 @@ function Valor(caso,id){
         url: "../Script/indicadores.php",
         data: datos,
     }).done(function(response){
-        //alert(response);
+        alert(response);
         location.reload();
     }).fail(function(response){
         console.log("error"+response);

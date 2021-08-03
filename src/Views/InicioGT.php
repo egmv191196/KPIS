@@ -44,8 +44,7 @@
                     $year=date("Y");               
                 ?>
             <div id="GT">
-            <h5 class="text-center">Año: <?php echo $year;?></h5>
-                <h5 class="text-center"> Semana: <?php echo $mes;?> </h5>
+            <h5 class="text-center">Año: <?php echo $year;?> Semana: <?php echo $mes;?> </h5>
                 <h3 class="text-center">Gerencia Tecnica</h3>
                 <input type="hidden" id="Area" value="3"></input>   
                 <div class="row m-2">

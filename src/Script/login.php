@@ -4,8 +4,7 @@
 	$pass=$_POST['passwd'];
 		$link=mysqli_connect("localhost","root",""); //hace la conexion con la base de datos
 		mysqli_select_db($link,"kpis");
-		$result= mysqli_query($link, "select Password,cargo from usuario where Usuario='$usu'");	
-		
+		$result= mysqli_query($link, "select Password,cargo from usuario where Usuario='$usu'");
 		if($row=mysqli_fetch_array($result)){
 			$cargo=$row['cargo'];
 			if($row['Password']==$pass){

@@ -41,8 +41,7 @@
                 require_once('../Script/conexionBD.php'); 
             ?>
             <h1 class="text-center">Gerencia Tecnica</h1>
-            <h5 class="text-center">Año: <?php echo date("o");?></h5>
-            <h5 class="text-center"> Semana: <?php echo date("W");?> </h5>
+            <h5 class="text-center">Año: <?php echo date("o");?> Semana: <?php echo date("W");?></h5>
             <?php 
                 $semana=date("W")-1;
                 $mes=date('m')-1;  
@@ -243,9 +242,9 @@
                     $result= mysqli_query($conexion,$consulta);
                     while($row=mysqli_fetch_array($result)){
                         $idProyecto=$row[0];
-                        echo'<div class="col-6 mb-5 pb-3 text-center border-right border-bottom ">';
+                        echo'<div class="col-6 mb-5 pb-3 text-center border border-dark border-bottom ">';
                         echo'<h4 class="text-center">'.$row[1].'</h4>';
-                        echo'   <table class="table dark-table m-1 ">';
+                        echo'   <table class="table dark-table m-1 border ">';
                         $consulta2="SELECT * FROM conceptos WHERE clave_Proyecto='$idProyecto'";
                         $result2= mysqli_query($conexion,$consulta2);
                         echo'       <tr>';

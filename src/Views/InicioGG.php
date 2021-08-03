@@ -66,7 +66,7 @@
                         <a class="nav-link dropdown-toggle" href="" id="datos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datos</a>
                         <div class="dropdown-menu" aria-labelledby="datos">
                             <a class="dropdown-item" href="addDatosGG.php">Mis datos</a>
-                            <a class="dropdown-item" href="datosManuales    .php">Datos manuales</a>
+                            <a class="dropdown-item" href="datosManuales.php">Datos manuales</a>
                         </div>
                     </li>       
                     </ul>

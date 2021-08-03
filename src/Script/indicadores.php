@@ -1,6 +1,6 @@
 <?php
   session_start();
-  $Usuario=$_SESSION['cargo'];
+  $Usuario=$_SESSION['k_user'];
   $Req=$_POST['Req'];
   $Valor=$_POST['Valor'];
   $year=date('o');

@@ -59,8 +59,7 @@
                   <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
             <h1 class="text-center">Gerencia comercial</h1>
-            <h5 class="text-center">Año: <?php echo date("o");?></h5>
-            <h5 class="text-center"> Semana: <?php echo date("W");?> </h5>
+            <h5 class="text-center">Año: <?php echo date("o");?> Semana: <?php echo date("W");?> </h5>
             <?php 
                 $semana=date("W")-1;
                 $mes=date('m')-1;  
@@ -70,7 +69,7 @@
             <div class="datos mt-5" id="GC">
                 <div class="row">     
                     <div class="col-sm text-center border border-dark rounded  m-1 p-1">
-                        <h4>Saldo en cuentas</h4>
+                        <h4>Saldo en bancos</h4>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -277,7 +276,7 @@
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
-                                            echo '<td>'.$row[1].'</td>';
+                                            echo '<td>$ '.number_format($row[1],2).'</td>';
                                             echo '</tr>';
                                         }
                                     }else{
@@ -418,7 +417,7 @@
                                         while ($row = mysqli_fetch_array($result)) {
                                             echo '<tr>';
                                             echo '<th scope="row">'.$row[0].'</th>';
-                                            echo '<td>'.$row[1].'</td>';
+                                            echo '<td>$ '.number_format($row[1],2).'</td>';
                                             echo '</tr>';
                                         }
                                     }else{

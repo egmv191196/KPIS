@@ -778,10 +778,11 @@ function AvanceProyectos(){
             zeroline: false
         },
         yaxis: {
+            title:'Proyectos',
             showline: false
         },
         margin: {
-            l: 20,
+            l: 150,
             r: 20,
             t: 50,
             b: 30

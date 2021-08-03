@@ -12,8 +12,8 @@
             $id_Presupuesto=$_POST['id_Presupuesto'];
             $id_Cliente=$_POST['id_Cliente'];
             $conceptos=$_POST['list_Conceptos'];
-            $consulta = "INSERT INTO proyecto (clave_Proyecto, Nombre, fecha_IniciO, fecha_Fin, monto_Contrato, monto_Gastado, monto_Pagado id_Presupuesto, Estado,  id_Cliente) VALUES 
-            ('{$Clave}','{$Name}','{$date}','{$date}',{$costoProyecto}, 0, 0, '{$id_Presupuesto}', 1 ,{$id_Cliente})";
+            $consulta = "INSERT INTO proyecto (clave_Proyecto, Nombre, fecha_IniciO, fecha_Fin, monto_Contrato, monto_Gastado, monto_Pagado, id_Presupuesto, Estado,  id_Cliente) VALUES 
+            ('{$Clave}','{$Name}','{$date1}','{$date2}',{$costoProyecto}, 0, 0, '{$id_Presupuesto}', 1 ,{$id_Cliente})";
             $res= mysqli_query($conexion,$consulta);
             if ($res==1) {
                 $consulta="INSERT INTO conceptos (id_Concepto, num_Concepto, Nombre, Valor, Avance, clave_Proyecto) VALUES "; 
