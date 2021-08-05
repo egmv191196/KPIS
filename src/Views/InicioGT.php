@@ -106,13 +106,13 @@
                             $i=0;
                             while($row=mysqli_fetch_array($result)){
                                 if($i==0){
-                                    echo'    <div class="row"">'; 
+                                    echo'   <div class="row">'; 
                                 }
-                                echo'       <div class="col-sm m-2 grafica">';
-                                echo'           <div id="'.$row[0].'">';
+                                echo'       <div class="col-sm m-2 grafica"> ';
+                                echo'           <div id="'.$row[0].'"> </div>';
                                 echo'       </div>';
                                 $i++;
-                                if($i==4){
+                                if($i==2){
                                     echo'    </div>';
                                     $i=0; 
                                 }

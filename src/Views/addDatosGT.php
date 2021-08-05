@@ -242,7 +242,7 @@
                     $result= mysqli_query($conexion,$consulta);
                     while($row=mysqli_fetch_array($result)){
                         $idProyecto=$row[0];
-                        echo'<div class="col-6 mb-5 pb-3 text-center border border-dark border-bottom ">';
+                        echo'<div class="col-sm p-1 m-1 text-center border border-dark border-bottom ">';
                         echo'<h4 class="text-center">'.$row[1].'</h4>';
                         echo'   <table class="table dark-table m-1 border ">';
                         $consulta2="SELECT * FROM conceptos WHERE clave_Proyecto='$idProyecto'";

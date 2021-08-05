@@ -73,6 +73,24 @@
             $consulta="UPDATE proyecto SET monto_Pagado={$Monto} WHERE clave_Proyecto='{$id_Proyecto}'";
             echo mysqli_query($conexion,$consulta);
 
+        }else if ($Operacion=="graficaInicioGT") {
+            $Resultados=array();
+            $consulta="SELECT * FROM proyecto WHERE Estado=1 ORDER by fecha_Fin ASC "; 
+            $result= mysqli_query($conexion,$consulta);
+            while($row=mysqli_fetch_array($result)){
+                $idProyecto=$row[0];
+                $nombreProyecto=$row[1];
+                $consulta2="SELECT * FROM conceptos WHERE clave_Proyecto='$idProyecto'";
+                $result2= mysqli_query($conexion,$consulta2);
+                $numConceptos=mysqli_num_rows($result2);
+                $Valores=[$idProyecto,$nombreProyecto,$numConceptos];
+                array_push($Resultados,$Valores);
+                while($row2=mysqli_fetch_array($result2)){
+                    $Valores=[$row2[1],$row2[2],$row2[4]];
+                    array_push($Resultados,$Valores);
+                } 
+            }
+            echo json_encode($Resultados);
         }
 
 ?>

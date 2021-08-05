@@ -24,7 +24,7 @@ $(document).ready(function(){
             Inconformidades();
             plazosCumplidos();
             AvanceProyectos();
-            
+            conceptosProyectos();
         break;
         case '4':
             estimacionesProyecto();
@@ -180,7 +180,6 @@ function vac_Ocupadas(){
         console.log("error"+response);
     });     
 }
-
 function Bajas_Personal(){
     var datos = {
         "Indicador" : 'R10A',
@@ -774,7 +773,7 @@ function AvanceProyectos(){
         xaxis: {
             title: 'Porcentaje avanzado',
             range: [0, 100],
-            showgrid: false,
+            showgrid: true,
             zeroline: false
         },
         yaxis: {
@@ -1268,4 +1267,78 @@ function cxcVScxp(){
         displayModeBar: false
     };
     Plotly.newPlot('cxcVScxp', data,layout, config); 
+}
+function conceptosProyectos(){
+    var datos = {
+        Operacion : "graficaInicioGT"
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/Proyecto.php",
+        data: datos,
+    }).done(function(response){
+        //alert(Response);
+        var datos=JSON.parse(response);
+        var i=0;
+
+        var x=[];
+        var y=[];
+        while(i<datos.length){
+            x=[];
+            y=[];
+            console.log(datos[i]+ " : ");
+            var idDiv=datos[i][0];
+            var Nombre=datos[i][1];
+            var numConceptos=datos[i][2];
+            i++;
+            for (let x1 = 0; x1 < numConceptos; x1++) {
+                x.push(datos[i][2]);
+                y.push(datos[i][1]);
+                i++;
+            }
+            var data = [{
+                x: x,
+                y: y,
+                type: 'bar',
+                orientation:'h',
+                text: x,
+                textposition: 'auto',
+                hoverinfo: 'none',
+                opacity: 1
+            }];
+            var layout = {
+            title: '<b>'+Nombre,
+            xaxis: {
+                title: 'Porcentaje avanzado',
+                range: [0, 100],
+                showgrid: true,
+                zeroline: false
+            },
+            yaxis: {
+                showline: false
+            },
+            margin: {
+                l: 80,
+                r: 20,
+                t: 50,
+                b: 30
+              },
+            widht:350,
+            height: 300
+            };
+            var config={
+                responsive: true,
+                displayModeBar: false
+            };
+            Plotly.newPlot(idDiv, data,layout, config);
+            
+
+
+        }
+        
+
+    }).fail(function(response){
+        console.log("error"+response);
+    });     
+
 }
