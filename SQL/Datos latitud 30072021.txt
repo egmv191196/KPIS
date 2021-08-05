@@ -167,7 +167,27 @@ INSERT INTO `registroindicadores` (`id_registro`, `Usuario`, `id_Req`, `Fecha`, 
 (NULL, 'Gerencia Comercial', 'R5A', '2021-07-30', 150746.79, 2021, 10),
 (NULL, 'Gerencia Comercial', 'R5A', '2021-07-30', 178087, 2021, 11),
 (NULL, 'Gerencia Comercial', 'R5A', '2021-07-30', 182930.33, 2021, 12),
-(NULL, 'Gerencia Comercial', 'R5A', '2021-07-30', 179091.71, 2021, 13)
+(NULL, 'Gerencia Comercial', 'R5A', '2021-07-30', 179091.71, 2021, 13),
+------------------------------------------------------------------------
+(NULL, 'Gerencia Comercial', 'R17A', '2021-08-05', 6909186.36, 2021, 27),
+(NULL, 'Gerencia Comercial', 'R17A', '2021-08-05', 6766950.92, 2021, 28),
+(NULL, 'Gerencia Comercial', 'R17A', '2021-08-05', 6766950.92, 2021, 29),
+(NULL, 'Gerencia Comercial', 'R17A', '2021-08-05', 5445669.2, 2021, 30),
+(NULL, 'Gerencia Comercial', 'R16A', '2021-08-05', 336232.24, 2021, 27),
+(NULL, 'Gerencia Comercial', 'R16A', '2021-08-05', 458645.32, 2021, 28),
+(NULL, 'Gerencia Comercial', 'R16A', '2021-08-05', 307232.24, 2021, 29),
+(NULL, 'Gerencia Comercial', 'R16A', '2021-08-05', 532829.12, 2021, 30),
+(NULL, 'Gerencia Comercial', 'R19A', '2021-08-05', 346110.77, 2021, 27),
+(NULL, 'Gerencia Comercial', 'R19A', '2021-08-05', 62677.66, 2021, 28),
+(NULL, 'Gerencia Comercial', 'R19A', '2021-08-05', 6716.52, 2021, 29),
+(NULL, 'Gerencia Comercial', 'R19A', '2021-08-05', 27165.55, 2021, 30),
+(NULL, 'Gerencia Comercial', 'R21A', '2021-08-05', 27786.96, 2021, 27),
+(NULL, 'Gerencia Comercial', 'R21A', '2021-08-05', 23952.31, 2021, 28),
+(NULL, 'Gerencia Comercial', 'R21A', '2021-08-05', 20638.74, 2021, 29),
+(NULL, 'Gerencia Comercial', 'R21A', '2021-08-05', 13708.04, 2021, 30),
+(NULL, 'Gerencia Comercial', 'R5A', '2021-08-05', 177985.24, 2021, 14)
+(NULL, 'Gerencia Comercial', 'R15A', '2021-08-05', 1564729.29, 2021, 07),
+(NULL, 'Gerencia Comercial', 'R20A', '2021-08-05', 132344.66, 2021, 07)
 
 -------------------
 
@@ -202,7 +222,12 @@ INSERT INTO `registroindicadores` (`id_registro`, `Usuario`, `id_Req`, `Fecha`, 
 (NULL, 'Gerencia Comercial', 'R17A', '2021-07-30', 10514318.83, 2021, 23),
 (NULL, 'Gerencia Comercial', 'R17A', '2021-07-30', 8888954.77, 2021, 24),
 (NULL, 'Gerencia Comercial', 'R17A', '2021-07-30', 8888954.77, 2021, 25),
-(NULL, 'Gerencia Comercial', 'R17A', '2021-07-30', 7683609.67, 2021, 26)
+(NULL, 'Gerencia Comercial', 'R17A', '2021-07-30', 7683609.67, 2021, 26),
+
+(NULL, 'Gerencia Comercial', 'R17A', '2021-08-05', 6909186.36, 2021, 27),
+(NULL, 'Gerencia Comercial', 'R17A', '2021-08-05', 6766950.92, 2021, 28),
+(NULL, 'Gerencia Comercial', 'R17A', '2021-08-05', 6766950.92, 2021, 29),
+(NULL, 'Gerencia Comercial', 'R17A', '2021-08-05', 5445669.2, 2021, 30),
 
 
 ------CXP--------
@@ -229,7 +254,12 @@ INSERT INTO `registroindicadores` (`id_registro`, `Usuario`, `id_Req`, `Fecha`, 
 (NULL, 'Gerencia Comercial', 'R16A', '2021-07-30', 598665.65, 2021, 23),
 (NULL, 'Gerencia Comercial', 'R16A', '2021-07-30', 405666.73, 2021, 24),
 (NULL, 'Gerencia Comercial', 'R16A', '2021-07-30', 336232.24, 2021, 25),
-(NULL, 'Gerencia Comercial', 'R16A', '2021-07-30', 336232.24, 2021, 26)
+(NULL, 'Gerencia Comercial', 'R16A', '2021-07-30', 336232.24, 2021, 26),
+
+(NULL, 'Gerencia Comercial', 'R16A', '2021-08-05', 336232.24, 2021, 27),
+(NULL, 'Gerencia Comercial', 'R16A', '2021-08-05', 458645.32, 2021, 28),
+(NULL, 'Gerencia Comercial', 'R16A', '2021-08-05', 307232.24, 2021, 29),
+(NULL, 'Gerencia Comercial', 'R16A', '2021-08-05', 532829.12, 2021, 30)
 
 --------Saldo en cuentas---------
 (NULL, 'Gerencia Comercial', 'R19A', '2021-07-30', 117871.71, 2021, 01),
@@ -256,7 +286,13 @@ INSERT INTO `registroindicadores` (`id_registro`, `Usuario`, `id_Req`, `Fecha`, 
 (NULL, 'Gerencia Comercial', 'R19A', '2021-07-30', 9469.32, 2021, 23),
 (NULL, 'Gerencia Comercial', 'R19A', '2021-07-30', 218914.01, 2021, 24),
 (NULL, 'Gerencia Comercial', 'R19A', '2021-07-30', 30117.99, 2021, 25),
-(NULL, 'Gerencia Comercial', 'R19A', '2021-07-30', 29186.36, 2021, 26)
+(NULL, 'Gerencia Comercial', 'R19A', '2021-07-30', 29186.36, 2021, 26),
+
+
+(NULL, 'Gerencia Comercial', 'R19A', '2021-08-05', 346110.77, 2021, 27),
+(NULL, 'Gerencia Comercial', 'R19A', '2021-08-05', 62677.66, 2021, 28),
+(NULL, 'Gerencia Comercial', 'R19A', '2021-08-05', 6716.52, 2021, 29),
+(NULL, 'Gerencia Comercial', 'R19A', '2021-08-05', 27165.55, 2021, 30)
 
 ----Efectivale---------------
 (NULL, 'Gerencia Comercial', 'R21A', '2021-07-30', 5499.17, 2021, 01),
@@ -279,7 +315,12 @@ INSERT INTO `registroindicadores` (`id_registro`, `Usuario`, `id_Req`, `Fecha`, 
 (NULL, 'Gerencia Comercial', 'R21A', '2021-07-30', 9088.28, 2021, 21),
 (NULL, 'Gerencia Comercial', 'R21A', '2021-07-30', 13086.05, 2021, 22),
 (NULL, 'Gerencia Comercial', 'R21A', '2021-07-30', 19050.7, 2021, 23),
-(NULL, 'Gerencia Comercial', 'R21A', '2021-07-30', 10808.18, 2021, 24)
+(NULL, 'Gerencia Comercial', 'R21A', '2021-07-30', 10808.18, 2021, 24),
+
+(NULL, 'Gerencia Comercial', 'R21A', '2021-08-05', 27786.96, 2021, 27),
+(NULL, 'Gerencia Comercial', 'R21A', '2021-08-05', 23952.31, 2021, 28),
+(NULL, 'Gerencia Comercial', 'R21A', '2021-08-05', 20638.74, 2021, 29),
+(NULL, 'Gerencia Comercial', 'R21A', '2021-08-05', 13708.04, 2021, 30)
 
 -------Monto de nomina----------
 (NULL, 'Gerencia Comercial', 'R5A', '2021-07-30', 170556.5, 2021, 01),
@@ -294,7 +335,9 @@ INSERT INTO `registroindicadores` (`id_registro`, `Usuario`, `id_Req`, `Fecha`, 
 (NULL, 'Gerencia Comercial', 'R5A', '2021-07-30', 150746.79, 2021, 10),
 (NULL, 'Gerencia Comercial', 'R5A', '2021-07-30', 178087, 2021, 11),
 (NULL, 'Gerencia Comercial', 'R5A', '2021-07-30', 182930.33, 2021, 12),
-(NULL, 'Gerencia Comercial', 'R5A', '2021-07-30', 179091.71, 2021, 13)
+(NULL, 'Gerencia Comercial', 'R5A', '2021-07-30', 179091.71, 2021, 13),
+
+(NULL, 'Gerencia Comercial', 'R5A', '2021-08-05', 177985.24, 2021, 14)
 
 --------Facturacion-----------
 (NULL, 'Gerencia Comercial', 'R15A', '2021-07-30', 555942.38, 2021, 01),
@@ -302,7 +345,9 @@ INSERT INTO `registroindicadores` (`id_registro`, `Usuario`, `id_Req`, `Fecha`, 
 (NULL, 'Gerencia Comercial', 'R15A', '2021-07-30', 2158381.75, 2021, 03),
 (NULL, 'Gerencia Comercial', 'R15A', '2021-07-30', 530341.78, 2021, 04),
 (NULL, 'Gerencia Comercial', 'R15A', '2021-07-30', 1123121.63, 2021, 05),
-(NULL, 'Gerencia Comercial', 'R15A', '2021-07-30', 1737778.23, 2021, 06)
+(NULL, 'Gerencia Comercial', 'R15A', '2021-07-30', 1737778.23, 2021, 06),
+
+(NULL, 'Gerencia Comercial', 'R15A', '2021-08-05', 1564729.29, 2021, 07),
 
 --------Impuestos------------
 (NULL, 'Gerencia Comercial', 'R20A', '2021-07-30', 52757.56, 2021, 01),
@@ -310,4 +355,6 @@ INSERT INTO `registroindicadores` (`id_registro`, `Usuario`, `id_Req`, `Fecha`, 
 (NULL, 'Gerencia Comercial', 'R20A', '2021-07-30', 101341.98, 2021, 03),
 (NULL, 'Gerencia Comercial', 'R20A', '2021-07-30', 60756.59, 2021, 04),
 (NULL, 'Gerencia Comercial', 'R20A', '2021-07-30', 91214.27, 2021, 05),
-(NULL, 'Gerencia Comercial', 'R20A', '2021-07-30', 132344.66, 2021, 06)
+(NULL, 'Gerencia Comercial', 'R20A', '2021-07-30', 132344.66, 2021, 06),
+
+(NULL, 'Gerencia Comercial', 'R20A', '2021-08-05', 132344.66, 2021, 07)

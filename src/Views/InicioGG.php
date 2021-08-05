@@ -97,15 +97,11 @@
                     </div>
                     <div class="row m-2">
                         <div class="col-sm m-2 grafica">
-                            <div id="reporte_Facturacion">
+                            <div id="facturacionVSimpuestos">
                             </div>
                         </div>
                         <div class="col-sm m-2 grafica">
                             <div id="saldo_Bancos">   
-                            </div>
-                        </div>
-                        <div class="col-sm m-2 grafica">
-                            <div id="monto_Impuestos">
                             </div>
                         </div>
                         

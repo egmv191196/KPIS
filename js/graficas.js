@@ -33,14 +33,15 @@ $(document).ready(function(){
             orden_Trabajo();
             reporte_Nomina();
             horas_Extras();
-            reporte_Facturacion();
+            //reporte_Facturacion();
             saldo_Bancos();
-            monto_impuestos()
+            //monto_impuestos()
             consumo_Efectivale();
             AvanceProyectos();
             tVSc();
             cxcVScxp();
             plazosCumplidos();
+            facturacionVSimpuestos()
         break;
         default:
         break;
@@ -1341,4 +1342,82 @@ function conceptosProyectos(){
         console.log("error"+response);
     });     
 
+}
+function facturacionVSimpuestos(){
+    var x1=[];
+    var y1=[];
+    var x2=[];
+    var y2=[];
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "../Script/graficas.php",
+        data: {
+            "Indicador" : 'R15A',
+            "Cantidad" : 'A'
+        },
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        datos.forEach(function(elemento) {
+            x1.push(elemento[0]);
+            y1.push(elemento[1]);       
+        });
+    }).fail(function(response){
+        console.log("error"+response);
+    });
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "../Script/graficas.php",
+        data: {
+            "Indicador" : 'R20A',
+            "Cantidad" : 'A'
+        },
+    }).done(function(response){
+        var datos=JSON.parse(response);
+        datos.forEach(function(elemento) {
+            x2.push(elemento[0]);
+            y2.push(elemento[1]);       
+        });
+    }).fail(function(response){
+        console.log("error"+response);
+    });  
+    var data1 = {
+        x: x1,
+        y: y1,
+        mode: 'lines+markers',
+        name: 'CXP'
+    };
+    var data2 = {
+        x: x2,
+        y: y2,
+        mode: 'lines+markers',
+        name:'CXC'
+    };
+    var data=[data1,data2];
+    var layout = {
+        title: '<b>Monto Facturacion Vs Monto impuestos',
+        xaxis: {
+            title: 'Mes',
+            showgrid: false,
+            zeroline: false
+        },
+        yaxis: {
+            title: 'Montos',
+            showline: false
+        },
+        margin: {
+            l: 50,
+            r: 25,
+            t: 70,
+            b: 50
+          },
+        widht:350,
+        height: 300
+    };
+    var config={
+        responsive: true,
+        displayModeBar: false
+    };
+    Plotly.newPlot('facturacionVSimpuestos', data,layout, config); 
 }

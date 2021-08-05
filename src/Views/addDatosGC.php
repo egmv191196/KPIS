@@ -241,7 +241,7 @@
                                                 $primero=true;
                                             } 
                                             else{
-                                                echo '<td>'.$row[1].'</td>';
+                                                echo '<td>$ '.number_format($row[1],2).'</td>';
                                                 echo '</tr>';
                                             }
                                             
@@ -429,7 +429,7 @@
                                                 $primero=true;
                                             } 
                                             else{
-                                                echo '<td>'.$row[1].'</td>';
+                                                echo '<td>$ '.number_format($row[1],2).'</td>';
                                                 echo '</tr>';
                                             }
                                             

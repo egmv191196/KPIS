@@ -399,7 +399,7 @@ function Valor(caso,id){
         url: "../Script/indicadores.php",
         data: datos,
     }).done(function(response){
-        alert(response);
+        //alert(response);
         location.reload();
     }).fail(function(response){
         console.log("error"+response);

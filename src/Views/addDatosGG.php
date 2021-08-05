@@ -276,7 +276,8 @@
                                         echo '<th scope="row">'.$quincenaActual.'</th>';
                                         $row = mysqli_fetch_array($result1);
                                         echo '<td > <input type="number" class="form-control celdas" id="R1A" onchange="Valor(6,this);" value="'.$row[1].'"> </input> </td>';
-                                        echo '<td > <input type="number" class="form-control celdas" id="R1B" onchange="Valor(7,this);"> </input> </td>';
+                                        $row = mysqli_fetch_array($result2);
+                                        echo '<td > <input type="number" class="form-control celdas" id="R1B" onchange="Valor(7,this);" value="'.$row[1].'"> </input> </td>';
                                         echo '</tr>';
                                         while ($row = mysqli_fetch_array($result1)) {
                                             echo '<tr>';
