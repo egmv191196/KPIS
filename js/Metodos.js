@@ -485,4 +485,71 @@ function montoAbonado(id){
         console.log("error"+response);
     });
 }
+function addUser(){
+    datos={
+        Operacion : 'Insertar',
+        User : $('#User').val(),
+        Nombre : $('#Nombre').val(),
+        permisos : $('#permisos').val(),
+        area : $('#area').val(),
+        Pass1 : $('#Pass1').val()
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/Usuarios.php",
+        data: datos,
+    }).done(function(response){
+        //alert(response);
+        if (response==1) {
+            alert("Se registro correctamente el usuario");
+            location.href ="./listarUsuarios.php";
+        } else {
+            alert(response);
+            alert("Error al registrar el proyecto");
+        }
+    }).fail(function(response){
+        console.log("error"+response);
+    });            
+}
+function ModificarU(id) {
+    Name=$(id).parents("tr").find("th")[0].innerHTML;
+    location.href ="upUser.php?User="+Name;
+}
+function updateUser() {
+    datos={
+        Operacion : 'Actualizar',
+        User : $('#User').val(),
+        Nombre : $('#Nombre').val(),
+        permisos : $('#permisos').val(),
+        area : $('#area').val(),
+        Pass1 : $('#Pass1').val()
+    };
+    $.ajax({
+        type: "POST",
+        url: "../Script/Usuarios.php",
+        data: datos,
+    }).done(function(response){
+        //alert(response);
+        if (response==1) {
+            alert("Se actualizo correctamente el usuario");
+            location.href ="./listarUsuarios.php";
+        } else {
+            alert(response);
+            alert("Error al actualizar");
+        }
+    }).fail(function(response){
+        console.log("error"+response);
+    }); 
+}
+function validarPass(){
+    Pass1= $('#Pass1').val();
+    Pass2= $('#Pass2').val();
+    if (Pass1==Pass2){
+    }else{
+        alert("Tu contraseña no coincide, intentalo de nuevo");
+        $('#Pass1').val("");
+        $('#Pass2').val("");
+        $('#Pass1').trigger('focus');
+    }
+}
   

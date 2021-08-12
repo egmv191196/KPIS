@@ -68,6 +68,13 @@
                             <a class="dropdown-item" href="addDatosGG.php">Mis datos</a>
                             <a class="dropdown-item" href="datosManuales.php">Datos manuales</a>
                         </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="usuarios" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios</a>
+                        <div class="dropdown-menu" aria-labelledby="usuarios">
+                            <a class="dropdown-item" href="addUsuario.php">Agregar Usuario</a>
+                            <a class="dropdown-item" href="listarUsuarios.php">Listar Usuarios</a>
+                        </div>
                     </li>       
                     </ul>
                 </div>            
@@ -82,7 +89,7 @@
                     $year=date("Y");               
                 ?>
                 <input type="hidden" id="Area" value="4"></input>
-                <h5 class="text-center">Año: <?php echo $year;?> Semana: <?php echo $mes;?></h5>
+                <h5 class="text-center">Año: <?php echo $year;?> Semana: <?php echo $semana;?></h5>
                 <div class=" mt-2 borderGC">
                     <h3 class="text-center">Gerencia Comercial</h3>
                     <div class="row m-2">

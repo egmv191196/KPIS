@@ -10,17 +10,15 @@
 </head>
 <body>
     <?php
-        $Name=$_GET['Name'];
-        $Phone=$_GET['Phone'];
+        $User=$_GET['User'];
         require_once('../Script/conexionBD.php'); 
-        $consulta="SELECT * FROM cliente WHERE Nombre='$Name' AND Telefono='$Phone'";
+        $consulta='SELECT * FROM usuario WHERE Usuario="'.$User.'"';
         $result= mysqli_query($conexion, $consulta);
-        $val=mysqli_fetch_assoc($result);
-        $id_Cliente=$val['id_Cliente'];
-        $Nombre=$val['Nombre'];
-        $RFC=$val['RFC'];
-        $Correo=$val['Correo'];
-        $Telefono=$val['Telefono'];
+        $val=mysqli_fetch_array($result);
+        $Nombre=$val[0];
+        $Password=$val['Password'];
+        $Cargo=$val['Cargo'];
+        $Area=$val['Area'];
     ?>
     <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  
@@ -115,20 +113,27 @@
             </div>
             <a class="navbar-brand" href="../Script/logout.php">Cerrar Sesion</a>
             </nav>
-        <h2>Actualizar cliente</h2>
-        <form id="upCliente" method="POST">
-                <label>Nombre del cliente</label>
-                <input type="text" name="Name" class="form-control " id="Nombre"  placeholder="Nombre del cliente" value="<?php echo $Nombre;?>">
-                <label>RFC</label>
-                <input type="text" name="RFC" class="form-control " id="RFC" placeholder="RFC" value="<?php echo $RFC;?>">
-                <label>Correo electronico</label>
-                <input type="email" name="Email" class="form-control " id="Correo" placeholder="RFC" value="<?php echo $Correo;?>">  
-                <label>Telefono de contacto</label>
-                <input type="number" name="Phone" class="form-control " id="Telefono" placeholder="Telefono" value="<?php echo $Telefono;?>">
-                <input type="hidden" name="id_Cliente" id="id_Cliente" value="<?php echo $id_Cliente;?>"/>
-                <input type="hidden" name="Operacion" id="Operacion" value="Modificar" />
-                <input type="button" class="btn btn-danger float-right m-3 center btn-lg" value="Guardar modificaciones del cliente" onclick="updateCliente();">
-                <a href="./Clientes.php" class="btn btn-primary m-3 center btn-lg float-right">Cancelar</a>         
+            <h2>Actualizar Usuario</h2>
+        <form id="frmCliente" method="POST">
+                <label>Ingresa el usuario</label>
+                <input type="text" name="User" class="form-control " id="User" placeholder="Usuario" value="<?php echo $User;?>" disabled>
+                <label>Nombre del empleado</label>
+                <input type="text" name="Nombre" class="form-control " id="Nombre" placeholder="Nombre" value="<?php echo $Nombre;?>">
+                <label>Permisos asignados</label>
+                <select name="permisos" id="permisos" class="form-control" value="GG">
+                    <option>Selecciona una opcion</option>
+                    <option value="GG">Gerencia General</option>
+                    <option value="GC">Gerencia Comercial</option>
+                    <option value="GT">Gerencia Tecnica</option>
+                </select>
+                <label>Area</label>
+                <input type="text" name="area" class="form-control " id="area" placeholder="Area"value="<?php echo $Area;?>">
+                <label>Contraseña</label>
+                <input type="Password" name="Pass" class="form-control " id="Pass1" placeholder="Contraseña" value="<?php echo $Password;?>">
+                <label>Confirmar contraseña</label>
+                <input type="Password" name="Pass" class="form-control " onchange="validarPass();" id="Pass2" placeholder="Contraseña" value="<?php echo $Password;?>">
+                <input type="button" class="btn btn-danger float-right m-3 center btn-lg" onclick="updateUser();" value="Actualizar">
+                <a href="./listarUsuarios.php" class="btn btn-primary m-3 center btn-lg float-right">Cancelar</a>          
         </form>
     </div>
 </body>

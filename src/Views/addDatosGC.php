@@ -556,7 +556,7 @@
                                         echo '<tr>';
                                         echo '<th scope="row">'.$row[0].'</th>';
                                         echo '<td scope="row">'.$row[1].'</td>';
-                                        echo '<td scope="row">'.$row[4].'</td>';
+                                        echo '<td scope="row">$ '.number_format($row[4],2).'</td>';
                                         echo '<td > <input type="number" class="form-control celdas" id="'.$row[0].'" onchange="montoGastado(this);" value="'.$row[5].'"> </input> </td>';
                                         echo '<td > <input type="number" class="form-control celdas" id="'.$row[0].'" onchange="montoAbonado(this);" value="'.$row[6].'"> </input> </td>';
                                         echo '</tr>';
