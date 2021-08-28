@@ -344,15 +344,31 @@ function reporte_Nomina(){
         var datos=JSON.parse(response);
         var x=[];
         var y=[];
+        var xx=[];
+        var numDatos=0,totalSuma=0.0, Media=0;
         datos.forEach(function(elemento) {
+            totalSuma=parseFloat(totalSuma)+parseFloat(elemento[1]);
+            numDatos=numDatos+1;
             x.push(elemento[0]);
             y.push(elemento[1]);       
         });
-        var data = [{
+        Media=totalSuma/numDatos;
+        for (var i = 0; i < numDatos; i++) {
+            xx.push(Media);   
+        }
+        var gra1 = {
             x: x,
             y: y,
+            name: 'Monto de nomina',
             type: 'scatter'
-        }];
+        };
+        var gra2 = {
+            x: x,
+            y: xx,
+            name: 'Media',
+            type: 'scatter'
+        };
+        var data=[gra1, gra2];
         var layout = {
         title: '<b>Montos de nomina',
         xaxis: {
@@ -552,15 +568,32 @@ function consumo_Efectivale(){
         var datos=JSON.parse(response);
         var x=[];
         var y=[];
+        var xx=[];
+        var numDatos=0,totalSuma=0.0, Media=0;
         datos.forEach(function(elemento) {
+            totalSuma=parseFloat(totalSuma)+parseFloat(elemento[1]);
+            numDatos=numDatos+1; 
             x.push(elemento[0]);
             y.push(elemento[1]);       
         });
-        var data = [{
+        Media=totalSuma/numDatos;
+        for (var i = 0; i < numDatos; i++) {
+            xx.push(Media);   
+        }
+        var gra1 = {
             x: x,
             y: y,
-            mode: 'lines+markers',
-        }];
+            name: 'Consumo efectivale',
+            type: 'scatter'
+        };
+        var gra2 = {
+            x: x,
+            y: xx,
+            name: 'Media',
+            type: 'scatter'
+        };
+        var data=[gra1, gra2];
+
         var layout = {
         title: '<b>Consumo efectivale',
         xaxis: {
@@ -586,7 +619,6 @@ function consumo_Efectivale(){
             displayModeBar: false
         };
         Plotly.newPlot('consumo_Efectivale', data,layout, config);
-
     }).fail(function(response){
         console.log("error"+response);
     });     
@@ -1059,7 +1091,7 @@ function plazosCumplidos(){
     };
     Plotly.newPlot('plazosCumplidos', data,layout, config);
 }
-//VS GG
+//GT VS GC
 function cVSg(){
     var datos = {
         "Operacion" : 'cVSg',
@@ -1385,13 +1417,13 @@ function facturacionVSimpuestos(){
         x: x1,
         y: y1,
         mode: 'lines+markers',
-        name: 'CXP'
+        name: 'Monto de facturacion'
     };
     var data2 = {
         x: x2,
         y: y2,
         mode: 'lines+markers',
-        name:'CXC'
+        name:'Monto de impuestos'
     };
     var data=[data1,data2];
     var layout = {
